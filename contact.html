@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Laeli</title>
+<meta name="description" content="Get in touch with the Laeli team — questions, feedback, or early-access requests.">
+<meta name="theme-color" content="#9cc0ec">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #5179be; --blue-deep: #3f63a6; --coral: #ec7a55;
+    --sage: #a9bb7c; --teal: #9ec7bc; --peach: #f7d2ac; --ivory: #fff8ec;
+    --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
+    --care: #c66a52; --action: #ee9b72; --action-pressed: #d87f57;
+    --success: #4c9a6a; --success-bg: #dff0e6;
+    --border: #e7d6bd; --border-strong: #cbb398;
+    --input: #fffaf0; --input-focus: #ee9b72;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
+    --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
+    --shadow-plush: 0 24px 52px rgba(40,46,70,0.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); line-height: 1.6; background: #86aee6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .atmosphere { position: fixed; inset: 0; z-index: -3;
+    background:
+      radial-gradient(40% 34% at -3% 5%, var(--blue) 0%, rgba(81,121,190,0) 56%),
+      radial-gradient(28% 24% at 8% 33%, var(--coral) 0%, rgba(236,122,85,0) 54%),
+      radial-gradient(34% 30% at -5% 66%, var(--sage) 0%, rgba(169,187,124,0) 58%),
+      radial-gradient(38% 32% at 103% 4%, var(--teal) 0%, rgba(126,191,178,0) 58%),
+      radial-gradient(28% 24% at 101% 27%, var(--peach) 0%, rgba(247,199,159,0) 54%),
+      radial-gradient(48% 42% at 106% 66%, var(--blue) 0%, rgba(81,121,190,0) 60%),
+      radial-gradient(38% 34% at 13% 113%, var(--coral) 0%, rgba(236,122,85,0) 60%),
+      radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
+      radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
+  }
+  .atmosphere::before { content:""; position:absolute; inset:-25%;
+    background:
+      radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
+      radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
+      radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
+  .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
+
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 620px; padding: 0 16px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px 10px 16px;
+    background: rgba(255,248,236,0.82); backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; box-shadow: var(--shadow-soft); }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+  .brand img { width: 38px; height: 38px; border-radius: 12px; box-shadow: 0 6px 14px rgba(40,46,70,0.22); }
+  .brand span { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -0.01em; }
+  .nav-back { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 15px; border-radius: 999px; transition: background 140ms ease; }
+  .nav-back:hover { background: rgba(158,199,188,0.4); color: var(--ink); }
+
+  main { max-width: 620px; margin: 0 auto; padding: 40px 24px 72px; }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,244,0.9));
+    border: 1px solid rgba(255,255,255,0.8); border-radius: 30px; padding: clamp(28px, 5vw, 48px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), var(--shadow-plush);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .head { text-align: center; margin-bottom: 28px; }
+  .head img { width: 70px; height: 70px; border-radius: 20px; box-shadow: var(--shadow-soft); margin-bottom: 18px; }
+  .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--care); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-size: clamp(32px, 6vw, 44px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 10px; line-height: 1.02; }
+  .lead { color: var(--ink-muted); font-size: 17px; font-weight: 600; margin: 0 auto; max-width: 30em; }
+
+  form { margin-top: 26px; display: flex; flex-direction: column; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field label { font-size: 14px; font-weight: 800; color: var(--ink); }
+  .field input, .field textarea {
+    font-family: var(--body); font-size: 16px; font-weight: 600; color: var(--ink);
+    background: var(--input); border: 1.5px solid var(--border-strong); border-radius: 16px;
+    padding: 13px 15px; width: 100%; transition: border-color 140ms ease, box-shadow 140ms ease;
+  }
+  .field textarea { min-height: 130px; resize: vertical; }
+  .field input::placeholder, .field textarea::placeholder { color: #a99c8c; font-weight: 600; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--input-focus); box-shadow: 0 0 0 4px rgba(238,155,114,0.2); }
+  .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
+
+  .submit {
+    margin-top: 4px; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--body); font-weight: 800; font-size: 16px; color: var(--ink);
+    background: var(--action); border: none; border-radius: 999px; padding: 15px 28px; cursor: pointer;
+    box-shadow: var(--shadow-soft); transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+  }
+  .submit:hover:not(:disabled) { transform: translateY(-2px); background: var(--action-pressed); box-shadow: var(--shadow-plush); }
+  .submit:disabled { opacity: 0.6; cursor: default; }
+  .submit svg { width: 18px; height: 18px; }
+
+  .form-note { margin-top: 6px; font-size: 14px; font-weight: 700; color: var(--text-muted); }
+  .form-note a { color: var(--care); text-decoration: none; }
+  .form-note a:hover { text-decoration: underline; }
+
+  /* status messages */
+  .status { margin-top: 16px; border-radius: 16px; padding: 14px 18px; font-size: 15px; font-weight: 700; display: none; }
+  .status.show { display: block; }
+  .status.ok { background: var(--success-bg); color: #245c3c; border: 1px solid #aed8be; }
+  .status.err { background: #ffe3da; color: #8a3422; border: 1px solid #eab1a0; }
+
+  /* success state replacing the form */
+  .done { display: none; text-align: center; padding: 8px 0; }
+  .done.show { display: block; }
+  .done .badge { width: 72px; height: 72px; border-radius: 50%; margin: 6px auto 18px; display: grid; place-items: center;
+    background: radial-gradient(125% 125% at 30% 22%, #e9f6ee, var(--success-bg));
+    box-shadow: inset 0 3px 7px rgba(255,255,255,0.8), inset 0 -8px 16px rgba(40,46,70,0.1), 0 8px 16px rgba(40,46,70,0.12); }
+  .done .badge svg { width: 34px; height: 34px; color: var(--success); }
+  .done h2 { font-family: var(--display); font-size: 28px; font-weight: 700; margin: 0 0 8px; }
+  .done p { color: var(--ink-muted); font-weight: 600; margin: 0 0 22px; }
+  .done a.home { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 800; color: var(--ink);
+    background: var(--ivory); border: 1px solid var(--border-strong); border-radius: 999px; padding: 13px 24px; }
+
+  @media (prefers-reduced-motion: reduce) { .atmosphere::before { animation: none; } }
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="grain"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="/"><img src="mascot.webp" alt="Laeli mascot"><span>Laeli</span></a>
+    <a class="nav-back" href="/">← Home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="card">
+    <div class="head">
+      <img src="mascot.webp" alt="Laeli mascot">
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="lead">Questions, feedback, or an early-access request? Send us a note and we'll get back to you.</p>
+    </div>
+
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Web3Forms access key — replace with the real key (free at https://web3forms.com, sent to support@laeli.app) -->
+      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New message from the Laeli contact form">
+      <input type="hidden" name="from_name" value="Laeli Contact Form">
+      <!-- honeypot anti-spam: bots fill this, humans don't -->
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+      <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" placeholder="Jane Doe" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+      </div>
+
+      <button class="submit" type="submit" id="submit-btn">
+        Send message
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+      <p class="form-note">Prefer email? Write us directly at <a href="mailto:support@laeli.app">support@laeli.app</a>.</p>
+      <div class="status" id="status"></div>
+    </form>
+
+    <div class="done" id="done">
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>Message sent!</h2>
+      <p>Thanks for reaching out — we'll reply to your email soon.</p>
+      <a class="home" href="/">← Back home</a>
+    </div>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('status');
+    var done = document.getElementById('done');
+    var btn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'status';
+      btn.disabled = true;
+      var original = btn.innerHTML;
+      btn.textContent = 'Sending…';
+
+      var data = Object.fromEntries(new FormData(form).entries());
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (json.success) {
+          form.style.display = 'none';
+          done.classList.add('show');
+        } else {
+          status.textContent = json.message || 'Something went wrong. Please email support@laeli.app.';
+          status.className = 'status err show';
+          btn.disabled = false; btn.innerHTML = original;
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Network error. Please email support@laeli.app.';
+        status.className = 'status err show';
+        btn.disabled = false; btn.innerHTML = original;
+      });
+    });
+  })();
+</script>
+</body>
+</html>

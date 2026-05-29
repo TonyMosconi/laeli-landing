@@ -301,7 +301,7 @@
     .honesty::after { content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px; background: radial-gradient(closest-side, rgba(236,122,85,0.5), transparent 70%); }
     .honesty::before { content:""; position:absolute; left:-80px; bottom:-100px; width:320px; height:320px; background: radial-gradient(closest-side, rgba(81,121,190,0.5), transparent 70%); }
     .honesty .kicker { color: var(--action); position: relative; }
-    .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; }
+    .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; font-size: clamp(26px, 2.8vw, 34px); }
     .honesty p { color: rgba(255,248,236,0.85); font-size: 18px; font-weight: 600; max-width: 38em; margin: 20px 0 0; position: relative; }
 
     /* final CTA */
@@ -316,7 +316,7 @@
     footer .f-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-left: auto; }
     footer a { color: var(--text-muted); text-decoration: none; font-weight: 700; font-size: 14px; transition: color 140ms ease; }
     footer a:hover { color: var(--care); }
-    .copyright { color: var(--border-strong); font-size: 13px; font-weight: 700; }
+    .copyright { color: var(--text-muted); font-size: 14px; font-weight: 700; }
 
     /* reveal */
     .reveal { opacity: 0; transform: translateY(20px); animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
@@ -530,7 +530,7 @@
         <nav class="f-links">
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
-          <a href="mailto:support@laeli.app">Contact</a>
+          <a href="/contact">Contact</a>
           <span class="copyright">© 2026 Laeli</span>
         </nav>
       </footer>
