@@ -23,7 +23,7 @@ function confirmationHtml(name) {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4ead6;padding:28px 12px;font-family:Arial,Helvetica,sans-serif;">
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#fffaf0;border-radius:20px;overflow:hidden;border:1px solid #e7d6bd;">
-        <tr><td style="background:#1d3a32;padding:26px 28px;text-align:center;">
+        <tr><td style="background-color:#5179be;background-image:linear-gradient(135deg,#6f97d6,#4f7fc4);padding:26px 28px;text-align:center;">
           <img src="https://laeli.app/mascot-180.png" width="56" height="56" alt="Laeli" style="border-radius:16px;display:block;margin:0 auto 10px;">
           <div style="font-family:Georgia,'Times New Roman',serif;font-weight:bold;font-size:22px;color:#fff8ec;letter-spacing:0.3px;">Laeli</div>
         </td></tr>
