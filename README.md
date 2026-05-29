@@ -15,9 +15,27 @@ This is the public hosting bundle (no app source). It mirrors
 | `/terms` | `terms.html` — Terms of Service |
 | `/legal` | `legal.html` — legal hub |
 | `/email-verify` | `email-verify.html` — email-confirmation page (deep-links `laeli://auth-callback`) |
+| `/contact` | `contact.html` — contact form (posts to the `/api/contact` function) |
 
 Clean URLs (`/privacy` → `privacy.html`) are served automatically by
 Cloudflare Pages.
+
+## Contact form (Resend)
+
+`functions/api/contact.js` is a Cloudflare Pages Function that receives
+the contact form and sends the message via [Resend](https://resend.com).
+
+Setup:
+
+1. In Resend, verify the `laeli.app` domain (add the DNS records to
+   Cloudflare) so mail can be sent from `contact@laeli.app`.
+2. Create a Resend API key.
+3. In the Cloudflare Pages project → Settings → Environment variables,
+   add `RESEND_API_KEY` (Production, encrypted) = the key. Redeploy.
+
+The function emails `support@laeli.app` with the submitter's address as
+`reply_to`. Until `RESEND_API_KEY` is set, the form returns a friendly
+error and the page still offers the `support@laeli.app` mailto fallback.
 
 ## Hosting (Cloudflare Pages)
 

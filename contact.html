@@ -141,11 +141,7 @@
       <p class="lead">Questions, feedback, or an early-access request? Send us a note and we'll get back to you.</p>
     </div>
 
-    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-      <!-- Web3Forms access key — replace with the real key (free at https://web3forms.com, sent to support@laeli.app) -->
-      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
-      <input type="hidden" name="subject" value="New message from the Laeli contact form">
-      <input type="hidden" name="from_name" value="Laeli Contact Form">
+    <form id="contact-form" action="/api/contact" method="POST">
       <!-- honeypot anti-spam: bots fill this, humans don't -->
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
 
@@ -197,7 +193,7 @@
 
       var data = Object.fromEntries(new FormData(form).entries());
 
-      fetch('https://api.web3forms.com/submit', {
+      fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
