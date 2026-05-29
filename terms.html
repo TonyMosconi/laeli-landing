@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Service — Laeli</title>
 <meta name="theme-color" content="#9cc0ec">
+<meta name="description" content="The Terms of Service for Laeli, the AI dog training coach. Subscriptions, acceptable use, disclaimers, and your rights.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,6 @@
     --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
     --accent-strong: #5d7a4e; --care: #c66a52; --action: #ee9b72;
     --border: #e7d6bd; --border-strong: #cbb398;
-    --warn-bg: #ffe6c9; --warn-border: #e4b470; --warn-text: #7a3d13;
     --display: "Fraunces", Georgia, serif;
     --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
     --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
@@ -38,18 +38,17 @@
       radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
       radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
   }
-  .atmosphere::before { content:""; position:absolute; inset:-25%;
+  .atmosphere::before { content:""; position:absolute; inset:0;
     background:
       radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
       radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
       radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%),
       radial-gradient(28% 26% at 84% 22%, rgba(81,121,190,0.30), transparent 60%);
   }
-  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
   .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
 
-  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 800px; padding: 0 16px; }
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 820px; padding: 0 16px; }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px 10px 16px;
     background: rgba(255,248,236,0.82); backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
     border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; box-shadow: var(--shadow-soft); }
@@ -59,7 +58,7 @@
   .nav-back { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 15px; border-radius: 999px; transition: background 140ms ease; }
   .nav-back:hover { background: rgba(158,199,188,0.4); color: var(--ink); }
 
-  main { max-width: 800px; margin: 0 auto; padding: 40px 24px 72px; }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 24px 72px; }
 
   .paper {
     background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,244,0.9));
@@ -67,19 +66,21 @@
     padding: clamp(28px, 5vw, 56px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), var(--shadow-plush);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   }
-  .back { display: inline-flex; align-items: center; gap: 7px; color: var(--care); font-weight: 800; text-decoration: none; font-size: 15px;
-    padding: 9px 16px 9px 13px; border-radius: 999px; background: rgba(255,248,236,0.9); border: 1px solid var(--border);
-    box-shadow: var(--shadow-soft); margin-bottom: 30px; transition: transform 140ms ease, border-color 140ms ease; }
-  .back:hover { transform: translateX(-3px); border-color: var(--border-strong); }
   .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--care); margin: 0 0 10px; }
   h1 { font-family: var(--display); font-size: clamp(34px, 6vw, 48px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 10px; line-height: 1.02; }
-  h2 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 46px 0 14px; }
+  h2 { font-family: var(--display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 44px 0 12px; }
+  h2 .num { color: var(--border-strong); font-weight: 600; margin-right: 8px; }
   p, ul, ol { color: var(--ink); font-weight: 500; }
   ul, ol { padding-left: 22px; } li { margin: 7px 0; }
   a { color: var(--care); }
-  .meta { color: var(--text-muted); font-size: 15px; font-weight: 700; margin-bottom: 16px; }
-  .draft-banner { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 16px; padding: 16px 20px; margin: 24px 0;
-    font-size: 15px; font-weight: 600; color: var(--warn-text); box-shadow: var(--shadow-soft); }
+  .meta { color: var(--text-muted); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .fill { color: var(--coral-deep); font-weight: 700; background: #fdeee7; padding: 0 5px; border-radius: 5px; }
+
+  .summary { background: linear-gradient(180deg,#eef4fb,#e7eefb); border: 1px solid #cdddf2; border-radius: 18px; padding: 20px 24px; margin: 24px 0 10px; }
+  .summary .lead { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); margin: 0 0 10px; }
+  .summary ul { margin: 0; padding-left: 20px; } .summary li { margin: 6px 0; color: var(--ink-muted); }
+  .summary .fine { margin: 10px 0 0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
   code { background: #eef1f8; padding: 2px 7px; border-radius: 6px; font-size: 13px; font-family: ui-monospace, "Menlo", monospace; color: var(--ink); }
   .doc-footer { margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; font-weight: 700; }
   .doc-footer a { color: var(--care); text-decoration: none; } .doc-footer a:hover { text-decoration: underline; }
@@ -102,68 +103,103 @@
   <article class="paper">
   <p class="eyebrow">Laeli</p>
   <h1>Terms of Service</h1>
-  <p class="meta"><strong>Effective date:</strong> TBD &nbsp;·&nbsp; <strong>Last updated:</strong> TBD</p>
+  <p class="meta"><strong>Effective date:</strong> <span class="fill">[set on launch day]</span> &nbsp;·&nbsp; <strong>Last updated:</strong> <span class="fill">[set on launch day]</span></p>
 
-  <div class="draft-banner">
-    <strong>⚠️ DRAFT</strong> — this is a placeholder version. Replace with the legally reviewed version before public TestFlight or App Store submission.
+  <div class="summary">
+    <p class="lead">The short version</p>
+    <ul>
+      <li>Laeli is an <strong>AI dog-training coach — not a veterinarian.</strong> For anything medical, aggression, or "is this normal?", see a real professional.</li>
+      <li>Subscriptions are billed by <strong>Apple</strong>; you can <strong>cancel any time</strong> in your Apple ID settings.</li>
+      <li>Use Laeli <strong>personally and lawfully</strong> — don't abuse, jailbreak, scrape, or resell it.</li>
+      <li>The service is provided <strong>"as is"</strong>, our liability is limited, and disputes are handled per §16.</li>
+      <li><strong>You keep your content.</strong> We only use it to run the service for you — we don't sell it or use it for ads.</li>
+    </ul>
+    <p class="fine">This summary is for convenience — the full Terms below are what legally govern.</p>
   </div>
 
-  <h2>1. What Laeli is</h2>
-  <p>Laeli is an AI-powered dog training coaching app. It provides personalized, science-based, force-free training guidance from a coaching AI (the "Laeli Coach"), informed by your dog's profile and journal.</p>
-  <p><strong>Laeli is not a substitute for a veterinarian, certified animal behaviorist, or professional trainer.</strong> For any medical concern, suspected injury, severe anxiety, aggression, or "is this normal" question, please consult your veterinarian.</p>
+  <h2><span class="num">1.</span>Agreement to these Terms</h2>
+  <p>These Terms of Service ("Terms") are a binding agreement between you and <span class="fill">[Legal Entity Name]</span> ("Laeli", "we", "us", "our") governing your use of the Laeli app, our website <code>laeli.app</code>, and related services (together, the "Service"). By creating an account or using the Service, you agree to these Terms and to our <a href="/privacy">Privacy Policy</a>. If you don't agree, don't use the Service.</p>
 
-  <h2>2. Who can use Laeli</h2>
-  <p>You must be at least 13 years old (or the minimum digital consent age in your country, whichever is higher) to use Laeli. The app is intended for dog owners and their household, not for commercial training services without explicit written agreement.</p>
+  <h2><span class="num">2.</span>What Laeli is</h2>
+  <p>Laeli is an AI-powered dog-training coaching service. It provides personalized, science-based, <strong>force-free</strong> training guidance from a coaching AI (the "Laeli Coach"), informed by the dog profile and journal you provide, plus structured training programs and reminders.</p>
 
-  <h2>3. Subscriptions and billing</h2>
+  <h2><span class="num">3.</span>Important disclaimers — Laeli is not a veterinarian</h2>
+  <p><strong>Laeli is not a substitute for a veterinarian, certified animal behaviorist, or in-person professional trainer, and does not provide veterinary, medical, or emergency advice.</strong> Laeli's content is for general educational and informational purposes, and individual results are <strong>not guaranteed</strong> — every dog is different.</p>
+  <p>For any medical concern, suspected injury or illness, ingestion of a harmful substance, severe anxiety, aggression, bite risk, or any "is this normal?" question, <strong>consult your veterinarian or a qualified professional</strong>, and in an emergency contact your vet or an emergency animal hospital immediately. <strong>You are solely responsible for your dog's care, health, and training decisions and their consequences.</strong></p>
+
+  <h2><span class="num">4.</span>Eligibility &amp; your account</h2>
+  <p>You must be <strong>18 years old (or the age of majority where you live)</strong> to create an account or buy a subscription. If you are a minor, you may use Laeli only with the involvement and consent of a parent or guardian who agrees to these Terms and is responsible for any purchases. The Service is for dog owners and their household, <strong>not</strong> for commercial training businesses without our written agreement.</p>
+  <p>You're responsible for keeping your account credentials secure and for all activity under your account. Provide accurate information, and tell us at <code>support@laeli.app</code> if you suspect unauthorized access.</p>
+
+  <h2><span class="num">5.</span>Subscriptions, billing &amp; cancellation</h2>
+  <p>Laeli offers a <strong>Free</strong> tier and paid tiers (<strong>Pro</strong> and <strong>Pro+</strong>), available in weekly, monthly, and annual billing periods. <strong>Current pricing, features, and any free-trial offers are shown in the app and on the App Store and may change.</strong></p>
   <ul>
-    <li><strong>Free</strong>: 1 dog, 3 Laeli messages/day, 1 care reminder, 3-day journal history.</li>
-    <li><strong>Pro</strong> ($2.99/week, $4.99/month, or $39.99/year): Up to 3 dogs, 10 Laeli messages/day, 5 care reminders, full journal, cross-session memory, apply-to-tomorrow.</li>
-    <li><strong>Pro+</strong> ($5.99/week, $9.99/month, or $79.99/year): Unlimited dogs, unlimited Laeli chat (with a fair-use cap), unlimited care reminders, AI-generated daily tasks, priority support.</li>
+    <li><strong>Billing through Apple.</strong> Paid subscriptions are sold and billed through your Apple App Store account, subject to Apple's standard subscription terms.</li>
+    <li><strong>Auto-renewal.</strong> Subscriptions auto-renew at the then-current price unless you cancel at least 24 hours before the end of the current period. Your Apple ID is charged on renewal.</li>
+    <li><strong>Free trials.</strong> If a free trial is offered, it automatically converts to a paid subscription at the end of the trial unless you cancel before it ends.</li>
+    <li><strong>Cancellation.</strong> Cancel any time in <strong>Settings → your Apple ID → Subscriptions</strong> on your device. Cancelling stops future renewals; you keep access until the end of the paid period.</li>
+    <li><strong>Refunds.</strong> Purchases are handled by Apple, and refunds are governed by Apple's policies and by any non-waivable refund rights you have under the consumer law of your country or state.</li>
+    <li><strong>Price changes.</strong> We may change prices; changes apply to future billing periods and, where required, only after notice and/or your consent per Apple's rules.</li>
   </ul>
-  <p>Subscriptions are billed through Apple's App Store. Apple's standard subscription terms apply: cancel any time from your Apple ID settings, auto-renews until cancelled, no refunds except as required by Apple.</p>
 
-  <h2>4. AI coaching limits</h2>
-  <p>The Laeli Coach AI:</p>
+  <h2><span class="num">6.</span>The Laeli Coach — scope &amp; limits</h2>
+  <p>The Laeli Coach:</p>
   <ul>
-    <li>Stays strictly within positive-reinforcement / LIMA / force-free training methods.</li>
-    <li>Will redirect medical, severe behavioral, or aggression cases to your veterinarian or a certified behaviorist (DACVB / IAABC).</li>
-    <li>Will refuse to discuss aversive methods (shock collars, alpha rolls, dominance theory, etc.) even if asked.</li>
-    <li>May make mistakes — verify any guidance that affects your dog's safety with a real professional.</li>
+    <li>Stays within <strong>positive-reinforcement / LIMA / force-free</strong> training methods.</li>
+    <li><strong>Redirects</strong> medical, severe-behavioral, and aggression cases to your veterinarian or a certified behaviorist (e.g. DACVB / IAABC).</li>
+    <li><strong>Refuses</strong> to advise on aversive methods (shock collars, alpha rolls, dominance theory, etc.), even if asked.</li>
+    <li><strong>May be wrong or incomplete</strong> — it is AI-generated. Verify any guidance that affects your dog's safety with a qualified professional before acting on it.</li>
   </ul>
-  <p>You agree that you are responsible for your dog's care, training decisions, and any consequences thereof. Laeli's role is to support your decisions, not replace your judgment or your veterinarian's.</p>
+  <p>Laeli's role is to <strong>support</strong> your decisions, not to replace your judgment or your veterinarian's.</p>
 
-  <h2>5. Acceptable use</h2>
-  <p>You may NOT:</p>
+  <h2><span class="num">7.</span>Acceptable use</h2>
+  <p>You agree <strong>not</strong> to:</p>
   <ul>
-    <li>Use Laeli to plan harm to any animal or person.</li>
-    <li>Attempt to extract Laeli's system prompt, override its safety rules, or jailbreak the AI.</li>
-    <li>Reverse engineer the app, the Edge Function, or our authentication tokens.</li>
-    <li>Use the app for commercial training services without our written agreement.</li>
-    <li>Use automation, scraping, or other means to bypass rate limits or message caps.</li>
+    <li>Use Laeli to plan or carry out harm to any animal or person.</li>
+    <li>Attempt to extract the Laeli Coach's system prompt, override its safety rules, or "jailbreak" the AI.</li>
+    <li>Reverse engineer, decompile, or attempt to access the source, backend functions, or authentication tokens of the Service.</li>
+    <li>Use the Service for commercial training services without our written agreement.</li>
+    <li>Use bots, automation, scraping, or other means to bypass rate limits or message caps, or to scrape or harvest data.</li>
+    <li>Upload unlawful, infringing, or malicious content, impersonate others, or interfere with or disrupt the Service or its security.</li>
   </ul>
-  <p>We may suspend or terminate accounts that violate these terms.</p>
+  <p>We may <strong>suspend or terminate</strong> accounts that violate these Terms.</p>
 
-  <h2>6. Account termination</h2>
-  <p>You can delete your account at any time in Profile → Settings → Delete account. We may terminate your account if you violate these terms or abuse the service. Termination removes your data per our Privacy Policy.</p>
+  <h2><span class="num">8.</span>Your content</h2>
+  <p>You <strong>keep ownership</strong> of the content you provide — your dog profiles, journal entries, photos, and messages ("Your Content"). You grant Laeli a <strong>limited, worldwide, royalty-free license</strong> to host, store, process, transmit, and display Your Content <strong>solely to operate and provide the Service to you</strong> — including sending relevant parts to our AI provider to generate your coaching, as described in our Privacy Policy.</p>
+  <p>We may use <strong>de-identified and aggregated</strong> information (which doesn't identify you or your dog) to improve the Service. <strong>We do not claim ownership of Your Content, do not use it for advertising, and do not sell it.</strong> You are responsible for Your Content and confirm you have the right to share it. We may remove content that violates these Terms.</p>
 
-  <h2>7. Disclaimers</h2>
-  <p>Laeli is provided "as is" without warranty of any kind. We do not warrant that:</p>
-  <ul>
-    <li>The AI will produce correct or complete training advice in every case.</li>
-    <li>The service will be available 24/7 without interruption.</li>
-    <li>Your data will never be lost (you should keep your own records of important veterinary information).</li>
-  </ul>
-  <p>To the maximum extent permitted by law, we disclaim liability for any indirect, incidental, or consequential damages arising from your use of Laeli.</p>
+  <h2><span class="num">9.</span>Our intellectual property</h2>
+  <p>The Service — including the app, website, training content, illustrations, the "Laeli" name, logo, mascot, and all related trademarks — is owned by Laeli or its licensors and protected by law. We grant you a <strong>limited, personal, non-exclusive, non-transferable, revocable</strong> license to use the Service for your own non-commercial use. You may not copy, modify, distribute, sell, or create derivative works from the Service except as these Terms allow.</p>
 
-  <h2>8. Changes to these terms</h2>
-  <p>We may update these terms. Material changes will be communicated in the app and by email. Continued use after notice constitutes acceptance.</p>
+  <h2><span class="num">10.</span>Third-party services</h2>
+  <p>The Service relies on third-party providers (e.g. OpenAI, Apple, our hosting and email providers) and may link to third-party sites. We are not responsible for third-party services, content, or terms — your use of them is at your own risk and subject to their terms. <strong>Apple</strong> is a third-party beneficiary of these Terms and may enforce them with respect to your use of the app.</p>
 
-  <h2>9. Governing law</h2>
-  <p>These terms are governed by the laws of [Jurisdiction TBD]. Any disputes will be resolved in the courts of that jurisdiction.</p>
+  <h2><span class="num">11.</span>Disclaimers &amp; warranties</h2>
+  <p>To the maximum extent permitted by law, the Service is provided <strong>"as is" and "as available," without warranties of any kind</strong>, express or implied, including merchantability, fitness for a particular purpose, accuracy, and non-infringement. We do not warrant that the Service will be uninterrupted, error-free, secure, or that AI guidance will be correct or complete, or that your data will never be lost (keep your own records of important veterinary information). Some jurisdictions don't allow certain disclaimers, so some may not apply to you, and nothing here limits <strong>non-waivable consumer rights</strong>.</p>
 
-  <h2>10. Contact</h2>
-  <p><code>support@laeli.app</code></p>
+  <h2><span class="num">12.</span>Limitation of liability</h2>
+  <p>To the maximum extent permitted by law, Laeli and its officers, employees, and providers will <strong>not be liable</strong> for any indirect, incidental, special, consequential, or punitive damages, or for lost data, profits, or goodwill, arising from your use of the Service. Our <strong>total aggregate liability</strong> for all claims will not exceed the greater of (a) the amount you paid us in the 12 months before the claim or (b) USD $50. Nothing in these Terms excludes liability that cannot be excluded by law (such as for death or personal injury caused by our negligence, or for fraud).</p>
+
+  <h2><span class="num">13.</span>Indemnification</h2>
+  <p>You agree to indemnify and hold harmless Laeli and its providers from any claims, damages, losses, and costs (including reasonable legal fees) arising from your misuse of the Service, your violation of these Terms or applicable law, or Your Content.</p>
+
+  <h2><span class="num">14.</span>Termination</h2>
+  <p>You may stop using the Service and <strong>delete your account at any time</strong> in Profile → Settings → Delete account (cancel any subscription separately via Apple). We may suspend or terminate your access if you violate these Terms, abuse the Service, or as required by law. On termination, your right to use the Service ends and your data is handled per our Privacy Policy. Sections that by their nature should survive (e.g. the content license for de-identified data, IP, disclaimers, liability limits, indemnity, dispute resolution) survive termination.</p>
+
+  <h2><span class="num">15.</span>Changes to these Terms</h2>
+  <p>We may update these Terms. We will communicate material changes in the app and/or by email. Changes take effect when posted (or on the stated effective date), and your continued use of the Service after that constitutes acceptance.</p>
+
+  <h2><span class="num">16.</span>Governing law &amp; dispute resolution</h2>
+  <p>These Terms are governed by the laws of <span class="fill">[Governing-law jurisdiction]</span>, without regard to conflict-of-laws rules and excluding the UN Convention on Contracts for the International Sale of Goods.</p>
+  <p><strong>Talk to us first.</strong> Most issues can be resolved quickly — please email <code>support@laeli.app</code> before starting formal proceedings, and we'll try to resolve it informally within 30 days.</p>
+  <p><strong>Binding arbitration &amp; class-action waiver (where permitted).</strong> Except where prohibited by your local law, any dispute that isn't resolved informally will be settled by <strong>binding, individual arbitration</strong> administered in <span class="fill">[arbitration venue]</span> under the applicable arbitration rules, rather than in court, and <strong>you and Laeli waive any right to a jury trial or to participate in a class action</strong>. You may bring qualifying claims in small-claims court, and either party may seek injunctive relief for intellectual-property misuse. <strong>You may opt out</strong> of this arbitration agreement by emailing <code>support@laeli.app</code> within <strong>30 days</strong> of first accepting these Terms.</p>
+  <p><strong>Consumers in the EEA, UK, and similar regions</strong> retain the protection of the mandatory laws of their country of residence and may bring proceedings in their local courts; the arbitration/class-waiver above applies only to the extent permitted by your local law.</p>
+
+  <h2><span class="num">17.</span>Miscellaneous</h2>
+  <p>These Terms (with the Privacy Policy) are the <strong>entire agreement</strong> between you and Laeli regarding the Service. If any provision is unenforceable, the rest remains in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms; we may assign them to an affiliate or successor. We are not liable for delays or failures caused by events beyond our reasonable control (force majeure). You consent to receive communications electronically.</p>
+
+  <h2><span class="num">18.</span>Contact</h2>
+  <p><span class="fill">[Legal Entity Name]</span><br><span class="fill">[Registered address]</span><br><code>support@laeli.app</code></p>
 
   <div class="doc-footer">
     <a href="/">← Back home</a> &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a>
