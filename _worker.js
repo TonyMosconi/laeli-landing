@@ -51,7 +51,7 @@ async function handleContact(request, env) {
     },
     body: JSON.stringify({
       from: "Laeli Contact <contact@laeli.app>",
-      to: ["support@laeli.app"],
+      to: [env.CONTACT_TO || "support@laeli.app"],
       reply_to: email,
       subject: `New contact message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
