@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laeli — Legal</title>
+<meta name="description" content="Laeli legal documents: Privacy Policy and Terms of Service.">
+<meta name="theme-color" content="#9cc0ec">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #5179be; --blue-deep: #3f63a6; --coral: #ec7a55; --coral-deep: #d8623d;
+    --sage: #a9bb7c; --teal: #9ec7bc; --peach: #f7d2ac; --ivory: #fff8ec;
+    --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
+    --accent-strong: #5d7a4e; --care: #c66a52; --action: #ee9b72;
+    --border: #e7d6bd; --border-strong: #cbb398;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
+    --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
+    --shadow-lift: 0 16px 32px rgba(40,46,70,0.16);
+    --shadow-plush: 0 24px 52px rgba(40,46,70,0.20);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); line-height: 1.6; background: #86aee6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  /* vivid blue claymation atmosphere (matches laeli.app) */
+  .atmosphere { position: fixed; inset: 0; z-index: -3;
+    background:
+      radial-gradient(40% 34% at -3% 5%, var(--blue) 0%, rgba(81,121,190,0) 56%),
+      radial-gradient(28% 24% at 8% 33%, var(--coral) 0%, rgba(236,122,85,0) 54%),
+      radial-gradient(34% 30% at -5% 66%, var(--sage) 0%, rgba(169,187,124,0) 58%),
+      radial-gradient(38% 32% at 103% 4%, var(--teal) 0%, rgba(126,191,178,0) 58%),
+      radial-gradient(28% 24% at 101% 27%, var(--peach) 0%, rgba(247,199,159,0) 54%),
+      radial-gradient(48% 42% at 106% 66%, var(--blue) 0%, rgba(81,121,190,0) 60%),
+      radial-gradient(38% 34% at 13% 113%, var(--coral) 0%, rgba(236,122,85,0) 60%),
+      radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
+      radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
+  }
+  .atmosphere::before { content:""; position:absolute; inset:-25%;
+    background:
+      radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
+      radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
+      radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%),
+      radial-gradient(28% 26% at 84% 22%, rgba(81,121,190,0.30), transparent 60%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
+  .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.45; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
+
+  /* nav */
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 760px; padding: 0 16px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px 10px 16px;
+    background: rgba(255,248,236,0.82); backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; box-shadow: var(--shadow-soft); }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+  .brand img { width: 38px; height: 38px; border-radius: 12px; box-shadow: 0 6px 14px rgba(40,46,70,0.22); }
+  .brand span { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -0.01em; }
+  .nav-back { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 15px; border-radius: 999px; transition: background 140ms ease; }
+  .nav-back:hover { background: rgba(158,199,188,0.4); color: var(--ink); }
+
+  main { max-width: 760px; margin: 0 auto; padding: 44px 24px 72px; }
+  .hero-head { text-align: center; margin-bottom: 34px; }
+  .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--care); margin: 0 0 12px; }
+  h1 { font-family: var(--display); font-size: clamp(38px, 7vw, 56px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 12px; line-height: 1.0; }
+  .intro { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 0 auto; max-width: 28em; }
+
+  /* plush cards (horizontal, matching landing "How it works") */
+  .nav-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+  .lcard { display: flex; align-items: stretch; gap: 18px; text-decoration: none; color: var(--ink);
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,251,244,0.86));
+    border: 1px solid rgba(255,255,255,0.75); border-radius: 24px; padding: 20px 22px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 14px 30px rgba(40,46,70,0.12);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    transition: transform 220ms ease, box-shadow 220ms ease; }
+  .lcard:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 22px 42px rgba(40,46,70,0.17); }
+  .lcard .ico { flex: none; width: 92px; align-self: stretch; min-height: 92px; border-radius: 20px; display: grid; place-items: center;
+    box-shadow: inset 0 3px 7px rgba(255,255,255,0.7), inset 0 -10px 18px rgba(40,46,70,0.12), 0 8px 16px rgba(40,46,70,0.13); }
+  .lcard .ico img { width: 76%; max-height: 76%; object-fit: contain; filter: drop-shadow(0 7px 9px rgba(40,46,70,0.28)); }
+  .ico.teal { background: radial-gradient(125% 125% at 30% 20%, #ddefe9 0%, #a3d0c4 100%); }
+  .ico.coral { background: radial-gradient(125% 125% at 30% 20%, #fbddce 0%, #f1b095 100%); }
+  .lbody { display: flex; flex-direction: column; justify-content: center; }
+  .lbody h2 { font-family: var(--display); font-size: 23px; font-weight: 700; margin: 0 0 5px; letter-spacing: -0.01em; }
+  .lbody .meta { font-size: 15px; font-weight: 600; color: var(--text-muted); }
+  .lcard .arrow { margin-left: auto; align-self: center; color: var(--care); font-size: 26px; font-weight: 700; transition: transform 200ms ease; }
+  .lcard:hover .arrow { transform: translateX(4px); }
+
+  footer { margin-top: 40px; text-align: center; color: var(--ink-muted); font-size: 14px; font-weight: 700; }
+  footer a { color: var(--care); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) { .atmosphere::before { animation: none; } }
+  @media (max-width: 560px) { .lcard .arrow { display: none; } }
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="grain"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="/"><img src="mascot.webp" alt="Laeli mascot"><span>Laeli</span></a>
+    <a class="nav-back" href="/">← Home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="hero-head">
+    <p class="eyebrow">Legal</p>
+    <h1>Legal documents</h1>
+    <p class="intro">Privacy and terms for the Laeli dog training coaching app.</p>
+  </div>
+
+  <div class="nav-cards">
+    <a class="lcard" href="/privacy">
+      <span class="ico teal"><img src="assets/coach-trust-mark.webp" alt=""></span>
+      <span class="lbody">
+        <h2>Privacy Policy</h2>
+        <span class="meta">What we collect, how we use OpenAI, and your rights.</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="lcard" href="/terms">
+      <span class="ico coral"><img src="assets/journal-clue.webp" alt=""></span>
+      <span class="lbody">
+        <h2>Terms of Service</h2>
+        <span class="meta">Subscription terms, AI coaching limits, and acceptable use.</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <footer>
+    Questions? <a href="mailto:support@laeli.app">support@laeli.app</a>
+  </footer>
+</main>
+</body>
+</html>

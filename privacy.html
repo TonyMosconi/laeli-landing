@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Laeli</title>
+<meta name="theme-color" content="#9cc0ec">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #5179be; --blue-deep: #3f63a6; --coral: #ec7a55; --coral-deep: #d8623d;
+    --sage: #a9bb7c; --teal: #9ec7bc; --peach: #f7d2ac; --ivory: #fff8ec;
+    --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
+    --accent-strong: #5d7a4e; --care: #c66a52; --action: #ee9b72;
+    --border: #e7d6bd; --border-strong: #cbb398;
+    --warn-bg: #ffe6c9; --warn-border: #e4b470; --warn-text: #7a3d13;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
+    --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
+    --shadow-plush: 0 24px 52px rgba(40,46,70,0.18);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); line-height: 1.68; background: #86aee6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .atmosphere { position: fixed; inset: 0; z-index: -3;
+    background:
+      radial-gradient(40% 34% at -3% 5%, var(--blue) 0%, rgba(81,121,190,0) 56%),
+      radial-gradient(28% 24% at 8% 33%, var(--coral) 0%, rgba(236,122,85,0) 54%),
+      radial-gradient(34% 30% at -5% 66%, var(--sage) 0%, rgba(169,187,124,0) 58%),
+      radial-gradient(38% 32% at 103% 4%, var(--teal) 0%, rgba(126,191,178,0) 58%),
+      radial-gradient(28% 24% at 101% 27%, var(--peach) 0%, rgba(247,199,159,0) 54%),
+      radial-gradient(48% 42% at 106% 66%, var(--blue) 0%, rgba(81,121,190,0) 60%),
+      radial-gradient(38% 34% at 13% 113%, var(--coral) 0%, rgba(236,122,85,0) 60%),
+      radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
+      radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
+  }
+  .atmosphere::before { content:""; position:absolute; inset:-25%;
+    background:
+      radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
+      radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
+      radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%),
+      radial-gradient(28% 26% at 84% 22%, rgba(81,121,190,0.30), transparent 60%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
+  .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
+
+  /* nav */
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 800px; padding: 0 16px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px 10px 16px;
+    background: rgba(255,248,236,0.82); backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; box-shadow: var(--shadow-soft); }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+  .brand img { width: 38px; height: 38px; border-radius: 12px; box-shadow: 0 6px 14px rgba(40,46,70,0.22); }
+  .brand span { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -0.01em; }
+  .nav-back { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 15px; border-radius: 999px; transition: background 140ms ease; }
+  .nav-back:hover { background: rgba(158,199,188,0.4); color: var(--ink); }
+
+  main { max-width: 800px; margin: 0 auto; padding: 40px 24px 72px; }
+
+  /* frosted paper panel holding the legal text */
+  .paper {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,244,0.9));
+    border: 1px solid rgba(255,255,255,0.8); border-radius: 30px;
+    padding: clamp(28px, 5vw, 56px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), var(--shadow-plush);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .back { display: inline-flex; align-items: center; gap: 7px; color: var(--care); font-weight: 800; text-decoration: none; font-size: 15px;
+    padding: 9px 16px 9px 13px; border-radius: 999px; background: rgba(255,248,236,0.9); border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft); margin-bottom: 30px; transition: transform 140ms ease, border-color 140ms ease; }
+  .back:hover { transform: translateX(-3px); border-color: var(--border-strong); }
+  .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--care); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-size: clamp(34px, 6vw, 48px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 10px; line-height: 1.02; }
+  h2 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 46px 0 14px; }
+  p, ul, ol { color: var(--ink); font-weight: 500; }
+  ul, ol { padding-left: 22px; } li { margin: 7px 0; }
+  a { color: var(--care); }
+  .meta { color: var(--text-muted); font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+  .draft-banner { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 16px; padding: 16px 20px; margin: 24px 0;
+    font-size: 15px; font-weight: 600; color: var(--warn-text); box-shadow: var(--shadow-soft); }
+  .table-wrap { overflow-x: auto; border-radius: 18px; box-shadow: var(--shadow-soft); margin: 14px 0 26px; }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; background: #ffffff;
+    border: 1px solid #dde3ee; border-radius: 18px; overflow: hidden; }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid #e8ecf3; vertical-align: top; }
+  th { background: #e7effb; font-weight: 800; font-size: 13px; color: var(--blue-deep); letter-spacing: 0.01em; }
+  td { font-weight: 500; }
+  tr:nth-child(even) td { background: #f5f8fe; }
+  tr:last-child td { border-bottom: none; }
+  code { background: #eef1f8; padding: 2px 7px; border-radius: 6px; font-size: 13px; font-family: ui-monospace, "Menlo", monospace; color: var(--ink); }
+  .doc-footer { margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; font-weight: 700; }
+  .doc-footer a { color: var(--care); text-decoration: none; } .doc-footer a:hover { text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) { .atmosphere::before { animation: none; } }
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="grain"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="/"><img src="mascot.webp" alt="Laeli mascot"><span>Laeli</span></a>
+    <a class="nav-back" href="/legal">← Legal home</a>
+  </div>
+</nav>
+
+<main>
+  <article class="paper">
+  <a class="back" href="/legal">← Back</a>
+  <p class="eyebrow">Laeli</p>
+  <h1>Privacy Policy</h1>
+  <p class="meta"><strong>Effective date:</strong> TBD &nbsp;·&nbsp; <strong>Last updated:</strong> TBD</p>
+
+  <div class="draft-banner">
+    <strong>⚠️ DRAFT</strong> — this is a placeholder version. Replace with the legally reviewed version before public TestFlight or App Store submission.
+  </div>
+
+  <h2>Who we are</h2>
+  <p>Laeli is a dog-training coaching app developed by [Legal Entity Name], contactable at <code>support@laeli.app</code>.</p>
+
+  <h2>What data we collect</h2>
+  <div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Data</th><th>Source</th><th>Purpose</th><th>Stored</th><th>Shared with</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Owner name (optional)</td>
+        <td>User input in Profile</td>
+        <td>Personalize coaching responses ("Hi Aurelien")</td>
+        <td>Locally on device + Supabase Auth profile</td>
+        <td>OpenAI (in coaching prompts only, not for training)</td>
+      </tr>
+      <tr>
+        <td>Dog profile (name, breed, age, weight, energy, training level, goals, behavior issues)</td>
+        <td>User input in onboarding + Profile</td>
+        <td>Generate the personalized training plan and coaching replies</td>
+        <td>Locally on device + Supabase (when logged in)</td>
+        <td>OpenAI (in coaching prompts only)</td>
+      </tr>
+      <tr>
+        <td>Journal entries (training wins, accidents, behavior moments, notes)</td>
+        <td>User input in Journal / Today quick-log</td>
+        <td>Coaching personalization, pattern detection</td>
+        <td>Locally on device + Supabase</td>
+        <td>OpenAI (recent entries only, in coaching prompts)</td>
+      </tr>
+      <tr>
+        <td>Chat history with Laeli AI</td>
+        <td>App usage</td>
+        <td>Coaching context (last few turns) + cross-session memory</td>
+        <td>Locally on device + Supabase</td>
+        <td>OpenAI (recent turns + rolling memory snapshots)</td>
+      </tr>
+      <tr>
+        <td>Today's training-plan tasks and completion counts</td>
+        <td>Generated by the app from your dog's profile and goals</td>
+        <td>Let the AI coach see what you were asked to do today and how much you've already finished, so its reply matches your actual progress</td>
+        <td>Locally on device + Supabase</td>
+        <td>OpenAI (in coaching prompts only)</td>
+      </tr>
+      <tr>
+        <td>Journal pattern summaries (e.g. "evening biting cluster x3 in last 7 days")</td>
+        <td>Computed by Laeli from your recent journal entries</td>
+        <td>Coaching personalization — gives the AI coach a short summary of behavior patterns so it can address them directly</td>
+        <td>Locally on device + Supabase</td>
+        <td>OpenAI (in coaching prompts only)</td>
+      </tr>
+      <tr>
+        <td>Safety-routing signals (category labels like "blood or bleeding", "child or baby safety")</td>
+        <td>Computed automatically each time you message the coach, from the words in your recent journal entries and your message</td>
+        <td>Decide whether the coach should respond normally, add a vet-referral note, or escalate to a safety-first reply</td>
+        <td>Locally on device + Supabase</td>
+        <td>OpenAI (in coaching prompts only)</td>
+      </tr>
+      <tr>
+        <td>Unresolved red-flag log excerpts (title, log ID, timestamp — last 48 hours only)</td>
+        <td>A red-flag log you wrote in the last 48 hours (e.g. a bite, broken skin, or vet-relevant event)</td>
+        <td>Make sure the coach sees recent safety events and follows up on them instead of moving on</td>
+        <td>Locally on device + Supabase</td>
+        <td>OpenAI (in coaching prompts only)</td>
+      </tr>
+      <tr>
+        <td>Care reminders (medication, vet appointments, etc.)</td>
+        <td>User input in Care tab</td>
+        <td>Scheduled local notifications</td>
+        <td>Locally on device + Supabase</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Anonymous user ID (Supabase Auth)</td>
+        <td>Generated on first launch</td>
+        <td>Authentication, server-side rate limiting</td>
+        <td>Supabase Auth</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Crash / error reports</td>
+        <td>Automatic when the app crashes</td>
+        <td>Bug fixing</td>
+        <td>Sentry</td>
+        <td>Sentry (PII-safe payloads — see "Crash reporting (Sentry)")</td>
+      </tr>
+      <tr>
+        <td>Server-side function logs (operational logs from our coaching backend)</td>
+        <td>Automatic when the coaching backend processes a request</td>
+        <td>Debugging, abuse prevention, rate-limit enforcement</td>
+        <td>Supabase Logs (our backend host)</td>
+        <td>None — internal to Laeli (see "Server-side logs")</td>
+      </tr>
+      <tr>
+        <td>Daily / monthly usage counts</td>
+        <td>Automatic</td>
+        <td>Subscription tier enforcement</td>
+        <td>Locally on device + Supabase</td>
+        <td>None</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>What we do NOT collect</h2>
+  <ul>
+    <li>Location data</li>
+    <li>Microphone or camera content (the camera is used only for owner / dog photos, which stay on device unless you've explicitly enabled cloud sync)</li>
+    <li>Contacts, calendar, or other device-level personal data</li>
+    <li>Veterinary or medical records</li>
+    <li>Real-name identification (Laeli works fine without a real name)</li>
+  </ul>
+
+  <h2>How we use OpenAI</h2>
+  <p>Coaching replies are generated by OpenAI's gpt-4o-mini model. On each coaching request we send:</p>
+  <ul>
+    <li>Your dog's profile (no real-name identifying information unless you typed it)</li>
+    <li>Your most recent journal entries (last 3 days on Free; full history on Pro and Pro+)</li>
+    <li>The current chat history (last few turns) and rolling memory snapshots of past sessions</li>
+    <li><strong>Today's training-plan tasks and how many you've completed</strong>, so the reply matches your actual progress</li>
+    <li><strong>Short pattern summaries computed from your recent journal entries</strong> (e.g. "evening biting cluster x3 in last 7 days"), so the coach can address patterns directly</li>
+    <li><strong>Safety-routing signals</strong> — category labels such as "blood or bleeding" or "child or baby safety" computed from the words in your recent entries and your message, used to decide whether the coach should answer normally, add a vet-referral note, or escalate to a safety-first reply</li>
+    <li><strong>If you logged a red-flag event in the last 48 hours</strong>, a short excerpt of that log (title, log ID, timestamp) so the coach can follow up instead of moving on</li>
+    <li>Your specific question</li>
+  </ul>
+  <p>OpenAI does NOT train on this data (per their API terms for paid customers). We do not log requests beyond what's needed for billing and abuse prevention.</p>
+
+  <h2>Crash reporting (Sentry)</h2>
+  <p>We use Sentry to capture crashes and errors so we can fix bugs. Reports include technical context (stack traces, app version, device model, OS version) and a structured event payload. We run user-input and log strings through a redaction layer before they reach Sentry, so journal text, chat messages, owner name, dog name, email addresses, and similar fields are replaced with placeholders (e.g. <code>[redacted-email]</code>) before the report leaves your device. Reports are stored in Sentry's EU/US infrastructure under our project and retained per Sentry's standard retention (90 days by default for our plan).</p>
+
+  <h2>Server-side logs</h2>
+  <p>Our coaching backend (hosted on Supabase Edge Functions) writes operational logs while it processes a request — things like "request received", "rate limit hit", "model returned unexpected format". These logs may incidentally contain short excerpts of model output or user input (for example, the first 200 characters of an AI reply when it fails to parse). We run a redaction layer over these log lines so known PII fields (names, emails, IDs, free-text journal/chat content) are replaced with placeholders before they are written. Logs are retained per Supabase's standard log retention for our plan and are only accessible to Laeli engineers for debugging and abuse prevention.</p>
+
+  <h2>Retention and deletion</h2>
+  <ul>
+    <li>Local data stays on your device until you delete it from the app or uninstall.</li>
+    <li>Server-side data (auth account, journal sync, chat history) is retained as long as your account is active.</li>
+    <li><strong>Account deletion is available in Profile → Settings → Delete account.</strong> This removes your Supabase data and signs you out. Locally stored data is also wiped on the same device. Deletion is processed within 30 days.</li>
+    <li>Anonymous accounts that haven't been used in 365 days are automatically deleted along with their associated data.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Laeli is not designed for users under 13. We do not knowingly collect data from children. If you are a parent who believes your child has used Laeli, email <code>support@laeli.app</code> and we'll delete the account.</p>
+
+  <h2>Your rights</h2>
+  <p>You can at any time:</p>
+  <ul>
+    <li>Export your data — <code>support@laeli.app</code></li>
+    <li>Delete your account — Profile → Settings → Delete account</li>
+    <li>Ask what data we hold about you — <code>support@laeli.app</code></li>
+  </ul>
+  <p>If you are in the EU / UK, you have additional GDPR rights including the right to object, restrict processing, and lodge a complaint with your local data protection authority.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We will notify you in the app and via email if we materially change how we collect or use your data. Continued use of Laeli after such notice constitutes acceptance.</p>
+
+  <h2>Contact</h2>
+  <p><code>support@laeli.app</code></p>
+
+  <div class="doc-footer">
+    <a href="/legal">Back to Laeli legal</a> &nbsp;·&nbsp; <a href="/terms">Terms of Service</a>
+  </div>
+  </article>
+</main>
+</body>
+</html>

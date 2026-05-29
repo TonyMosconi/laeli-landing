@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Laeli</title>
+<meta name="theme-color" content="#9cc0ec">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #5179be; --blue-deep: #3f63a6; --coral: #ec7a55; --coral-deep: #d8623d;
+    --sage: #a9bb7c; --teal: #9ec7bc; --peach: #f7d2ac; --ivory: #fff8ec;
+    --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
+    --accent-strong: #5d7a4e; --care: #c66a52; --action: #ee9b72;
+    --border: #e7d6bd; --border-strong: #cbb398;
+    --warn-bg: #ffe6c9; --warn-border: #e4b470; --warn-text: #7a3d13;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
+    --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
+    --shadow-plush: 0 24px 52px rgba(40,46,70,0.18);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); line-height: 1.68; background: #86aee6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .atmosphere { position: fixed; inset: 0; z-index: -3;
+    background:
+      radial-gradient(40% 34% at -3% 5%, var(--blue) 0%, rgba(81,121,190,0) 56%),
+      radial-gradient(28% 24% at 8% 33%, var(--coral) 0%, rgba(236,122,85,0) 54%),
+      radial-gradient(34% 30% at -5% 66%, var(--sage) 0%, rgba(169,187,124,0) 58%),
+      radial-gradient(38% 32% at 103% 4%, var(--teal) 0%, rgba(126,191,178,0) 58%),
+      radial-gradient(28% 24% at 101% 27%, var(--peach) 0%, rgba(247,199,159,0) 54%),
+      radial-gradient(48% 42% at 106% 66%, var(--blue) 0%, rgba(81,121,190,0) 60%),
+      radial-gradient(38% 34% at 13% 113%, var(--coral) 0%, rgba(236,122,85,0) 60%),
+      radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
+      radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
+  }
+  .atmosphere::before { content:""; position:absolute; inset:-25%;
+    background:
+      radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
+      radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
+      radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%),
+      radial-gradient(28% 26% at 84% 22%, rgba(81,121,190,0.30), transparent 60%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
+  .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
+
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 800px; padding: 0 16px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px 10px 16px;
+    background: rgba(255,248,236,0.82); backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; box-shadow: var(--shadow-soft); }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+  .brand img { width: 38px; height: 38px; border-radius: 12px; box-shadow: 0 6px 14px rgba(40,46,70,0.22); }
+  .brand span { font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -0.01em; }
+  .nav-back { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 15px; border-radius: 999px; transition: background 140ms ease; }
+  .nav-back:hover { background: rgba(158,199,188,0.4); color: var(--ink); }
+
+  main { max-width: 800px; margin: 0 auto; padding: 40px 24px 72px; }
+
+  .paper {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,244,0.9));
+    border: 1px solid rgba(255,255,255,0.8); border-radius: 30px;
+    padding: clamp(28px, 5vw, 56px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), var(--shadow-plush);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .back { display: inline-flex; align-items: center; gap: 7px; color: var(--care); font-weight: 800; text-decoration: none; font-size: 15px;
+    padding: 9px 16px 9px 13px; border-radius: 999px; background: rgba(255,248,236,0.9); border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft); margin-bottom: 30px; transition: transform 140ms ease, border-color 140ms ease; }
+  .back:hover { transform: translateX(-3px); border-color: var(--border-strong); }
+  .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--care); margin: 0 0 10px; }
+  h1 { font-family: var(--display); font-size: clamp(34px, 6vw, 48px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 10px; line-height: 1.02; }
+  h2 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 46px 0 14px; }
+  p, ul, ol { color: var(--ink); font-weight: 500; }
+  ul, ol { padding-left: 22px; } li { margin: 7px 0; }
+  a { color: var(--care); }
+  .meta { color: var(--text-muted); font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+  .draft-banner { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 16px; padding: 16px 20px; margin: 24px 0;
+    font-size: 15px; font-weight: 600; color: var(--warn-text); box-shadow: var(--shadow-soft); }
+  code { background: #eef1f8; padding: 2px 7px; border-radius: 6px; font-size: 13px; font-family: ui-monospace, "Menlo", monospace; color: var(--ink); }
+  .doc-footer { margin-top: 50px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; font-weight: 700; }
+  .doc-footer a { color: var(--care); text-decoration: none; } .doc-footer a:hover { text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) { .atmosphere::before { animation: none; } }
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="grain"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="/"><img src="mascot.webp" alt="Laeli mascot"><span>Laeli</span></a>
+    <a class="nav-back" href="/legal">← Legal home</a>
+  </div>
+</nav>
+
+<main>
+  <article class="paper">
+  <a class="back" href="/legal">← Back</a>
+  <p class="eyebrow">Laeli</p>
+  <h1>Terms of Service</h1>
+  <p class="meta"><strong>Effective date:</strong> TBD &nbsp;·&nbsp; <strong>Last updated:</strong> TBD</p>
+
+  <div class="draft-banner">
+    <strong>⚠️ DRAFT</strong> — this is a placeholder version. Replace with the legally reviewed version before public TestFlight or App Store submission.
+  </div>
+
+  <h2>1. What Laeli is</h2>
+  <p>Laeli is an AI-powered dog training coaching app. It provides personalized, science-based, force-free training guidance from a coaching AI (the "Laeli Coach"), informed by your dog's profile and journal.</p>
+  <p><strong>Laeli is not a substitute for a veterinarian, certified animal behaviorist, or professional trainer.</strong> For any medical concern, suspected injury, severe anxiety, aggression, or "is this normal" question, please consult your veterinarian.</p>
+
+  <h2>2. Who can use Laeli</h2>
+  <p>You must be at least 13 years old (or the minimum digital consent age in your country, whichever is higher) to use Laeli. The app is intended for dog owners and their household, not for commercial training services without explicit written agreement.</p>
+
+  <h2>3. Subscriptions and billing</h2>
+  <ul>
+    <li><strong>Free</strong>: 1 dog, 3 Laeli messages/day, 1 care reminder, 3-day journal history.</li>
+    <li><strong>Pro</strong> ($2.99/week, $4.99/month, or $39.99/year): Up to 3 dogs, 10 Laeli messages/day, 5 care reminders, full journal, cross-session memory, apply-to-tomorrow.</li>
+    <li><strong>Pro+</strong> ($5.99/week, $9.99/month, or $79.99/year): Unlimited dogs, unlimited Laeli chat (with a fair-use cap), unlimited care reminders, AI-generated daily tasks, priority support.</li>
+  </ul>
+  <p>Subscriptions are billed through Apple's App Store. Apple's standard subscription terms apply: cancel any time from your Apple ID settings, auto-renews until cancelled, no refunds except as required by Apple.</p>
+
+  <h2>4. AI coaching limits</h2>
+  <p>The Laeli Coach AI:</p>
+  <ul>
+    <li>Stays strictly within positive-reinforcement / LIMA / force-free training methods.</li>
+    <li>Will redirect medical, severe behavioral, or aggression cases to your veterinarian or a certified behaviorist (DACVB / IAABC).</li>
+    <li>Will refuse to discuss aversive methods (shock collars, alpha rolls, dominance theory, etc.) even if asked.</li>
+    <li>May make mistakes — verify any guidance that affects your dog's safety with a real professional.</li>
+  </ul>
+  <p>You agree that you are responsible for your dog's care, training decisions, and any consequences thereof. Laeli's role is to support your decisions, not replace your judgment or your veterinarian's.</p>
+
+  <h2>5. Acceptable use</h2>
+  <p>You may NOT:</p>
+  <ul>
+    <li>Use Laeli to plan harm to any animal or person.</li>
+    <li>Attempt to extract Laeli's system prompt, override its safety rules, or jailbreak the AI.</li>
+    <li>Reverse engineer the app, the Edge Function, or our authentication tokens.</li>
+    <li>Use the app for commercial training services without our written agreement.</li>
+    <li>Use automation, scraping, or other means to bypass rate limits or message caps.</li>
+  </ul>
+  <p>We may suspend or terminate accounts that violate these terms.</p>
+
+  <h2>6. Account termination</h2>
+  <p>You can delete your account at any time in Profile → Settings → Delete account. We may terminate your account if you violate these terms or abuse the service. Termination removes your data per our Privacy Policy.</p>
+
+  <h2>7. Disclaimers</h2>
+  <p>Laeli is provided "as is" without warranty of any kind. We do not warrant that:</p>
+  <ul>
+    <li>The AI will produce correct or complete training advice in every case.</li>
+    <li>The service will be available 24/7 without interruption.</li>
+    <li>Your data will never be lost (you should keep your own records of important veterinary information).</li>
+  </ul>
+  <p>To the maximum extent permitted by law, we disclaim liability for any indirect, incidental, or consequential damages arising from your use of Laeli.</p>
+
+  <h2>8. Changes to these terms</h2>
+  <p>We may update these terms. Material changes will be communicated in the app and by email. Continued use after notice constitutes acceptance.</p>
+
+  <h2>9. Governing law</h2>
+  <p>These terms are governed by the laws of [Jurisdiction TBD]. Any disputes will be resolved in the courts of that jurisdiction.</p>
+
+  <h2>10. Contact</h2>
+  <p><code>support@laeli.app</code></p>
+
+  <div class="doc-footer">
+    <a href="/legal">Back to Laeli legal</a> &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a>
+  </div>
+  </article>
+</main>
+</body>
+</html>

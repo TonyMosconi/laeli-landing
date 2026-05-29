@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email confirmed — Laeli</title>
+<meta name="description" content="Your Laeli email has been confirmed. Return to the app to finish signing in.">
+<meta name="theme-color" content="#9cc0ec">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #5179be; --blue-deep: #3f63a6; --coral: #ec7a55;
+    --sage: #a9bb7c; --teal: #9ec7bc; --peach: #f7d2ac; --ivory: #fff8ec;
+    --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
+    --care: #c66a52; --action: #ee9b72; --action-pressed: #d87f57;
+    --success: #4c9a6a; --success-bg: #dff0e6; --border: #e7d6bd;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
+    --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
+    --shadow-plush: 0 24px 52px rgba(40,46,70,0.18);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--body); color: var(--ink); line-height: 1.6; background: #86aee6;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .atmosphere { position: fixed; inset: 0; z-index: -3;
+    background:
+      radial-gradient(40% 34% at -3% 5%, var(--blue) 0%, rgba(81,121,190,0) 56%),
+      radial-gradient(28% 24% at 8% 33%, var(--coral) 0%, rgba(236,122,85,0) 54%),
+      radial-gradient(34% 30% at -5% 66%, var(--sage) 0%, rgba(169,187,124,0) 58%),
+      radial-gradient(38% 32% at 103% 4%, var(--teal) 0%, rgba(126,191,178,0) 58%),
+      radial-gradient(28% 24% at 101% 27%, var(--peach) 0%, rgba(247,199,159,0) 54%),
+      radial-gradient(48% 42% at 106% 66%, var(--blue) 0%, rgba(81,121,190,0) 60%),
+      radial-gradient(38% 34% at 13% 113%, var(--coral) 0%, rgba(236,122,85,0) 60%),
+      radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
+      radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
+  }
+  .atmosphere::before { content:""; position:absolute; inset:-25%;
+    background:
+      radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
+      radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
+      radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
+  .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
+
+  main { width: 100%; max-width: 460px; padding: 32px 24px; }
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,244,0.9));
+    border: 1px solid rgba(255,255,255,0.8); border-radius: 30px;
+    padding: 48px 40px; text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), var(--shadow-plush);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .mascot { width: 76px; height: 76px; border-radius: 22px; box-shadow: var(--shadow-soft); margin-bottom: 22px; }
+  .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--care); margin: 0 0 14px; }
+  .badge { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 50%;
+    background: radial-gradient(125% 125% at 30% 22%, #e9f6ee, var(--success-bg));
+    box-shadow: inset 0 3px 7px rgba(255,255,255,0.8), inset 0 -8px 16px rgba(40,46,70,0.1), 0 8px 16px rgba(40,46,70,0.12);
+    margin: 0 auto 22px; }
+  .badge svg { width: 34px; height: 34px; color: var(--success); }
+  h1 { font-family: var(--display); font-size: 34px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 12px; line-height: 1.05; }
+  .lead { font-size: 17px; font-weight: 600; color: var(--ink-muted); margin: 0 0 30px; }
+  .return-link { display: inline-flex; align-items: center; gap: 9px; padding: 15px 30px; background: var(--action); color: var(--ink);
+    text-decoration: none; font-weight: 800; font-size: 16px; border-radius: 999px; box-shadow: var(--shadow-soft);
+    transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+  .return-link:hover { transform: translateY(-2px); background: var(--action-pressed); box-shadow: var(--shadow-plush); }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 14px; font-weight: 700; }
+  footer a { color: var(--care); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (prefers-reduced-motion: reduce) { .atmosphere::before { animation: none; } }
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div class="grain"></div>
+
+<main>
+  <div class="card">
+    <img class="mascot" src="mascot.webp" alt="Laeli mascot">
+    <p class="eyebrow">Laeli</p>
+    <div class="badge" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1>Email confirmed</h1>
+    <p class="lead">Your account is verified. Return to the Laeli app to continue.</p>
+    <a class="return-link" href="laeli://auth-callback">Open Laeli</a>
+    <footer>
+      Questions? <a href="mailto:support@laeli.app">support@laeli.app</a>
+    </footer>
+  </div>
+</main>
+</body>
+</html>

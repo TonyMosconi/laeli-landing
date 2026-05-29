@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laeli — AI dog training coach</title>
+  <meta name="description" content="Laeli is an AI dog training coach for every life stage: puppy, adopted adult, rescue, and senior dogs. Daily, expert-backed, force-free guidance. Coming soon to iOS.">
+  <meta name="theme-color" content="#5179be">
+  <meta property="og:title" content="Laeli — AI dog training coach">
+  <meta property="og:description" content="Daily, expert-backed training guidance for every life stage. Coming soon to iOS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://laeli.app/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Laeli — AI dog training coach">
+  <meta name="twitter:description" content="Daily, expert-backed training guidance for every life stage. Coming soon to iOS.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Claymation world palette — pulled from the app illustrations */
+      --blue: #5179be;
+      --blue-deep: #3f63a6;
+      --coral: #ec7a55;
+      --coral-deep: #d8623d;
+      --sage: #a9bb7c;
+      --teal: #9ec7bc;
+      --peach: #f7d2ac;
+      --cream: #f4ead6;       /* calm canvas between blobs */
+      --ivory: #fff8ec;       /* content surfaces */
+
+      --ink: #1d3a32;
+      --ink-muted: #395049;
+      --text-muted: #576a60;
+      --accent-strong: #5d7a4e;
+      --care: #c66a52;
+      --action: #ee9b72;
+      --action-pressed: #d87f57;
+      --border: #e7d6bd;
+      --border-strong: #cbb398;
+
+      --display: "Fraunces", Georgia, "Times New Roman", serif;
+      --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
+      --shadow-soft: 0 10px 22px rgba(40, 46, 70, 0.12);
+      --shadow-lift: 0 16px 32px rgba(40, 46, 70, 0.16);
+      --shadow-plush: 0 26px 56px rgba(40, 46, 70, 0.22);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--body);
+      background: #86aee6;
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Colorful plush-blob atmosphere ---------- */
+    .atmosphere {
+      position: fixed; inset: 0; z-index: -3;
+      background:
+        radial-gradient(40% 34% at -3% 5%, var(--blue) 0%, rgba(81,121,190,0) 56%),
+        radial-gradient(28% 24% at 8% 33%, var(--coral) 0%, rgba(236,122,85,0) 54%),
+        radial-gradient(34% 30% at -5% 66%, var(--sage) 0%, rgba(169,187,124,0) 58%),
+        radial-gradient(38% 32% at 103% 4%, var(--teal) 0%, rgba(126,191,178,0) 58%),
+        radial-gradient(28% 24% at 101% 27%, var(--peach) 0%, rgba(247,199,159,0) 54%),
+        radial-gradient(48% 42% at 106% 66%, var(--blue) 0%, rgba(81,121,190,0) 60%),
+        radial-gradient(38% 34% at 13% 113%, var(--coral) 0%, rgba(236,122,85,0) 60%),
+        radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
+        /* blue field — bright & airy, no cream, not heavy */
+        radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
+    }
+    /* slow living drift of warm accents over the blue */
+    .atmosphere::before {
+      content: ""; position: absolute; inset: -25%;
+      background:
+        radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.38), transparent 60%),
+        radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.40), transparent 60%),
+        radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.34), transparent 60%),
+        radial-gradient(28% 26% at 84% 22%, rgba(81,121,190,0.34), transparent 60%);
+      animation: drift 22s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(3.5%, -3%) scale(1.07); }
+    }
+    /* soft luminous lift (not cream) so center text stays crisp */
+    .veil {
+      position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background: radial-gradient(60% 52% at 50% 38%, rgba(232,242,255,0.62) 0%, rgba(232,242,255,0.16) 55%, rgba(232,242,255,0) 80%);
+    }
+    .grain {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      opacity: 0.5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    /* ---------- Nav ---------- */
+    nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 1120px; padding: 0 16px; }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 11px 14px 11px 18px;
+      background: rgba(255, 248, 236, 0.82);
+      backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 999px; box-shadow: var(--shadow-soft);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+    .brand-mark { width: 40px; height: 40px; border-radius: 13px; object-fit: cover; box-shadow: 0 6px 14px rgba(40,46,70,0.22); background: var(--teal); }
+    .brand-name { font-family: var(--display); font-weight: 900; font-size: 23px; letter-spacing: -0.01em; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 15px;
+      padding: 9px 14px; border-radius: 999px; transition: background 140ms ease, color 140ms ease;
+    }
+    .nav-links a:hover { background: rgba(158, 199, 188, 0.4); color: var(--ink); }
+    .nav-cta { background: var(--ink) !important; color: var(--ivory) !important; box-shadow: 0 6px 14px rgba(29, 58, 50, 0.28); }
+    .nav-cta:hover { background: var(--ink-muted) !important; }
+    @media (max-width: 720px) { .nav-links .hide-sm { display: none; } }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 52px 0 28px; }
+    .hero-grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 44px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 13px; font-weight: 800; color: var(--care);
+      background: rgba(255, 248, 236, 0.82); border: 1px solid var(--border);
+      padding: 7px 14px 7px 11px; border-radius: 999px; box-shadow: var(--shadow-soft);
+    }
+    .eyebrow .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--care); box-shadow: 0 0 0 4px rgba(198, 106, 82, 0.18); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 4px rgba(198,106,82,0.18);} 50%{ box-shadow: 0 0 0 7px rgba(198,106,82,0.05);} }
+    h1 { font-family: var(--display); font-size: clamp(44px, 6.4vw, 76px); font-weight: 600; line-height: 0.98; letter-spacing: -0.02em; margin: 22px 0 0; }
+    h1 em { font-style: italic; font-weight: 500; color: var(--coral-deep); }
+    .lede { font-size: clamp(17px, 1.4vw, 20px); color: var(--ink-muted); max-width: 30em; margin: 22px 0 0; font-weight: 600; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; font-family: var(--body); font-weight: 800; font-size: 16px;
+      padding: 15px 26px; border-radius: 999px; cursor: pointer; text-decoration: none; border: 1px solid transparent;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+    .btn-ghost { background: rgba(255, 248, 236, 0.7); color: var(--ink); border-color: var(--border-strong); }
+    .btn-ghost:hover { background: var(--ivory); transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+
+    /* App Store badge */
+    .appstore {
+      display: inline-flex; align-items: center; gap: 11px; background: #16302a; color: #fff;
+      padding: 11px 20px 11px 18px; border-radius: 14px; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12); box-shadow: var(--shadow-lift);
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+    .appstore:hover { transform: translateY(-2px); box-shadow: var(--shadow-plush); background: #1d3a32; }
+    .appstore .apple { width: 26px; height: 26px; flex: none; }
+    .appstore .as-text { display: flex; flex-direction: column; line-height: 1.05; }
+    .appstore .as-small { font-size: 11px; font-weight: 600; opacity: 0.92; }
+    .appstore .as-big { font-family: var(--display); font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+    .appstore .as-flag {
+      margin-left: 6px; align-self: center; font-family: var(--body); font-size: 10px; font-weight: 900;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--action);
+      background: rgba(238,155,114,0.16); border: 1px solid rgba(238,155,114,0.4); padding: 4px 8px; border-radius: 999px;
+    }
+    .store-note { display: flex; align-items: center; gap: 9px; margin-top: 16px; color: var(--text-muted); font-size: 14px; font-weight: 700; }
+    .store-note svg { width: 16px; height: 16px; color: var(--accent-strong); flex: none; }
+
+    .stages { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+    .chip { display: inline-flex; align-items: center; gap: 7px; background: rgba(255, 248, 236, 0.8); border: 1px solid var(--border); padding: 8px 14px; border-radius: 999px; font-weight: 800; font-size: 14px; color: var(--ink-muted); box-shadow: var(--shadow-soft); }
+    .chip span { font-size: 15px; }
+
+    /* ---------- Hero art: iPhone with the Laeli conversation ---------- */
+    .hero-art { position: relative; display: flex; justify-content: center; align-items: center; min-height: 480px; }
+    @keyframes floaty { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-14px);} }
+    .halo {
+      position: absolute; width: 116%; height: 108%; left: -8%; top: -4%; z-index: 0;
+      background: radial-gradient(closest-side, rgba(255,255,255,0.55), rgba(255,255,255,0) 70%);
+      filter: blur(6px);
+    }
+    .phone {
+      position: relative; z-index: 1; width: 300px; max-width: 84vw; aspect-ratio: 300 / 620;
+      background: linear-gradient(160deg, #234740, #14302a);
+      border-radius: 46px; padding: 12px;
+      box-shadow: var(--shadow-plush), inset 0 0 0 2px rgba(255,255,255,0.07);
+      transform: rotate(-6deg);
+      animation: floatTilt 6s ease-in-out infinite;
+    }
+    @keyframes floatTilt { 0%,100%{ transform: translateY(0) rotate(-6deg);} 50%{ transform: translateY(-14px) rotate(-6deg);} }
+    .screen {
+      position: relative; height: 100%; width: 100%;
+      background: linear-gradient(180deg, #ffe6d1 0%, #fff3df 28%, #f3ead4 100%);
+      border-radius: 36px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 92px; height: 24px; background: #14302a; border-radius: 999px; z-index: 5; }
+    .statusbar { display: flex; justify-content: space-between; align-items: center; padding: 13px 20px 4px; font-size: 12px; font-weight: 800; color: var(--ink); }
+    .app-head { display: flex; align-items: center; gap: 10px; padding: 10px 18px 12px; }
+    .app-ava { width: 38px; height: 38px; border-radius: 12px; object-fit: cover; box-shadow: 0 4px 10px rgba(40,46,70,0.25); }
+    .app-title { font-family: var(--display); font-weight: 900; font-size: 18px; color: var(--ink); line-height: 1; }
+    .app-sub { font-size: 11px; font-weight: 800; color: var(--accent-strong); letter-spacing: 0.02em; }
+    .chat { flex: 1; padding: 6px 16px; display: flex; flex-direction: column; gap: 10px; }
+    .bubble { max-width: 86%; padding: 12px 14px; border-radius: 18px; font-size: 12.5px; font-weight: 600; line-height: 1.45; }
+    .bubble.coach { align-self: flex-start; background: var(--ivory); border: 1px solid var(--border); border-bottom-left-radius: 6px; color: var(--ink); box-shadow: 0 6px 14px rgba(40,46,70,0.10); }
+    .bubble.coach strong { color: var(--care); }
+    .bubble.me { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 6px; }
+    .plan-card { margin: 4px 16px 0; background: rgba(255, 248, 236, 0.94); border: 1px solid var(--border); border-radius: 18px; padding: 12px 13px; box-shadow: 0 8px 18px rgba(40,46,70,0.10); }
+    .plan-card h4 { margin: 0 0 8px; font-size: 11px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong); }
+    .task { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 700; color: var(--ink); padding: 4px 0; }
+    .task .tick2 { width: 18px; height: 18px; border-radius: 6px; flex: none; display: grid; place-items: center; border: 2px solid var(--border-strong); }
+    .task.done .tick2 { background: var(--accent-strong); border-color: var(--accent-strong); }
+    .task.done .tick2 svg { width: 11px; height: 11px; color: #fff; }
+    .task.done span { color: var(--text-muted); text-decoration: line-through; }
+    .tabbar { display: flex; justify-content: space-around; align-items: center; padding: 12px 8px 16px; margin-top: 10px; background: rgba(255, 248, 236, 0.92); border-top: 1px solid var(--border); }
+    .tabbar .tab { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); }
+    .tabbar .tab.active { background: var(--care); width: 22px; border-radius: 999px; }
+
+    .blob-accent { position: absolute; border-radius: 50%; filter: blur(2px); z-index: 0; }
+    .blob-accent.coral { width: 120px; height: 120px; background: radial-gradient(circle at 35% 30%, #f59a78, var(--coral)); top: 6%; right: 4%; box-shadow: var(--shadow-soft); animation: floaty 6s ease-in-out infinite; }
+    .blob-accent.sage { width: 84px; height: 84px; background: radial-gradient(circle at 35% 30%, #c3d29a, var(--sage)); bottom: 8%; left: 2%; box-shadow: var(--shadow-soft); animation: floaty 8s ease-in-out infinite; }
+
+    .chat-card {
+      position: absolute; left: -6%; bottom: 12%; z-index: 3;
+      max-width: 268px; background: rgba(255, 248, 236, 0.96);
+      border: 1px solid var(--border); border-radius: 20px; border-bottom-left-radius: 7px;
+      padding: 14px 16px; box-shadow: var(--shadow-lift);
+      animation: floaty 6.5s ease-in-out infinite;
+    }
+    .chat-card .who { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .chat-card .who img { width: 24px; height: 24px; border-radius: 8px; }
+    .chat-card .who b { font-size: 12px; font-weight: 900; color: var(--ink); }
+    .chat-card .who .on { font-size: 10px; font-weight: 800; color: var(--accent-strong); }
+    .chat-card p { margin: 0; font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.45; }
+    .chat-card p b { color: var(--care); }
+    .pill-top {
+      position: absolute; right: -2%; top: 12%; z-index: 3;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,248,236,0.96); border: 1px solid var(--border); border-radius: 999px;
+      padding: 9px 15px; font-size: 13px; font-weight: 800; color: var(--ink); box-shadow: var(--shadow-lift);
+      animation: floaty 7.5s ease-in-out infinite;
+    }
+    .pill-top .tick { width: 18px; height: 18px; border-radius: 6px; background: var(--accent-strong); display: grid; place-items: center; }
+    .pill-top .tick svg { width: 11px; height: 11px; color: #fff; }
+
+    /* ---------- Sections ---------- */
+    section.block { padding: 60px 0; }
+    .section-head { max-width: 640px; margin-bottom: 38px; }
+    .kicker { font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--care); margin: 0 0 14px; }
+    h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 46px); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+    .section-head p { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px 0 0; }
+
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card {
+      display: flex; align-items: stretch; gap: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,251,244,0.86) 100%);
+      border: 1px solid rgba(255,255,255,0.75);
+      border-radius: 24px; padding: 20px 22px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 14px 30px rgba(40,46,70,0.12);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 22px 42px rgba(40,46,70,0.17); }
+    /* embossed plush "well" — full-height tile on the left */
+    .card .ico {
+      flex: none; width: 96px; align-self: stretch; min-height: 96px;
+      border-radius: 20px; display: grid; place-items: center; position: relative;
+      box-shadow: inset 0 3px 7px rgba(255,255,255,0.7), inset 0 -10px 18px rgba(40,46,70,0.12), 0 8px 16px rgba(40,46,70,0.13);
+    }
+    .card .ico img {
+      width: 78%; max-height: 78%; object-fit: contain; position: relative; z-index: 1;
+      filter: drop-shadow(0 7px 9px rgba(40,46,70,0.28));
+    }
+    .card-body { display: flex; flex-direction: column; justify-content: center; }
+    .card h3 { font-family: var(--display); font-size: 22px; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+    .card p { margin: 0; color: var(--text-muted); font-size: 15px; font-weight: 600; line-height: 1.5; }
+    .ico.blue  { background: radial-gradient(125% 125% at 30% 20%, #d7e6fa 0%, #9dbeec 100%); }
+    .ico.coral { background: radial-gradient(125% 125% at 30% 20%, #fbddce 0%, #f1b095 100%); }
+    .ico.sage  { background: radial-gradient(125% 125% at 30% 20%, #e8eecd 0%, #bccf90 100%); }
+    .ico.teal  { background: radial-gradient(125% 125% at 30% 20%, #ddefe9 0%, #a3d0c4 100%); }
+
+    /* split feature with the walk scene */
+    .split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 44px; align-items: center; }
+    .scene-card {
+      position: relative; border-radius: 32px; padding: 18px;
+      background: radial-gradient(120% 120% at 30% 20%, #fbf2e2, #efe2cb);
+      border: 1px solid var(--border); box-shadow: var(--shadow-lift);
+    }
+    .scene-card img { width: 100%; display: block; filter: drop-shadow(0 14px 22px rgba(40,46,70,0.18)); }
+    .split ul { list-style: none; padding: 0; margin: 22px 0 0; }
+    .split li { display: flex; gap: 12px; align-items: flex-start; margin: 14px 0; font-size: 16px; font-weight: 600; color: var(--ink-muted); }
+    .split li .b { flex: none; width: 26px; height: 26px; border-radius: 9px; background: var(--accent-strong); display: grid; place-items: center; margin-top: 1px; }
+    .split li .b svg { width: 15px; height: 15px; color: #fff; }
+    .split li b { color: var(--ink); }
+
+    /* honest band */
+    .honesty { background: linear-gradient(155deg, #1d3a32, #214a3f); border-radius: 34px; padding: 56px clamp(28px, 5vw, 64px); color: var(--ivory); position: relative; overflow: hidden; box-shadow: var(--shadow-plush); }
+    .honesty::after { content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px; background: radial-gradient(closest-side, rgba(236,122,85,0.5), transparent 70%); }
+    .honesty::before { content:""; position:absolute; left:-80px; bottom:-100px; width:320px; height:320px; background: radial-gradient(closest-side, rgba(81,121,190,0.5), transparent 70%); }
+    .honesty .kicker { color: var(--action); position: relative; }
+    .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; }
+    .honesty p { color: rgba(255,248,236,0.85); font-size: 18px; font-weight: 600; max-width: 38em; margin: 20px 0 0; position: relative; }
+
+    /* final CTA */
+    .final { text-align: center; padding: 80px 0 60px; }
+    .final .mascot-final { width: 104px; height: 104px; border-radius: 30px; box-shadow: var(--shadow-plush); margin-bottom: 22px; }
+    .final h2 { margin: 0 auto; max-width: 14em; }
+    .final p { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px auto 30px; max-width: 32em; }
+
+    /* footer */
+    footer { border-top: 1px solid var(--border); padding: 34px 0 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+    footer .brand-name { font-size: 19px; }
+    footer .f-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-left: auto; }
+    footer a { color: var(--text-muted); text-decoration: none; font-weight: 700; font-size: 14px; transition: color 140ms ease; }
+    footer a:hover { color: var(--care); }
+    .copyright { color: var(--border-strong); font-size: 13px; font-weight: 700; }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(20px); animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}.d6{animation-delay:.55s}
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; animation: none; }
+      .phone, .blob-accent, .chat-card, .pill-top, .eyebrow .dot, .atmosphere::before { animation: none; }
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .hero-art { order: -1; min-height: 360px; }
+      .cards { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; gap: 28px; }
+      .scene-card { order: -1; }
+      .section-head p { font-size: 16px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 20px; }
+      .hero { padding: 28px 0 8px; }
+      .chat-card { left: 0; max-width: 220px; }
+      footer .f-links { margin-left: 0; flex-basis: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="atmosphere"></div>
+  <div class="veil"></div>
+  <div class="grain"></div>
+
+  <nav class="reveal d1">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <img class="brand-mark" src="mascot.webp" alt="Laeli mascot" width="40" height="40">
+        <span class="brand-name">Laeli</span>
+      </a>
+      <div class="nav-links">
+        <a class="hide-sm" href="#how">How it works</a>
+        <a class="hide-sm" href="#why">Why Laeli</a>
+        <a class="nav-cta" href="#get">Get early access</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow reveal d1"><span class="dot" aria-hidden="true"></span> Coming soon to iOS</span>
+          <h1 class="reveal d2">Good dogs aren't&nbsp;born. <em>They're&nbsp;coached.</em></h1>
+          <p class="lede reveal d3">
+            Laeli is an AI dog training coach for every life stage — puppy, newly-adopted adult, rescue, and senior.
+            Daily, expert-backed, force-free guidance built around how your dog actually lives. Not a generic chatbot.
+          </p>
+          <div class="cta-row reveal d4">
+            <!-- Official-style App Store badge. Wire href to the real App Store URL at launch. QR code can go here later. -->
+            <a class="appstore" href="#get" aria-label="Download Laeli on the App Store (coming soon)">
+              <svg class="apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.12zM14.6 4.7c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.08 3.18 1.15.09 2.32-.58 3.03-1.45z"/></svg>
+              <span class="as-text"><span class="as-small">Download on the</span><span class="as-big">App Store</span></span>
+              <span class="as-flag">Soon</span>
+            </a>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+          <div class="store-note reveal d5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Launching soon · TestFlight available now
+          </div>
+          <div class="stages reveal d6">
+            <span class="chip"><span>🐶</span> Puppies</span>
+            <span class="chip"><span>🏡</span> Adopted adults</span>
+            <span class="chip"><span>💛</span> Rescues</span>
+            <span class="chip"><span>🦴</span> Seniors</span>
+          </div>
+        </div>
+
+        <div class="hero-art reveal d3">
+          <span class="halo" aria-hidden="true"></span>
+          <span class="blob-accent coral" aria-hidden="true"></span>
+          <span class="blob-accent sage" aria-hidden="true"></span>
+          <div class="phone" role="img" aria-label="Preview of the Laeli app showing a coaching conversation and today's training plan">
+            <div class="screen">
+              <div class="notch" aria-hidden="true"></div>
+              <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
+              <div class="app-head">
+                <img class="app-ava" src="mascot.webp" alt="">
+                <div>
+                  <div class="app-title">Laeli</div>
+                  <div class="app-sub">YOUR COACH · ONLINE</div>
+                </div>
+              </div>
+              <div class="chat">
+                <div class="bubble me">Milo nipped at my hands again during play 😅</div>
+                <div class="bubble coach"><strong>Totally normal for a 4-month pup.</strong> Try the "freeze + redirect" drill: the second teeth touch skin, stop moving and offer a chew. Let's add it to today's plan 👇</div>
+              </div>
+              <div class="plan-card">
+                <h4>Today · Milo's plan</h4>
+                <div class="task done"><span class="tick2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Morning potty routine</span></div>
+                <div class="task done"><span class="tick2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>2-min name game</span></div>
+                <div class="task"><span class="tick2"></span><span>Freeze + redirect drill</span></div>
+              </div>
+              <div class="tabbar" aria-hidden="true">
+                <span class="tab"></span><span class="tab active"></span><span class="tab"></span><span class="tab"></span><span class="tab"></span>
+              </div>
+            </div>
+          </div>
+          <span class="pill-top" aria-hidden="true"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span> Today's plan, done</span>
+          <div class="chat-card" aria-hidden="true">
+            <div class="who"><img src="mascot.webp" alt=""><b>Laeli</b> <span class="on">· coach</span></div>
+            <p><b>Great progress with Milo!</b> Two of three done — the redirect drill is next 🐾</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="block" id="how">
+      <div class="wrap">
+        <div class="section-head reveal d1">
+          <p class="kicker">How it works</p>
+          <h2>A coach that knows your dog — not just dogs.</h2>
+          <p>Tell Laeli about your dog once. From then on, every plan and answer is shaped by their age, breed, history, and what you logged yesterday.</p>
+        </div>
+        <div class="cards">
+          <div class="card reveal d2">
+            <div class="ico blue"><img src="assets/profile-care.webp" alt=""></div>
+            <div class="card-body">
+              <h3>Ask anything, anytime</h3>
+              <p>Biting, potty accidents, leash pulling, a 2am "is this normal?" — get a calm, specific answer instead of a forum rabbit hole.</p>
+            </div>
+          </div>
+          <div class="card reveal d3">
+            <div class="ico sage"><img src="assets/today-first-calm-step.webp" alt=""></div>
+            <div class="card-body">
+              <h3>A real daily plan</h3>
+              <p>Short, doable training tasks every day — honest day-by-day programs, never "fix it in a weekend" promises.</p>
+            </div>
+          </div>
+          <div class="card reveal d4">
+            <div class="ico coral"><img src="assets/journal-clue.webp" alt=""></div>
+            <div class="card-body">
+              <h3>A journal that learns</h3>
+              <p>Log wins and setbacks in seconds. Laeli spots patterns — like an evening biting cluster — and adapts the coaching.</p>
+            </div>
+          </div>
+          <div class="card reveal d5">
+            <div class="ico teal"><img src="assets/coach-trust-mark.webp" alt=""></div>
+            <div class="card-body">
+              <h3>Safe by design</h3>
+              <p>Medical, aggression, and severe-anxiety cases are routed to your vet or a certified behaviorist — never improvised.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="split">
+          <div class="scene-card reveal d1">
+            <img src="assets/scene-owner-walk.png" alt="A claymation owner walking her dog on a leash through a park">
+          </div>
+          <div class="reveal d2">
+            <p class="kicker">Built for real life</p>
+            <h2>From first walk to grey muzzle.</h2>
+            <ul>
+              <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><b>Every life stage.</b> Puppy basics, adopted-adult transitions, rescue trust-building, and senior, mobility-aware routines.</span></li>
+              <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><b>Multiple dogs.</b> Keep a separate profile, plan, and journal for each dog in the house.</span></li>
+              <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span><b>Care reminders.</b> Medication, vet visits, and routines — gentle nudges so nothing slips.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="why">
+      <div class="wrap">
+        <div class="honesty reveal d1">
+          <p class="kicker">Why Laeli</p>
+          <h2>The honest one. Real training, not promises.</h2>
+          <p>
+            Most apps sell shortcuts. Laeli sticks to positive-reinforcement, force-free methods grounded in how dogs
+            actually learn — across puppy, adopted adult, rescue, and senior life stages. It tells you the truth about
+            timelines, refuses aversive "quick fixes," and knows when to hand you off to a professional. That's the whole point.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="get">
+      <div class="wrap">
+        <img class="mascot-final reveal d1" src="mascot.webp" alt="Laeli mascot">
+        <h2 class="reveal d2">Be first to train with Laeli.</h2>
+        <p class="reveal d3">We're putting the finishing touches on the iOS app. Want in early? Reach out and we'll get you a TestFlight invite.</p>
+        <div class="cta-row reveal d4" style="justify-content:center;">
+          <a class="appstore" href="mailto:support@laeli.app?subject=Laeli%20early%20access" aria-label="Request early access on the App Store">
+            <svg class="apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.12zM14.6 4.7c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.08 3.18 1.15.09 2.32-.58 3.03-1.45z"/></svg>
+            <span class="as-text"><span class="as-small">Request early access</span><span class="as-big">App Store · Soon</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <footer>
+        <a class="brand" href="/" style="gap:9px;">
+          <img class="brand-mark" src="mascot.webp" alt="" width="32" height="32" style="width:32px;height:32px;border-radius:10px;">
+          <span class="brand-name">Laeli</span>
+        </a>
+        <nav class="f-links">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/legal">Legal</a>
+          <a href="mailto:support@laeli.app">Contact</a>
+          <span class="copyright">© 2026 Laeli</span>
+        </nav>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
