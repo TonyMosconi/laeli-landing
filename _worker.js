@@ -62,6 +62,32 @@ async function handleContact(request, env) {
     return json({ success: false, message: "Could not send your message. Please email support@laeli.app." }, 502);
   }
 
+  // Best-effort confirmation back to the visitor. If this send fails, we still
+  // return success — the support notification (above) already went through and
+  // the page shows its own success state.
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Laeli <contact@laeli.app>",
+        to: [email],
+        reply_to: "support@laeli.app",
+        subject: "Thanks for reaching out to Laeli 🐾",
+        text:
+          `Hi ${name},\n\n` +
+          `Thanks for contacting Laeli — your message landed safely and a real human will get back to you as soon as we can.\n\n` +
+          `— The Laeli team\n\n` +
+          `You're receiving this because you used the contact form at laeli.app. No need to reply unless you'd like to add something.`,
+      }),
+    });
+  } catch {
+    // ignore — confirmation is a courtesy, not required for success
+  }
+
   return json({ success: true });
 }
 
