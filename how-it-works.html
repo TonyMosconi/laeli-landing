@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Laeli works — what's inside the app</title>
+  <meta name="description" content="See what's inside Laeli: an AI dog training coach, a real daily plan, honest day-by-day programs, and a journal that learns — for every life stage.">
+  <meta name="theme-color" content="#9cc0ec">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:#5179be; --blue-deep:#3f63a6; --coral:#ec7a55; --coral-deep:#d8623d;
+      --sage:#a9bb7c; --teal:#9ec7bc; --peach:#f7d2ac; --cream:#f4ead6; --ivory:#fff8ec;
+      --ink:#1d3a32; --ink-muted:#395049; --text-muted:#576a60; --accent-strong:#5d7a4e;
+      --care:#c66a52; --action:#ee9b72; --action-pressed:#d87f57; --border:#e7d6bd; --border-strong:#cbb398;
+      --display:"Fraunces",Georgia,serif; --body:"Nunito",-apple-system,system-ui,sans-serif;
+      --shadow-soft:0 10px 22px rgba(40,46,70,0.12); --shadow-lift:0 16px 32px rgba(40,46,70,0.16); --shadow-plush:0 26px 56px rgba(40,46,70,0.22);
+    }
+    *,*::before,*::after{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:var(--body);background:#86aee6;color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+    .atmosphere{position:fixed;inset:0;z-index:-3;background:
+      radial-gradient(40% 34% at -3% 5%,var(--blue) 0%,rgba(81,121,190,0) 56%),
+      radial-gradient(28% 24% at 8% 33%,var(--coral) 0%,rgba(236,122,85,0) 54%),
+      radial-gradient(34% 30% at -5% 66%,var(--sage) 0%,rgba(169,187,124,0) 58%),
+      radial-gradient(38% 32% at 103% 4%,var(--teal) 0%,rgba(126,191,178,0) 58%),
+      radial-gradient(28% 24% at 101% 27%,var(--peach) 0%,rgba(247,199,159,0) 54%),
+      radial-gradient(48% 42% at 106% 66%,var(--blue) 0%,rgba(81,121,190,0) 60%),
+      radial-gradient(38% 34% at 13% 113%,var(--coral) 0%,rgba(236,122,85,0) 60%),
+      radial-gradient(46% 40% at 89% 115%,var(--teal) 0%,rgba(126,191,178,0) 60%),
+      radial-gradient(82% 74% at 50% 38%,#dcebfb 0%,#bcd7f4 46%,#9cc0ec 100%);}
+    .atmosphere::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(26% 24% at 28% 30%,rgba(236,122,85,0.32),transparent 60%),
+      radial-gradient(30% 28% at 72% 58%,rgba(126,191,178,0.34),transparent 60%),
+      radial-gradient(24% 22% at 52% 82%,rgba(247,199,159,0.3),transparent 60%),
+      radial-gradient(28% 26% at 84% 22%,rgba(81,121,190,0.3),transparent 60%);}
+    .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+    /* nav (shared) */
+    nav{position:relative;z-index:40;margin:14px auto 0;max-width:1120px;padding:0 16px}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 18px;
+      background:linear-gradient(180deg,rgba(255,251,244,.66),rgba(255,246,234,.5));backdrop-filter:saturate(165%) blur(20px);-webkit-backdrop-filter:saturate(165%) blur(20px);
+      border:1px solid rgba(255,255,255,.5);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 8px 24px rgba(40,46,70,.1)}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+    .brand img{width:40px;height:40px;border-radius:13px;object-fit:cover;box-shadow:0 6px 14px rgba(40,46,70,.22)}
+    .brand-name{font-family:var(--display);font-weight:900;font-size:23px;letter-spacing:-.01em}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-links a{color:var(--ink-muted);text-decoration:none;font-weight:700;font-size:15px;padding:9px 14px;border-radius:999px;transition:background .14s,color .14s}
+    .nav-links a:hover{background:rgba(158,199,188,.4);color:var(--ink)}
+    .nav-links a.active{color:var(--ink);background:rgba(158,199,188,.32)}
+    .nav-cta{background:var(--ink)!important;color:var(--ivory)!important;box-shadow:0 6px 14px rgba(29,58,50,.28)}
+    .nav-cta:hover{background:var(--ink-muted)!important}
+    @media(max-width:780px){.nav-links .hide-sm{display:none}}
+
+    /* header */
+    header.page{padding:56px 0 8px;text-align:center}
+    .kicker{font-size:13px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--care);margin:0 0 14px}
+    h1{font-family:var(--display);font-size:clamp(38px,6vw,62px);font-weight:600;line-height:1;letter-spacing:-.02em;margin:0 auto;max-width:14em}
+    header.page p{color:var(--ink-muted);font-size:19px;font-weight:600;max-width:34em;margin:18px auto 0}
+
+    /* tab switcher */
+    .tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:40px auto 0;padding:7px;max-width:760px;
+      background:rgba(255,248,236,.7);border:1px solid rgba(255,255,255,.6);border-radius:999px;box-shadow:var(--shadow-soft);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .tab-btn{appearance:none;border:none;cursor:pointer;font-family:var(--body);font-weight:800;font-size:16px;color:var(--ink-muted);
+      background:transparent;padding:12px 22px;border-radius:999px;transition:background .18s,color .18s}
+    .tab-btn:hover{color:var(--ink)}
+    .tab-btn.active{background:var(--ink);color:var(--ivory);box-shadow:0 6px 14px rgba(29,58,50,.26)}
+
+    /* panel */
+    .panel{display:none;padding:48px 0 24px}
+    .panel.active{display:block;animation:fade .5s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .panel-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center}
+    .feat{display:flex;flex-direction:column;gap:26px}
+    .feat.right{text-align:left}
+    .feat-item{display:flex;gap:13px;align-items:flex-start}
+    .feat-item .tick{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;margin-top:2px;
+      background:radial-gradient(circle at 32% 28%,#cfe0f7,#9dbeec);box-shadow:inset 0 1px 2px rgba(255,255,255,.7),0 4px 9px rgba(40,46,70,.16)}
+    .feat-item .tick svg{width:15px;height:15px;color:var(--blue-deep)}
+    .feat-item.coral .tick{background:radial-gradient(circle at 32% 28%,#fbddce,#f1b095)} .feat-item.coral .tick svg{color:var(--coral-deep)}
+    .feat-item.sage .tick{background:radial-gradient(circle at 32% 28%,#e8eecd,#bccf90)} .feat-item.sage .tick svg{color:var(--accent-strong)}
+    .feat-item h3{font-family:var(--display);font-size:20px;font-weight:700;margin:0 0 3px;letter-spacing:-.01em}
+    .feat-item p{margin:0;color:var(--text-muted);font-size:15px;font-weight:600;line-height:1.5}
+
+    /* phone (CSS mockup) */
+    .phone-wrap{display:flex;justify-content:center}
+    .phone{position:relative;width:284px;aspect-ratio:284/588;background:linear-gradient(160deg,#234740,#14302a);border-radius:44px;padding:11px;
+      box-shadow:var(--shadow-plush),inset 0 0 0 2px rgba(255,255,255,.07)}
+    .screen{position:relative;height:100%;width:100%;background:linear-gradient(180deg,#ffe6d1 0%,#fff3df 26%,#f3ead4 100%);border-radius:34px;overflow:hidden;display:flex;flex-direction:column}
+    .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:86px;height:22px;background:#14302a;border-radius:999px;z-index:5}
+    .sbar{display:flex;justify-content:space-between;padding:12px 18px 2px;font-size:11px;font-weight:800;color:var(--ink)}
+    .ahead{display:flex;align-items:center;gap:9px;padding:8px 16px 10px}
+    .ahead img{width:34px;height:34px;border-radius:11px;box-shadow:0 4px 10px rgba(40,46,70,.25)}
+    .ahead .t{font-family:var(--display);font-weight:900;font-size:16px;line-height:1}
+    .ahead .s{font-size:10px;font-weight:800;color:var(--accent-strong);letter-spacing:.02em}
+    .body{flex:1;padding:4px 14px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+    .bub{max-width:88%;padding:10px 12px;border-radius:15px;font-size:11.5px;font-weight:600;line-height:1.4}
+    .bub.coach{align-self:flex-start;background:var(--ivory);border:1px solid var(--border);border-bottom-left-radius:5px;box-shadow:0 5px 12px rgba(40,46,70,.09)}
+    .bub.coach b{color:var(--care)} .bub.coach .vet{color:var(--coral-deep);font-weight:800}
+    .bub.me{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+    .card{background:rgba(255,248,236,.94);border:1px solid var(--border);border-radius:15px;padding:11px 12px;box-shadow:0 6px 14px rgba(40,46,70,.09)}
+    .card h4{margin:0 0 7px;font-size:10px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-strong)}
+    .row{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--ink);padding:3px 0}
+    .row .ck{width:16px;height:16px;border-radius:5px;flex:none;display:grid;place-items:center;border:2px solid var(--border-strong)}
+    .row.done .ck{background:var(--accent-strong);border-color:var(--accent-strong)} .row.done .ck svg{width:9px;height:9px;color:#fff} .row.done span{color:var(--text-muted);text-decoration:line-through}
+    .pathnode{display:flex;align-items:center;gap:10px;padding:7px 0}
+    .pathnode .dot{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:14px;box-shadow:0 4px 9px rgba(40,46,70,.16)}
+    .pathnode .dot.done{background:var(--accent-strong);color:#fff} .pathnode .dot.now{background:var(--action);color:#fff;box-shadow:0 0 0 4px rgba(238,155,114,.28)} .pathnode .dot.next{background:#e6dcc8;color:var(--border-strong)}
+    .pathnode .pl{font-size:11.5px;font-weight:800;color:var(--ink)} .pathnode .ps{font-size:10px;font-weight:700;color:var(--text-muted)}
+    .jrow{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(203,179,152,.25)}
+    .jrow .ic{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;font-size:13px}
+    .jrow .jt{font-size:11.5px;font-weight:800;color:var(--ink)} .jrow .jd{font-size:10px;font-weight:600;color:var(--text-muted)}
+    .insight{margin:6px 0 0;background:#eef3e6;border:1px solid #c9dcb0;border-radius:13px;padding:9px 11px;font-size:11px;font-weight:700;color:#3c5a30}
+    .insight b{color:var(--accent-strong)}
+    .tabbar{display:flex;justify-content:space-around;align-items:center;padding:9px 6px 14px;margin-top:8px;background:rgba(255,248,236,.92);border-top:1px solid var(--border)}
+    .tabbar i{width:6px;height:6px;border-radius:50%;background:var(--border-strong);display:block} .tabbar i.on{background:var(--care);width:20px;border-radius:999px}
+    .glow{position:absolute;inset:-8% -10%;background:radial-gradient(closest-side,rgba(255,255,255,.5),transparent 70%);filter:blur(8px);z-index:-1}
+
+    /* final cta */
+    .cta{text-align:center;padding:56px 0 80px}
+    .cta a{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:16px;text-decoration:none;color:var(--ink);background:var(--action);padding:15px 28px;border-radius:999px;box-shadow:var(--shadow-lift);transition:transform .16s,background .16s}
+    .cta a:hover{transform:translateY(-2px);background:var(--action-pressed)}
+    .cta svg{width:18px;height:18px}
+
+    footer{border-top:1px solid rgba(40,46,70,.1);padding:30px 0 46px;display:flex;justify-content:center}
+    .f-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
+    footer a{color:var(--ink);text-decoration:none;font-weight:800;font-size:14px} footer a:hover{color:var(--care)}
+    .copyright{color:var(--ink);font-size:14px;font-weight:800}
+
+    @media(max-width:880px){.panel-grid{grid-template-columns:1fr;gap:30px}.feat{order:2}.phone-wrap{order:1}.feat-item{max-width:30em;margin:0 auto}}
+    @media(prefers-reduced-motion:reduce){.panel.active{animation:none}}
+  </style>
+</head>
+<body>
+  <div class="atmosphere"></div><div class="grain"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="/"><img src="mascot.webp" alt="Laeli mascot"><span class="brand-name">Laeli</span></a>
+      <div class="nav-links">
+        <a class="hide-sm active" href="/how-it-works">How it works</a>
+        <a class="hide-sm" href="/#why">Why Laeli</a>
+        <a class="hide-sm" href="/contact">Contact</a>
+        <a class="nav-cta" href="/#get">Get early access</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h1>What's inside Laeli.</h1>
+      <p>An AI coach that actually knows your dog, a real daily plan, honest day-by-day programs, and a journal that learns — all in one calm app. Tap through:</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="coach">AI Coach</button>
+      <button class="tab-btn" data-tab="plan">Daily Plan</button>
+      <button class="tab-btn" data-tab="path">The Path</button>
+      <button class="tab-btn" data-tab="journal">Journal</button>
+    </div>
+
+    <!-- AI COACH -->
+    <section class="panel active" id="coach">
+      <div class="panel-grid">
+        <div class="feat">
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>A real AI coach, not a chatbot</h3><p>Ask anything, any time. Every answer is shaped by your dog's age, breed, history, and what you logged.</p></div></div>
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Force-free, expert-backed</h3><p>Strictly positive-reinforcement methods — it refuses aversive "quick fixes," even if you ask.</p></div></div>
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>It remembers</h3><p>Cross-session memory means Laeli builds on yesterday instead of starting over each chat.</p></div></div>
+        </div>
+        <div class="phone-wrap"><div class="phone"><span class="glow"></span><div class="screen">
+          <div class="notch"></div><div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+          <div class="ahead"><img src="mascot.webp" alt=""><div><div class="t">Laeli</div><div class="s">YOUR COACH · ONLINE</div></div></div>
+          <div class="body">
+            <div class="bub me">Milo nipped at my hands again during play 😅</div>
+            <div class="bub coach"><b>Totally normal for a 4-month pup.</b> The second teeth touch skin, freeze and offer a chew. Want me to add the "freeze + redirect" drill to today's plan?</div>
+            <div class="bub me">Yes please</div>
+            <div class="bub coach">Done 🐾 I'll check how it goes tomorrow.</div>
+          </div>
+          <div class="tabbar"><i></i><i class="on"></i><i></i><i></i><i></i></div>
+        </div></div></div>
+        <div class="feat right">
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Safe by design</h3><p>Medical, aggression, and severe-anxiety topics are routed to your vet or a certified behaviorist — never improvised.</p></div></div>
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Every life stage</h3><p>Puppy, newly-adopted adult, rescue, or senior — Laeli meets your dog where they are.</p></div></div>
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Instant, not a waiting list</h3><p>Help at 2am, not "your trainer replies in 3 days."</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAILY PLAN -->
+    <section class="panel" id="plan">
+      <div class="panel-grid">
+        <div class="feat">
+          <div class="feat-item sage"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>A few small wins a day</h3><p>Short, doable tasks built from your dog's profile and goals — not an overwhelming checklist.</p></div></div>
+          <div class="feat-item sage"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Adapts to real life</h3><p>Log what worked and what didn't, and tomorrow's plan adjusts around it.</p></div></div>
+          <div class="feat-item sage"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Care reminders too</h3><p>Medication, vet visits, routines — gentle nudges so nothing slips.</p></div></div>
+        </div>
+        <div class="phone-wrap"><div class="phone"><span class="glow"></span><div class="screen">
+          <div class="notch"></div><div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+          <div class="ahead"><img src="mascot.webp" alt=""><div><div class="t">Today</div><div class="s">MILO · 4 MONTHS</div></div></div>
+          <div class="body">
+            <div class="card"><h4>Today · Milo's plan</h4>
+              <div class="row done"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>Morning potty routine</span></div>
+              <div class="row done"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span>2-min name game</span></div>
+              <div class="row"><span class="ck"></span><span>Freeze + redirect drill</span></div>
+              <div class="row"><span class="ck"></span><span>Sniffy decompression walk</span></div>
+            </div>
+            <div class="card" style="margin-top:8px"><h4>Care reminder</h4>
+              <div class="row"><span class="ck"></span><span>💊 Flea treatment · 6:00 PM</span></div>
+            </div>
+          </div>
+          <div class="tabbar"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+        </div></div></div>
+        <div class="feat right">
+          <div class="feat-item sage"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Honest timelines</h3><p>No "fix it in a weekend." Real progress, at your dog's pace.</p></div></div>
+          <div class="feat-item sage"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Coach-connected</h3><p>The coach can see your plan and progress, so its advice matches what you've actually done.</p></div></div>
+          <div class="feat-item sage"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Multiple dogs</h3><p>A separate plan for every dog in the house.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PATH -->
+    <section class="panel" id="path">
+      <div class="panel-grid">
+        <div class="feat">
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Honest day-by-day programs</h3><p>Each course length is the exact sum of its practice days — a "7-Day Foundations," not a vague "level."</p></div></div>
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Practice before you advance</h3><p>Lessons tell you to repeat for N days — and why — instead of rushing you to the next badge.</p></div></div>
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>For every situation</h3><p>Puppy Foundations, Settling In (rescue), Adult Manners, and more.</p></div></div>
+        </div>
+        <div class="phone-wrap"><div class="phone"><span class="glow"></span><div class="screen">
+          <div class="notch"></div><div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+          <div class="ahead"><img src="mascot.webp" alt=""><div><div class="t">7-Day Foundations</div><div class="s">DAY 4 OF 7</div></div></div>
+          <div class="body">
+            <div class="card">
+              <div class="pathnode"><span class="dot done">✓</span><div><div class="pl">Anchor potty trips to the routine</div><div class="ps">Practiced 2 days</div></div></div>
+              <div class="pathnode"><span class="dot done">✓</span><div><div class="pl">Make the crate a good place</div><div class="ps">Practiced 1 day</div></div></div>
+              <div class="pathnode"><span class="dot now">●</span><div><div class="pl">Trade hands for a chew</div><div class="ps">Practice 2 days before advancing</div></div></div>
+              <div class="pathnode"><span class="dot next">4</span><div><div class="pl">One tiny alone-time rep</div><div class="ps">Up next</div></div></div>
+              <div class="pathnode"><span class="dot next">5</span><div><div class="pl">Sniffy decompression walk</div><div class="ps">Locked</div></div></div>
+            </div>
+          </div>
+          <div class="tabbar"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+        </div></div></div>
+        <div class="feat right">
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Free + Pro courses</h3><p>Start free with 7-Day Foundations; unlock the full library on Pro.</p></div></div>
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Streak &amp; finish trophy</h3><p>Gentle gamification that rewards consistency, not grinding.</p></div></div>
+          <div class="feat-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Built on real method</h3><p>Decompression-first for rescues; pace-appropriate for seniors.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNAL -->
+    <section class="panel" id="journal">
+      <div class="panel-grid">
+        <div class="feat">
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Log wins &amp; setbacks in seconds</h3><p>Quick taps for accidents, training wins, and behavior moments.</p></div></div>
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Laeli spots patterns</h3><p>Like an evening biting cluster — and folds it into the coaching.</p></div></div>
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Calendar view</h3><p>See your dog's week at a glance — training, care, and notes together.</p></div></div>
+        </div>
+        <div class="phone-wrap"><div class="phone"><span class="glow"></span><div class="screen">
+          <div class="notch"></div><div class="sbar"><span>9:41</span><span>● ● ●</span></div>
+          <div class="ahead"><img src="mascot.webp" alt=""><div><div class="t">Journal</div><div class="s">THIS WEEK</div></div></div>
+          <div class="body">
+            <div class="card">
+              <div class="jrow"><span class="ic" style="background:#dff0e6">🏆</span><div><div class="jt">Held a 10-sec stay!</div><div class="jd">Today · 8:12 AM</div></div></div>
+              <div class="jrow"><span class="ic" style="background:#ffe2d7">🦷</span><div><div class="jt">Nipped during evening play</div><div class="jd">Yesterday · 6:40 PM</div></div></div>
+              <div class="jrow" style="border-bottom:none"><span class="ic" style="background:#eef1f8">🚶</span><div><div class="jt">Calm leash walk</div><div class="jd">Yesterday · 9:05 AM</div></div></div>
+            </div>
+            <div class="insight">🔎 <b>Pattern:</b> evening biting cluster — 3× this week. Laeli added a pre-dinner chew routine.</div>
+          </div>
+          <div class="tabbar"><i></i><i></i><i></i><i class="on"></i><i></i></div>
+        </div></div></div>
+        <div class="feat right">
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Feeds the coach</h3><p>Recent entries give Laeli the context to give advice that fits your real week.</p></div></div>
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Safety follow-ups</h3><p>If you log a red-flag event, Laeli follows up instead of moving on.</p></div></div>
+          <div class="feat-item coral"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><div><h3>Yours, private</h3><p>Your notes stay yours — see our Privacy Policy for exactly what's shared.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="cta">
+    <a href="/#get">See pricing &amp; get early access
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+
+  <div class="wrap"><footer><nav class="f-links">
+    <a href="/">Home</a><a href="/#why">Why Laeli</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a><span class="copyright">© 2026 Laeli</span>
+  </nav></footer></div>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var id = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.toggle('active', b===btn);});
+        document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active', p.id===id);});
+      });
+    });
+  </script>
+</body>
+</html>
