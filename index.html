@@ -307,6 +307,9 @@
     .final p { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px auto 30px; max-width: 32em; }
     .final-badge { text-align: center; padding-left: 26px; padding-right: 26px; }
     .final-badge .as-text { align-items: center; }
+    /* inert until the App Store link exists: no click, no hover lift */
+    .appstore.is-inert { cursor: default; }
+    .appstore.is-inert:hover { transform: none; background: #16302a; box-shadow: var(--shadow-lift); }
 
     /* footer */
     footer { border-top: 1px solid rgba(40,46,70,0.10); padding: 34px 0 48px; display: flex; justify-content: center; }
@@ -511,9 +514,10 @@
         <h2 class="reveal d2">Be first to train with Laeli.</h2>
         <p class="reveal d3">We're putting the finishing touches on the iOS app. Want in early? Reach out and we'll get you a TestFlight invite.</p>
         <div class="cta-row reveal d4" style="justify-content:center;">
-          <a class="appstore final-badge" href="mailto:support@laeli.app?subject=Laeli%20early%20access" aria-label="Request early access on the App Store">
+          <!-- Inert placeholder — wire href to the real App Store URL at launch (replace span with <a href="..."> and remove .is-inert). -->
+          <span class="appstore final-badge is-inert" role="img" aria-label="Coming soon to the App Store">
             <span class="as-text"><span class="as-small">Request early access</span><span class="as-big">App Store · Soon</span></span>
-          </a>
+          </span>
         </div>
       </div>
     </section>
