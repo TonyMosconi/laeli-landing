@@ -1,7 +1,8 @@
-// Cloudflare Pages Function — handles POST /api/contact and sends the
-// message via Resend. The Resend API key is read from the
-// RESEND_API_KEY environment variable (set in the Cloudflare Pages
-// project settings as an encrypted/secret variable — never in code).
+// Cloudflare Pages advanced-mode Worker.
+// Handles POST /api/contact (sends the contact form via Resend) and
+// serves all static assets for everything else. RESEND_API_KEY is read
+// from the project's environment variables (encrypted secret) — never
+// hard-coded.
 
 const json = (obj, status = 200) =>
   new Response(JSON.stringify(obj), {
@@ -9,7 +10,11 @@ const json = (obj, status = 200) =>
     headers: { "Content-Type": "application/json" },
   });
 
-export async function onRequestPost({ request, env }) {
+async function handleContact(request, env) {
+  if (request.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
+
   let form;
   try {
     form = await request.json();
@@ -54,11 +59,19 @@ export async function onRequestPost({ request, env }) {
   });
 
   if (!res.ok) {
-    return json(
-      { success: false, message: "Could not send your message. Please email support@laeli.app." },
-      502
-    );
+    return json({ success: false, message: "Could not send your message. Please email support@laeli.app." }, 502);
   }
 
   return json({ success: true });
 }
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (url.pathname === "/api/contact") {
+      return handleContact(request, env);
+    }
+    // Everything else: serve the static site.
+    return env.ASSETS.fetch(request);
+  },
+};
