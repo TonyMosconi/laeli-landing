@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Laeli</title>
 <meta name="theme-color" content="#9cc0ec">
+<meta name="description" content="How Laeli, the AI dog training coach, collects, uses, and protects your data. We don't sell your data or run ads.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,6 @@
     --ink: #1d3a32; --ink-muted: #395049; --text-muted: #576a60;
     --accent-strong: #5d7a4e; --care: #c66a52; --action: #ee9b72;
     --border: #e7d6bd; --border-strong: #cbb398;
-    --warn-bg: #ffe6c9; --warn-border: #e4b470; --warn-text: #7a3d13;
     --display: "Fraunces", Georgia, serif;
     --body: "Nunito", -apple-system, BlinkMacSystemFont, "Avenir Next", system-ui, sans-serif;
     --shadow-soft: 0 10px 22px rgba(40,46,70,0.12);
@@ -38,19 +38,17 @@
       radial-gradient(46% 40% at 89% 115%, var(--teal) 0%, rgba(126,191,178,0) 60%),
       radial-gradient(82% 74% at 50% 38%, #dcebfb 0%, #bcd7f4 46%, #9cc0ec 100%);
   }
-  .atmosphere::before { content:""; position:absolute; inset:-25%;
+  .atmosphere::before { content:""; position:absolute; inset:0;
     background:
       radial-gradient(26% 24% at 28% 30%, rgba(236,122,85,0.34), transparent 60%),
       radial-gradient(30% 28% at 72% 58%, rgba(126,191,178,0.36), transparent 60%),
       radial-gradient(24% 22% at 52% 82%, rgba(247,199,159,0.30), transparent 60%),
       radial-gradient(28% 26% at 84% 22%, rgba(81,121,190,0.30), transparent 60%);
   }
-  @keyframes drift { 0%{ transform: translate(0,0) scale(1);} 100%{ transform: translate(3.5%,-3%) scale(1.07);} }
   .grain { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.4; mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
 
-  /* nav */
-  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 800px; padding: 0 16px; }
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; max-width: 820px; padding: 0 16px; }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px 10px 16px;
     background: rgba(255,248,236,0.82); backdrop-filter: saturate(140%) blur(14px); -webkit-backdrop-filter: saturate(140%) blur(14px);
     border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; box-shadow: var(--shadow-soft); }
@@ -60,9 +58,8 @@
   .nav-back { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 15px; border-radius: 999px; transition: background 140ms ease; }
   .nav-back:hover { background: rgba(158,199,188,0.4); color: var(--ink); }
 
-  main { max-width: 800px; margin: 0 auto; padding: 40px 24px 72px; }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 24px 72px; }
 
-  /* frosted paper panel holding the legal text */
   .paper {
     background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,251,244,0.9));
     border: 1px solid rgba(255,255,255,0.8); border-radius: 30px;
@@ -75,15 +72,22 @@
   .back:hover { transform: translateX(-3px); border-color: var(--border-strong); }
   .eyebrow { font-size: 12px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--care); margin: 0 0 10px; }
   h1 { font-family: var(--display); font-size: clamp(34px, 6vw, 48px); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 10px; line-height: 1.02; }
-  h2 { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 46px 0 14px; }
+  h2 { font-family: var(--display); font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 44px 0 12px; }
+  h2 .num { color: var(--border-strong); font-weight: 600; margin-right: 8px; }
   p, ul, ol { color: var(--ink); font-weight: 500; }
   ul, ol { padding-left: 22px; } li { margin: 7px 0; }
   a { color: var(--care); }
-  .meta { color: var(--text-muted); font-size: 15px; font-weight: 700; margin-bottom: 16px; }
-  .draft-banner { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 16px; padding: 16px 20px; margin: 24px 0;
-    font-size: 15px; font-weight: 600; color: var(--warn-text); box-shadow: var(--shadow-soft); }
+  .meta { color: var(--text-muted); font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .fill { color: var(--coral-deep); font-weight: 700; background: #fdeee7; padding: 0 5px; border-radius: 5px; }
+
+  /* friendly "short version" callout */
+  .summary { background: linear-gradient(180deg,#eef4fb,#e7eefb); border: 1px solid #cdddf2; border-radius: 18px; padding: 20px 24px; margin: 24px 0 10px; }
+  .summary .lead { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); margin: 0 0 10px; }
+  .summary ul { margin: 0; padding-left: 20px; } .summary li { margin: 6px 0; color: var(--ink-muted); }
+  .summary .fine { margin: 10px 0 0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
   .table-wrap { overflow-x: auto; border-radius: 18px; box-shadow: var(--shadow-soft); margin: 14px 0 26px; }
-  table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; background: #ffffff;
+  table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: 14px; background: #ffffff;
     border: 1px solid #dde3ee; border-radius: 18px; overflow: hidden; }
   th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid #e8ecf3; vertical-align: top; }
   th { background: #e7effb; font-weight: 800; font-size: 13px; color: var(--blue-deep); letter-spacing: 0.01em; }
@@ -112,171 +116,133 @@
   <article class="paper">
   <p class="eyebrow">Laeli</p>
   <h1>Privacy Policy</h1>
-  <p class="meta"><strong>Effective date:</strong> TBD &nbsp;·&nbsp; <strong>Last updated:</strong> TBD</p>
+  <p class="meta"><strong>Effective date:</strong> <span class="fill">[set on launch day]</span> &nbsp;·&nbsp; <strong>Last updated:</strong> <span class="fill">[set on launch day]</span></p>
 
-  <div class="draft-banner">
-    <strong>⚠️ DRAFT</strong> — this is a placeholder version. Replace with the legally reviewed version before public TestFlight or App Store submission.
+  <div class="summary">
+    <p class="lead">The short version</p>
+    <ul>
+      <li>We built Laeli to coach your dog — not to harvest your data. We collect only what we need to give you good, personalized coaching.</li>
+      <li><strong>We don't sell your data, show third-party ads, or run advertising/tracking SDKs.</strong></li>
+      <li>Your dog's profile, journal, and chats power the coaching. To generate replies, some of it goes to our AI provider (OpenAI), which <strong>does not train on it</strong>.</li>
+      <li>You can <strong>export or delete</strong> your data any time, right from the app.</li>
+    </ul>
+    <p class="fine">This summary is for convenience — the full policy below is what legally governs.</p>
   </div>
 
-  <h2>Who we are</h2>
-  <p>Laeli is a dog-training coaching app developed by [Legal Entity Name], contactable at <code>support@laeli.app</code>.</p>
+  <h2><span class="num">1.</span>Who we are</h2>
+  <p>Laeli ("Laeli", "we", "us", "our") is a dog-training coaching app and website (<a href="https://laeli.app">laeli.app</a>) operated by <span class="fill">[Legal Entity Name]</span> ("the Company"), the data controller responsible for your personal data. You can reach us any time at <code>support@laeli.app</code>.</p>
 
-  <h2>What data we collect</h2>
+  <h2><span class="num">2.</span>What this policy covers</h2>
+  <p>This policy applies to the <strong>Laeli iOS app</strong>, our <strong>website</strong> (<code>laeli.app</code>, including <code>legal.laeli.app</code>), and our <strong>contact form</strong>. It does not cover third-party services we link to, which have their own policies.</p>
+
+  <h2><span class="num">3.</span>The personal data we collect</h2>
+  <p>We collect the following, and only for the purposes shown:</p>
   <div class="table-wrap">
   <table>
-    <thead>
-      <tr><th>Data</th><th>Source</th><th>Purpose</th><th>Stored</th><th>Shared with</th></tr>
-    </thead>
+    <thead><tr><th>Data</th><th>Where it comes from</th><th>Why we use it</th><th>Stored</th><th>Shared with</th></tr></thead>
     <tbody>
-      <tr>
-        <td>Owner name (optional)</td>
-        <td>User input in Profile</td>
-        <td>Personalize coaching responses ("Hi Aurelien")</td>
-        <td>Locally on device + Supabase Auth profile</td>
-        <td>OpenAI (in coaching prompts only, not for training)</td>
-      </tr>
-      <tr>
-        <td>Dog profile (name, breed, age, weight, energy, training level, goals, behavior issues)</td>
-        <td>User input in onboarding + Profile</td>
-        <td>Generate the personalized training plan and coaching replies</td>
-        <td>Locally on device + Supabase (when logged in)</td>
-        <td>OpenAI (in coaching prompts only)</td>
-      </tr>
-      <tr>
-        <td>Journal entries (training wins, accidents, behavior moments, notes)</td>
-        <td>User input in Journal / Today quick-log</td>
-        <td>Coaching personalization, pattern detection</td>
-        <td>Locally on device + Supabase</td>
-        <td>OpenAI (recent entries only, in coaching prompts)</td>
-      </tr>
-      <tr>
-        <td>Chat history with Laeli AI</td>
-        <td>App usage</td>
-        <td>Coaching context (last few turns) + cross-session memory</td>
-        <td>Locally on device + Supabase</td>
-        <td>OpenAI (recent turns + rolling memory snapshots)</td>
-      </tr>
-      <tr>
-        <td>Today's training-plan tasks and completion counts</td>
-        <td>Generated by the app from your dog's profile and goals</td>
-        <td>Let the AI coach see what you were asked to do today and how much you've already finished, so its reply matches your actual progress</td>
-        <td>Locally on device + Supabase</td>
-        <td>OpenAI (in coaching prompts only)</td>
-      </tr>
-      <tr>
-        <td>Journal pattern summaries (e.g. "evening biting cluster x3 in last 7 days")</td>
-        <td>Computed by Laeli from your recent journal entries</td>
-        <td>Coaching personalization — gives the AI coach a short summary of behavior patterns so it can address them directly</td>
-        <td>Locally on device + Supabase</td>
-        <td>OpenAI (in coaching prompts only)</td>
-      </tr>
-      <tr>
-        <td>Safety-routing signals (category labels like "blood or bleeding", "child or baby safety")</td>
-        <td>Computed automatically each time you message the coach, from the words in your recent journal entries and your message</td>
-        <td>Decide whether the coach should respond normally, add a vet-referral note, or escalate to a safety-first reply</td>
-        <td>Locally on device + Supabase</td>
-        <td>OpenAI (in coaching prompts only)</td>
-      </tr>
-      <tr>
-        <td>Unresolved red-flag log excerpts (title, log ID, timestamp — last 48 hours only)</td>
-        <td>A red-flag log you wrote in the last 48 hours (e.g. a bite, broken skin, or vet-relevant event)</td>
-        <td>Make sure the coach sees recent safety events and follows up on them instead of moving on</td>
-        <td>Locally on device + Supabase</td>
-        <td>OpenAI (in coaching prompts only)</td>
-      </tr>
-      <tr>
-        <td>Care reminders (medication, vet appointments, etc.)</td>
-        <td>User input in Care tab</td>
-        <td>Scheduled local notifications</td>
-        <td>Locally on device + Supabase</td>
-        <td>None</td>
-      </tr>
-      <tr>
-        <td>Anonymous user ID (Supabase Auth)</td>
-        <td>Generated on first launch</td>
-        <td>Authentication, server-side rate limiting</td>
-        <td>Supabase Auth</td>
-        <td>None</td>
-      </tr>
-      <tr>
-        <td>Crash / error reports</td>
-        <td>Automatic when the app crashes</td>
-        <td>Bug fixing</td>
-        <td>Sentry</td>
-        <td>Sentry (PII-safe payloads — see "Crash reporting (Sentry)")</td>
-      </tr>
-      <tr>
-        <td>Server-side function logs (operational logs from our coaching backend)</td>
-        <td>Automatic when the coaching backend processes a request</td>
-        <td>Debugging, abuse prevention, rate-limit enforcement</td>
-        <td>Supabase Logs (our backend host)</td>
-        <td>None — internal to Laeli (see "Server-side logs")</td>
-      </tr>
-      <tr>
-        <td>Daily / monthly usage counts</td>
-        <td>Automatic</td>
-        <td>Subscription tier enforcement</td>
-        <td>Locally on device + Supabase</td>
-        <td>None</td>
-      </tr>
+      <tr><td>Owner name (optional)</td><td>You, in Profile</td><td>Personalize coaching ("Hi Aurelien")</td><td>On your device + our backend (Supabase)</td><td>OpenAI (coaching prompts only)</td></tr>
+      <tr><td>Dog profile (name, breed, age, weight, energy, training level, goals, behavior issues)</td><td>You, in onboarding + Profile</td><td>Build your plan and coaching replies</td><td>On your device + Supabase</td><td>OpenAI (coaching prompts only)</td></tr>
+      <tr><td>Journal entries (wins, accidents, behavior notes)</td><td>You, in Journal / quick-log</td><td>Personalization + pattern detection</td><td>On your device + Supabase</td><td>OpenAI (recent entries only)</td></tr>
+      <tr><td>Chat history with the Laeli coach</td><td>App usage</td><td>Coaching context + cross-session memory</td><td>On your device + Supabase</td><td>OpenAI (recent turns + memory)</td></tr>
+      <tr><td>Today's plan tasks &amp; completion counts</td><td>Generated from your dog's profile</td><td>So replies match your real progress</td><td>On your device + Supabase</td><td>OpenAI (coaching prompts only)</td></tr>
+      <tr><td>Journal pattern summaries (e.g. "evening biting cluster ×3 this week")</td><td>Computed from recent entries</td><td>So the coach can address patterns</td><td>On your device + Supabase</td><td>OpenAI (coaching prompts only)</td></tr>
+      <tr><td>Safety-routing signals (labels like "blood or bleeding", "child or baby safety")</td><td>Computed from recent entries + your message</td><td>Decide whether to answer normally, add a vet-referral note, or escalate</td><td>On your device + Supabase</td><td>OpenAI (coaching prompts only)</td></tr>
+      <tr><td>Care reminders (medication, vet appointments)</td><td>You, in the Care tab</td><td>Scheduled local notifications</td><td>On your device + Supabase</td><td>None</td></tr>
+      <tr><td>Account ID (Supabase Auth)</td><td>Generated on first launch / sign-up</td><td>Authentication + rate limiting</td><td>Supabase</td><td>None</td></tr>
+      <tr><td>Email address (account or contact form)</td><td>You</td><td>Sign-in, recovery, replying to you</td><td>Supabase / our email provider</td><td>Apple/RevenueCat (account), email provider (contact form)</td></tr>
+      <tr><td>Subscription status &amp; receipts</td><td>Apple App Store</td><td>Manage and verify your subscription</td><td>Apple / RevenueCat / Supabase</td><td>Apple, RevenueCat</td></tr>
+      <tr><td>Contact-form submission (name, email, message)</td><td>You, on laeli.app</td><td>To answer your enquiry</td><td>Our email provider + support inbox</td><td>Our email provider</td></tr>
+      <tr><td>Crash / error reports (stack traces, app version, device, OS)</td><td>Automatic on a crash</td><td>Fixing bugs</td><td>Sentry</td><td>Sentry (PII-redacted)</td></tr>
+      <tr><td>Server-side function logs</td><td>Automatic when our backend runs</td><td>Debugging, abuse prevention, rate limits</td><td>Supabase Logs</td><td>None — internal (PII-redacted)</td></tr>
+      <tr><td>Daily / monthly usage counts</td><td>Automatic</td><td>Enforcing subscription limits</td><td>On your device + Supabase</td><td>None</td></tr>
     </tbody>
   </table>
   </div>
 
-  <h2>What we do NOT collect</h2>
+  <h2><span class="num">4.</span>What we do <em>not</em> collect or do</h2>
   <ul>
-    <li>Location data</li>
-    <li>Microphone or camera content (the camera is used only for owner / dog photos, which stay on device unless you've explicitly enabled cloud sync)</li>
-    <li>Contacts, calendar, or other device-level personal data</li>
-    <li>Veterinary or medical records</li>
-    <li>Real-name identification (Laeli works fine without a real name)</li>
+    <li>We <strong>do not sell</strong> your personal data, and <strong>do not share</strong> it for cross-context behavioral advertising.</li>
+    <li>We <strong>do not run</strong> third-party advertising or ad-tracking SDKs.</li>
+    <li>We <strong>do not collect</strong> precise location, microphone or camera content (the camera is only for owner/dog photos you choose to add, which stay on your device unless you enable cloud sync), contacts, calendar, or veterinary/medical records.</li>
+    <li>We <strong>do not require</strong> your real name — Laeli works fine without it.</li>
   </ul>
 
-  <h2>How we use OpenAI</h2>
-  <p>Coaching replies are generated by OpenAI's gpt-4o-mini model. On each coaching request we send:</p>
+  <h2><span class="num">5.</span>How we use your data</h2>
   <ul>
-    <li>Your dog's profile (no real-name identifying information unless you typed it)</li>
-    <li>Your most recent journal entries (last 3 days on Free; full history on Pro and Pro+)</li>
-    <li>The current chat history (last few turns) and rolling memory snapshots of past sessions</li>
-    <li><strong>Today's training-plan tasks and how many you've completed</strong>, so the reply matches your actual progress</li>
-    <li><strong>Short pattern summaries computed from your recent journal entries</strong> (e.g. "evening biting cluster x3 in last 7 days"), so the coach can address patterns directly</li>
-    <li><strong>Safety-routing signals</strong> — category labels such as "blood or bleeding" or "child or baby safety" computed from the words in your recent entries and your message, used to decide whether the coach should answer normally, add a vet-referral note, or escalate to a safety-first reply</li>
-    <li><strong>If you logged a red-flag event in the last 48 hours</strong>, a short excerpt of that log (title, log ID, timestamp) so the coach can follow up instead of moving on</li>
-    <li>Your specific question</li>
-  </ul>
-  <p>OpenAI does NOT train on this data (per their API terms for paid customers). We do not log requests beyond what's needed for billing and abuse prevention.</p>
-
-  <h2>Crash reporting (Sentry)</h2>
-  <p>We use Sentry to capture crashes and errors so we can fix bugs. Reports include technical context (stack traces, app version, device model, OS version) and a structured event payload. We run user-input and log strings through a redaction layer before they reach Sentry, so journal text, chat messages, owner name, dog name, email addresses, and similar fields are replaced with placeholders (e.g. <code>[redacted-email]</code>) before the report leaves your device. Reports are stored in Sentry's EU/US infrastructure under our project and retained per Sentry's standard retention (90 days by default for our plan).</p>
-
-  <h2>Server-side logs</h2>
-  <p>Our coaching backend (hosted on Supabase Edge Functions) writes operational logs while it processes a request — things like "request received", "rate limit hit", "model returned unexpected format". These logs may incidentally contain short excerpts of model output or user input (for example, the first 200 characters of an AI reply when it fails to parse). We run a redaction layer over these log lines so known PII fields (names, emails, IDs, free-text journal/chat content) are replaced with placeholders before they are written. Logs are retained per Supabase's standard log retention for our plan and are only accessible to Laeli engineers for debugging and abuse prevention.</p>
-
-  <h2>Retention and deletion</h2>
-  <ul>
-    <li>Local data stays on your device until you delete it from the app or uninstall.</li>
-    <li>Server-side data (auth account, journal sync, chat history) is retained as long as your account is active.</li>
-    <li><strong>Account deletion is available in Profile → Settings → Delete account.</strong> This removes your Supabase data and signs you out. Locally stored data is also wiped on the same device. Deletion is processed within 30 days.</li>
-    <li>Anonymous accounts that haven't been used in 365 days are automatically deleted along with their associated data.</li>
+    <li>Provide and personalize the coaching, plan, and journal features.</li>
+    <li>Detect behavior patterns and route safety-sensitive messages appropriately.</li>
+    <li>Create and secure your account and enforce subscription limits.</li>
+    <li>Schedule the reminders you set.</li>
+    <li>Fix crashes, prevent abuse, and keep the service reliable.</li>
+    <li>Respond to your support and contact-form messages.</li>
+    <li>Comply with law and enforce our Terms.</li>
   </ul>
 
-  <h2>Children</h2>
-  <p>Laeli is not designed for users under 13. We do not knowingly collect data from children. If you are a parent who believes your child has used Laeli, email <code>support@laeli.app</code> and we'll delete the account.</p>
+  <h2><span class="num">6.</span>Our legal bases (EEA / UK GDPR)</h2>
+  <p>Where the GDPR or UK GDPR applies, we rely on: <strong>performance of our contract</strong> with you (to provide the app you signed up for); our <strong>legitimate interests</strong> (to secure, debug, improve, and prevent abuse of the service); your <strong>consent</strong> (e.g. optional photos, or any future marketing — which you can withdraw); and <strong>legal obligation</strong>. Where safety-routing involves health-adjacent context, we process it because it is necessary to provide the service you requested and at your direction.</p>
 
-  <h2>Your rights</h2>
+  <h2><span class="num">7.</span>How the Laeli AI works</h2>
+  <p>Coaching replies are generated by <strong>OpenAI's <code>gpt-4o-mini</code> model</strong>. On each coaching request we send: your dog's profile (no real-name identifiers unless you typed them); your most recent journal entries (last 3 days on Free; full history on paid tiers); recent chat turns and rolling memory snapshots; today's plan and how much you've completed; short pattern summaries; safety-routing labels; a brief excerpt of any red-flag log from the last 48 hours; and your question. <strong>OpenAI does not train on this data</strong> (per their API terms for business customers), and we don't log requests beyond what's needed for billing and abuse prevention.</p>
+
+  <h2><span class="num">8.</span>Who we share data with</h2>
+  <p>We share data only with vetted providers who process it <strong>on our behalf</strong>, under contract, for the purposes above:</p>
+  <ul>
+    <li><strong>OpenAI</strong> — generates coaching replies. Does not train on your data.</li>
+    <li><strong>Supabase</strong> — our backend: authentication, database, serverless functions, and logs.</li>
+    <li><strong>Sentry</strong> — crash and error reporting (with PII redacted before it leaves your device).</li>
+    <li><strong>Apple App Store &amp; RevenueCat</strong> — process and manage your subscription.</li>
+    <li><strong>Resend</strong> — delivers contact-form and account emails.</li>
+    <li><strong>Cloudflare</strong> — hosts laeli.app, routes our <code>support@laeli.app</code> email, and helps protect against abuse and bots.</li>
+  </ul>
+  <p>We may also disclose data where required to comply with law, respond to lawful requests, enforce our Terms, or protect the rights, property, or safety of users, the public, or Laeli. If Laeli is ever involved in a merger or acquisition, data may transfer as part of that transaction, subject to this policy.</p>
+
+  <h2><span class="num">9.</span>Where your data is stored &amp; international transfers</h2>
+  <p>Your data lives on your device and on our providers' infrastructure, which may be located in the <strong>United States and/or the European Union</strong>. Where we transfer personal data out of the EEA or UK, we rely on appropriate safeguards such as <strong>Standard Contractual Clauses</strong> and our providers' own compliance frameworks.</p>
+
+  <h2><span class="num">10.</span>Cookies &amp; similar technologies</h2>
+  <p>The <strong>app uses no advertising cookies or tracking SDKs</strong>. The <code>laeli.app</code> website is a static site that does not set advertising or analytics cookies; our infrastructure provider may set <strong>strictly necessary</strong> cookies for security and bot protection. If we ever add analytics, we will update this policy and, where required, ask for your consent.</p>
+
+  <h2><span class="num">11.</span>How long we keep your data</h2>
+  <ul>
+    <li><strong>Local data</strong> stays on your device until you delete it in-app or uninstall.</li>
+    <li><strong>Server-side data</strong> (account, synced journal, chat history) is kept while your account is active.</li>
+    <li><strong>Account deletion</strong> is available in <strong>Profile → Settings → Delete account</strong> — it removes your backend data, signs you out, and wipes local data on that device. Processed within <strong>30 days</strong>.</li>
+    <li><strong>Inactive anonymous accounts</strong> unused for <strong>365 days</strong> are deleted automatically.</li>
+    <li><strong>Contact-form emails</strong> are kept only as long as needed to handle your enquiry, then deleted.</li>
+    <li><strong>Crash reports</strong> follow Sentry's standard retention (90 days on our plan); <strong>server logs</strong> follow our backend provider's standard retention.</li>
+  </ul>
+
+  <h2><span class="num">12.</span>How we protect your data</h2>
+  <p>We use encryption in transit and at rest where our providers support it, redact known personal fields <strong>before</strong> crash reports and logs are written, and limit access to Laeli engineers for debugging and abuse prevention. No system is ever completely secure, but we take commercially reasonable measures to protect your data.</p>
+
+  <h2><span class="num">13.</span>Data breaches</h2>
+  <p>If a security incident affects your personal data, we will assess it promptly and notify you and any relevant supervisory authority where required by law.</p>
+
+  <h2><span class="num">14.</span>Your privacy rights</h2>
   <p>You can at any time:</p>
   <ul>
-    <li>Export your data — <code>support@laeli.app</code></li>
-    <li>Delete your account — Profile → Settings → Delete account</li>
-    <li>Ask what data we hold about you — <code>support@laeli.app</code></li>
+    <li><strong>Export</strong> your data — email <code>support@laeli.app</code>.</li>
+    <li><strong>Delete</strong> your account — Profile → Settings → Delete account.</li>
+    <li><strong>Ask</strong> what data we hold about you — <code>support@laeli.app</code>.</li>
   </ul>
-  <p>If you are in the EU / UK, you have additional GDPR rights including the right to object, restrict processing, and lodge a complaint with your local data protection authority.</p>
+  <p>If you are in the <strong>EEA or UK</strong>, you also have the rights to access, rectify, erase, restrict, port, and object to processing of your data, to withdraw consent, and to lodge a complaint with your local data protection authority. We respond to verified requests within <strong>30 days</strong> (extendable for complex requests, with notice).</p>
 
-  <h2>Changes to this policy</h2>
-  <p>We will notify you in the app and via email if we materially change how we collect or use your data. Continued use of Laeli after such notice constitutes acceptance.</p>
+  <h2><span class="num">15.</span>US state privacy rights</h2>
+  <p>If you are a resident of <strong>California</strong> (CCPA/CPRA) or of <strong>Virginia, Colorado, Connecticut, Utah</strong>, or another US state with a comprehensive privacy law, you have rights to know, access, correct, delete, and obtain a copy of your personal information, and to opt out of the "sale" or "sharing" of personal information and of targeted advertising. <strong>Laeli does not sell or share your personal data and does not use it for targeted advertising</strong>, so there is nothing to opt out of — but you can still exercise your other rights by emailing <code>support@laeli.app</code>. We will not discriminate against you for exercising any right, and you may use an authorized agent.</p>
 
-  <h2>Contact</h2>
-  <p><code>support@laeli.app</code></p>
+  <h2><span class="num">16.</span>Children's privacy</h2>
+  <p>Laeli is <strong>not directed to children under 13</strong> (or under the minimum age of digital consent in your country, where higher). We do not knowingly collect personal data from children. If you believe a child has provided us data, email <code>support@laeli.app</code> and we will delete the account.</p>
+
+  <h2><span class="num">17.</span>Third-party links</h2>
+  <p>Our app and website may link to third-party sites or services. We are not responsible for their privacy practices — please review their policies.</p>
+
+  <h2><span class="num">18.</span>Changes to this policy</h2>
+  <p>We may update this policy from time to time. We will notify you in the app and/or by email of material changes. Continued use of Laeli after a change takes effect constitutes acceptance.</p>
+
+  <h2><span class="num">19.</span>How to contact us</h2>
+  <p>Questions or requests about your privacy:</p>
+  <p><span class="fill">[Legal Entity Name]</span><br><span class="fill">[Registered address]</span><br><code>support@laeli.app</code></p>
 
   <div class="doc-footer">
     <a href="/">← Back home</a> &nbsp;·&nbsp; <a href="/terms">Terms of Service</a>
