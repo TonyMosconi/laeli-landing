@@ -277,6 +277,10 @@
     .ico.coral { background: radial-gradient(125% 125% at 30% 20%, #fbddce 0%, #f1b095 100%); }
     .ico.sage  { background: radial-gradient(125% 125% at 30% 20%, #e8eecd 0%, #bccf90 100%); }
     .ico.teal  { background: radial-gradient(125% 125% at 30% 20%, #ddefe9 0%, #a3d0c4 100%); }
+    .ico.peach { background: radial-gradient(125% 125% at 30% 20%, #fbe6cf 0%, #f3c193 100%); }
+    /* full-bleed claymation tile — the AI card's chat badge fills its own well */
+    .card .ico.fill { overflow: hidden; background: radial-gradient(125% 125% at 30% 20%, #eaf1fb 0%, #cfe0f4 100%); }
+    .card .ico.fill img { width: 100%; height: 100%; max-height: none; object-fit: cover; border-radius: inherit; filter: none; }
 
     /* split feature with the walk scene */
     .split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 44px; align-items: center; }
@@ -297,7 +301,7 @@
     .honesty::after { content:""; position:absolute; right:-90px; top:-90px; width:340px; height:340px; background: radial-gradient(closest-side, rgba(236,122,85,0.5), transparent 70%); }
     .honesty::before { content:""; position:absolute; left:-80px; bottom:-100px; width:320px; height:320px; background: radial-gradient(closest-side, rgba(81,121,190,0.5), transparent 70%); }
     .honesty .kicker { color: var(--action); position: relative; }
-    .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; font-size: clamp(26px, 2.8vw, 34px); }
+    .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; font-size: clamp(22px, 2.2vw, 28px); }
     .honesty p { color: rgba(255,248,236,0.85); font-size: 18px; font-weight: 600; max-width: 38em; margin: 20px 0 0; position: relative; }
 
     /* final CTA */
@@ -321,7 +325,7 @@
     /* reveal */
     .reveal { opacity: 0; transform: translateY(20px); animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
     @keyframes rise { to { opacity: 1; transform: none; } }
-    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}.d6{animation-delay:.55s}
+    .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}.d6{animation-delay:.55s}.d7{animation-delay:.65s}
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; animation: none; }
       .phone, .blob-accent, .chat-card, .pill-top, .eyebrow .dot, .atmosphere::before { animation: none; }
@@ -451,20 +455,34 @@
             </div>
           </div>
           <div class="card reveal d3">
-            <div class="ico sage"><img src="assets/today-first-calm-step.webp" alt=""></div>
+            <div class="ico fill"><img src="assets/chat-trust-mark.webp" alt=""></div>
+            <div class="card-body">
+              <h3>A real AI coach</h3>
+              <p>Not a generic chatbot. Laeli is real AI trained on force-free, expert-backed methods — and it actually knows your dog's age, breed, and history.</p>
+            </div>
+          </div>
+          <div class="card reveal d4">
+            <div class="ico fill"><img src="assets/daily-door-scene.png" alt=""></div>
             <div class="card-body">
               <h3>A real daily plan</h3>
               <p>Short, doable training tasks every day — honest day-by-day programs, never "fix it in a weekend" promises.</p>
             </div>
           </div>
-          <div class="card reveal d4">
+          <div class="card reveal d5">
             <div class="ico coral"><img src="assets/journal-clue.webp" alt=""></div>
             <div class="card-body">
               <h3>A journal that learns</h3>
               <p>Log wins and setbacks in seconds. Laeli spots patterns — like an evening biting cluster — and adapts the coaching.</p>
             </div>
           </div>
-          <div class="card reveal d5">
+          <div class="card reveal d6">
+            <div class="ico peach"><img src="assets/care-grooming.png" alt=""></div>
+            <div class="card-body">
+              <h3>Care that never slips</h3>
+              <p>Vaccines, meds, vet visits, grooming, feeding — gentle reminders keep the whole routine on track, so nothing important slips your mind.</p>
+            </div>
+          </div>
+          <div class="card reveal d7">
             <div class="ico teal"><img src="assets/coach-trust-mark.webp" alt=""></div>
             <div class="card-body">
               <h3>Safe by design</h3>
