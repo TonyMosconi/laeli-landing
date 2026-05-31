@@ -110,9 +110,10 @@
       border-radius: 999px;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 8px 24px rgba(40,46,70,0.10);
     }
-    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+    .brand { display: flex; align-items: center; gap: 4px; text-decoration: none; color: var(--ink); }
     .brand-mark { width: 40px; height: 40px; border-radius: 13px; object-fit: cover; box-shadow: 0 6px 14px rgba(40,46,70,0.22); background: var(--teal); }
     .brand-name { font-family: var(--display); font-weight: 900; font-size: 23px; letter-spacing: -0.01em; }
+    .brand-wordmark { height: 30px; width: auto; display: block; }
     .nav-links { display: flex; align-items: center; gap: 6px; }
     .nav-links a {
       color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 15px;
@@ -355,8 +356,8 @@
   <nav class="reveal d1">
     <div class="nav-inner">
       <a class="brand" href="/">
-        <img class="brand-mark" src="mascot.webp" alt="Laeli mascot" width="40" height="40">
-        <span class="brand-name">Laeli</span>
+        <img class="brand-mark" src="laeli-symbol.png" alt="Laeli" width="40" height="40" style="background:none;border-radius:0;box-shadow:none;object-fit:contain;">
+        <img class="brand-wordmark" src="laeli-wordmark.png" alt="Laeli">
       </a>
       <div class="nav-links">
         <a class="hide-sm" href="/how-it-works">How it works</a>
@@ -407,9 +408,9 @@
               <div class="notch" aria-hidden="true"></div>
               <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
               <div class="app-head">
-                <img class="app-ava" src="mascot.webp" alt="">
+                <img class="app-ava" src="laeli-symbol.png" alt="" style="object-fit:contain;box-shadow:none;border-radius:0;">
                 <div>
-                  <div class="app-title">Laeli</div>
+                  <div class="app-title"><img src="laeli-wordmark.png" alt="Laeli" style="height:20px;width:auto;display:block;"></div>
                   <div class="app-sub">YOUR COACH · ONLINE</div>
                 </div>
               </div>
@@ -430,7 +431,7 @@
           </div>
           <span class="pill-top" aria-hidden="true"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span> Today's plan, done</span>
           <div class="chat-card" aria-hidden="true">
-            <div class="who"><img src="mascot.webp" alt=""><b>Laeli</b> <span class="on">· coach</span></div>
+            <div class="who"><img src="laeli-symbol.png" alt="" style="object-fit:contain;border-radius:0;"><img src="laeli-wordmark.png" alt="Laeli" style="height:14px;width:auto;"> <span class="on">· coach</span></div>
             <p><b>Great progress with Milo!</b> Two of three done — the redirect drill is next 🐾</p>
           </div>
         </div>
@@ -528,7 +529,7 @@
 
     <section class="final" id="get">
       <div class="wrap">
-        <img class="mascot-final reveal d1" src="mascot.webp" alt="Laeli mascot">
+        <img class="mascot-final reveal d1" src="laeli-symbol.png" alt="Laeli mascot" style="object-fit:contain;box-shadow:none;border-radius:0;">
         <h2 class="reveal d2">Be first to train with Laeli.</h2>
         <p class="reveal d3">We're putting the finishing touches on the iOS app. Want in early? Reach out and we'll get you a TestFlight invite.</p>
         <div class="cta-row reveal d4" style="justify-content:center;">
