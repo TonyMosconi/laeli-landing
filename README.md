@@ -49,6 +49,7 @@ error and the page still offers the `support@laeli.app` mailto fallback.
 
 ## Pre-launch
 
-The legal pages derive from DRAFT markdown. Replace the `[Legal Entity
-Name]` / `[Jurisdiction TBD]` placeholders and complete legal review
-before App Store submission.
+The legal pages are finalized with the live entity **Envol Inc** (privacy,
+terms, and the footer copyright, deployed 2026-06-03) — the `[Legal Entity
+Name]` / `[Jurisdiction TBD]` placeholders are filled and the App Store legal
+reject-blocker is cleared.

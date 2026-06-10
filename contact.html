@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — Laeli</title>
 <meta name="description" content="Get in touch with the Laeli team — questions, feedback, or early-access requests.">
+<link rel="canonical" href="https://laeli.app/contact">
+<link rel="apple-touch-icon" href="/symbol-180.png">
+<meta property="og:site_name" content="Laeli">
+<meta property="og:title" content="Contact — Laeli">
+<meta property="og:description" content="Get in touch with the Laeli team — questions, feedback, or early-access requests.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://laeli.app/contact">
+<meta property="og:image" content="https://laeli.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact — Laeli">
+<meta name="twitter:description" content="Get in touch with the Laeli team — questions, feedback, or early-access requests.">
+<meta name="twitter:image" content="https://laeli.app/og-image.png">
 <meta name="theme-color" content="#9cc0ec">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,6 +97,24 @@
   .field input:focus, .field textarea:focus { outline: none; border-color: var(--input-focus); box-shadow: 0 0 0 4px rgba(238,155,114,0.2); }
   .hp { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
 
+  /* attachments */
+  .field .optional { font-weight: 700; color: var(--text-muted); }
+  .dropzone { position: relative; border: 2px dashed var(--border-strong); border-radius: 16px; background: rgba(255,255,255,0.45);
+    padding: 20px 16px; cursor: pointer; transition: border-color 140ms ease, background 140ms ease; }
+  .dropzone:hover, .dropzone:focus-visible, .dropzone.drag { border-color: var(--input-focus); background: rgba(238,155,114,0.09); outline: none; }
+  .dropzone-inner { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--text-muted); font-weight: 700; font-size: 15px; pointer-events: none; }
+  .dropzone-inner svg { width: 20px; height: 20px; flex: none; }
+  .file-input-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); border: 0; }
+  .attach-list { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .attach-item { display: flex; align-items: center; gap: 10px; background: var(--ivory); border: 1px solid var(--border); border-radius: 12px; padding: 9px 12px; }
+  .attach-item .ic { width: 18px; height: 18px; flex: none; color: var(--care); }
+  .attach-item .nm { flex: 1; min-width: 0; font-size: 14px; font-weight: 700; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .attach-item .sz { font-size: 12px; font-weight: 700; color: var(--text-muted); flex: none; }
+  .attach-item .rm { border: none; background: none; cursor: pointer; padding: 3px; color: var(--text-muted); display: grid; place-items: center; border-radius: 6px; flex: none; }
+  .attach-item .rm:hover { color: var(--care); background: rgba(198,106,82,0.1); }
+  .attach-item .rm svg { width: 16px; height: 16px; }
+  .attach-hint { margin: 7px 2px 0; font-size: 12.5px; font-weight: 700; color: var(--text-muted); }
+
   .submit {
     margin-top: 4px; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
     font-family: var(--body); font-weight: 800; font-size: 16px; color: var(--ink);
@@ -157,6 +187,19 @@
         <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
       </div>
 
+      <div class="field">
+        <label for="file-input">Attachments <span class="optional">(optional)</span></label>
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Attach up to 3 images or PDF files">
+          <input type="file" id="file-input" class="file-input-hidden" accept="image/png,image/jpeg,image/webp,image/heic,application/pdf" multiple aria-label="Choose files to attach">
+          <div class="dropzone-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+            <span class="dropzone-text">Drag files here, or click to attach — up to 3</span>
+          </div>
+        </div>
+        <ul class="attach-list" id="attach-list"></ul>
+        <p class="attach-hint">Images or PDF · up to 3 files · 5 MB each</p>
+      </div>
+
       <button class="submit" type="submit" id="submit-btn">
         Send message
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -182,15 +225,87 @@
     var status = document.getElementById('status');
     var done = document.getElementById('done');
     var btn = document.getElementById('submit-btn');
+    var dropzone = document.getElementById('dropzone');
+    var fileInput = document.getElementById('file-input');
+    var attachList = document.getElementById('attach-list');
+
+    var MAX_FILES = 3;
+    var MAX_BYTES = 5 * 1024 * 1024;
+    var ALLOWED = ['image/png', 'image/jpeg', 'image/webp', 'image/heic', 'application/pdf'];
+    var attachments = []; // { name, type, size, content(base64) }
+
+    function fmtSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return Math.round(bytes / 1024) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+    function showError(msg) { status.textContent = msg; status.className = 'status err show'; }
+    function clearStatus() { status.className = 'status'; }
+
+    function render() {
+      attachList.innerHTML = '';
+      attachments.forEach(function (a, i) {
+        var li = document.createElement('li');
+        li.className = 'attach-item';
+        li.innerHTML =
+          '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
+          '<span class="nm"></span><span class="sz"></span>' +
+          '<button type="button" class="rm" aria-label="Remove attachment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
+        li.querySelector('.nm').textContent = a.name;
+        li.querySelector('.sz').textContent = fmtSize(a.size);
+        li.querySelector('.rm').addEventListener('click', function () { attachments.splice(i, 1); render(); });
+        attachList.appendChild(li);
+      });
+    }
+
+    function readAsBase64(file) {
+      return new Promise(function (resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var res = String(reader.result || '');
+          var comma = res.indexOf(',');
+          resolve(comma >= 0 ? res.slice(comma + 1) : res);
+        };
+        reader.onerror = function () { reject(reader.error); };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function addFiles(fileList) {
+      clearStatus();
+      Array.prototype.slice.call(fileList || []).forEach(function (file) {
+        if (attachments.length >= MAX_FILES) { showError('You can attach up to ' + MAX_FILES + ' files.'); return; }
+        if (ALLOWED.indexOf(file.type) === -1) { showError('“' + file.name + '” isn’t a supported type (images or PDF only).'); return; }
+        if (file.size > MAX_BYTES) { showError('“' + file.name + '” is over 5 MB.'); return; }
+        readAsBase64(file).then(function (content) {
+          if (attachments.length >= MAX_FILES) return;
+          attachments.push({ name: file.name, type: file.type, size: file.size, content: content });
+          render();
+        }).catch(function () { showError('Could not read “' + file.name + '”.'); });
+      });
+    }
+
+    dropzone.addEventListener('click', function () { fileInput.click(); });
+    dropzone.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+    });
+    fileInput.addEventListener('change', function () { addFiles(fileInput.files); fileInput.value = ''; });
+    dropzone.addEventListener('dragover', function (e) { e.preventDefault(); dropzone.classList.add('drag'); });
+    dropzone.addEventListener('dragleave', function (e) { e.preventDefault(); dropzone.classList.remove('drag'); });
+    dropzone.addEventListener('drop', function (e) {
+      e.preventDefault(); dropzone.classList.remove('drag');
+      if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files);
+    });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      status.className = 'status';
+      clearStatus();
       btn.disabled = true;
       var original = btn.innerHTML;
       btn.textContent = 'Sending…';
 
       var data = Object.fromEntries(new FormData(form).entries());
+      data.attachments = attachments;
 
       fetch('/api/contact', {
         method: 'POST',
@@ -203,14 +318,12 @@
           form.style.display = 'none';
           done.classList.add('show');
         } else {
-          status.textContent = json.message || 'Something went wrong. Please email support@laeli.app.';
-          status.className = 'status err show';
+          showError(json.message || 'Something went wrong. Please email support@laeli.app.');
           btn.disabled = false; btn.innerHTML = original;
         }
       })
       .catch(function () {
-        status.textContent = 'Network error. Please email support@laeli.app.';
-        status.className = 'status err show';
+        showError('Network error. Please email support@laeli.app.');
         btn.disabled = false; btn.innerHTML = original;
       });
     });

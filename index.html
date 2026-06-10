@@ -6,14 +6,34 @@
   <title>Laeli — AI dog training coach</title>
   <meta name="description" content="Laeli is an AI dog training coach for every life stage: puppy, adopted adult, rescue, and senior dogs. Daily, expert-backed, force-free guidance. Coming soon to iOS.">
   <meta name="theme-color" content="#5179be">
+  <link rel="canonical" href="https://laeli.app/">
+  <meta property="og:site_name" content="Laeli">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Laeli — AI dog training coach">
   <meta property="og:description" content="Daily, expert-backed training guidance for every life stage. Coming soon to iOS.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://laeli.app/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://laeli.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Laeli — the honest AI dog coach, for every stage">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Laeli — AI dog training coach">
   <meta name="twitter:description" content="Daily, expert-backed training guidance for every life stage. Coming soon to iOS.">
+  <meta name="twitter:image" content="https://laeli.app/og-image.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+
+  <link rel="apple-touch-icon" href="/symbol-180.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Organization", "@id": "https://laeli.app/#org", "name": "Laeli", "url": "https://laeli.app/", "logo": "https://laeli.app/laeli-symbol.png" },
+      { "@type": "WebSite", "@id": "https://laeli.app/#website", "name": "Laeli", "url": "https://laeli.app/", "publisher": { "@id": "https://laeli.app/#org" } },
+      { "@type": "MobileApplication", "name": "Laeli — AI dog training coach", "operatingSystem": "iOS", "applicationCategory": "LifestyleApplication", "description": "An AI dog training coach for every life stage — puppy, adopted adult, rescue, and senior. Daily, expert-backed, force-free guidance.", "url": "https://laeli.app/", "image": "https://laeli.app/og-image.png", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "publisher": { "@id": "https://laeli.app/#org" } }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,7 +145,7 @@
     @media (max-width: 720px) { .nav-links .hide-sm { display: none; } }
 
     /* ---------- Hero ---------- */
-    .hero { padding: 52px 0 28px; }
+    .hero { padding: 52px 0 40px; }
     .hero-grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 44px; align-items: center; }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 9px;
@@ -244,11 +264,11 @@
     .pill-top .tick svg { width: 11px; height: 11px; color: #fff; }
 
     /* ---------- Sections ---------- */
-    section.block { padding: 60px 0; }
+    section.block { padding: 40px 0; }
     .section-head { max-width: 640px; margin-bottom: 38px; }
     .kicker { font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--care); margin: 0 0 14px; }
     h2 { font-family: var(--display); font-size: clamp(30px, 4vw, 46px); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
-    .section-head p { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px 0 0; }
+    .section-head p:not(.kicker) { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px 0 0; }
 
     .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .card {
@@ -303,10 +323,10 @@
     .honesty::before { content:""; position:absolute; left:-80px; bottom:-100px; width:320px; height:320px; background: radial-gradient(closest-side, rgba(81,121,190,0.5), transparent 70%); }
     .honesty .kicker { color: var(--action); position: relative; }
     .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; font-size: clamp(22px, 2.2vw, 28px); }
-    .honesty p { color: rgba(255,248,236,0.85); font-size: 18px; font-weight: 600; max-width: 38em; margin: 20px 0 0; position: relative; }
+    .honesty p:not(.kicker) { color: rgba(255,248,236,0.85); font-size: 18px; font-weight: 600; max-width: 38em; margin: 20px 0 0; position: relative; }
 
     /* final CTA */
-    .final { text-align: center; padding: 80px 0 60px; }
+    .final { text-align: center; padding: 0 0 40px; }
     .final .mascot-final { width: 104px; height: 104px; border-radius: 30px; box-shadow: var(--shadow-plush); margin-bottom: 22px; }
     .final h2 { margin: 0 auto; max-width: 14em; }
     .final p { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px auto 30px; max-width: 32em; }
@@ -324,7 +344,7 @@
     .copyright { color: var(--ink); font-size: 14px; font-weight: 800; }
 
     /* reveal */
-    .reveal { opacity: 0; transform: translateY(20px); animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+    .reveal { opacity: 0; animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
     @keyframes rise { to { opacity: 1; transform: none; } }
     .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}.d6{animation-delay:.55s}.d7{animation-delay:.65s}
     @media (prefers-reduced-motion: reduce) {
@@ -338,13 +358,72 @@
       .cards { grid-template-columns: 1fr; }
       .split { grid-template-columns: 1fr; gap: 28px; }
       .scene-card { order: -1; }
-      .section-head p { font-size: 16px; }
+      .section-head p:not(.kicker) { font-size: 16px; }
     }
     @media (max-width: 520px) {
       .wrap { padding: 0 20px; }
       .hero { padding: 28px 0 8px; }
       .chat-card { left: 0; max-width: 220px; }
       footer .f-links { margin-left: 0; flex-basis: 100%; }
+    }
+    /* reusable cream section — same ivory bg + 40px separation as "What's inside" */
+    section.cream-section { background: var(--ivory); padding: 40px 0; }
+    /* ===== What's inside (feature switcher) ===== */
+    .whats-inside { padding: 40px 0; background: var(--ivory); }
+    .whats-inside .wi-head { text-align: center; max-width: 680px; margin: 0 auto 40px; }
+    .whats-inside .wi-head h2 { font-family: var(--display); font-weight: 600; font-size: clamp(30px,4vw,46px); line-height: 1.04; letter-spacing: -0.02em; margin: 0; }
+    .whats-inside .wi-head p { color: var(--ink-muted); font-size: 18px; font-weight: 600; margin: 16px 0 0; }
+    /* horizontal numbered tab row on top */
+    .whats-inside .wi-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 0 auto 26px; }
+    .whats-inside .nav-item { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 1.5px solid var(--border); background: var(--ivory); padding: 9px 18px 9px 10px; border-radius: 999px; transition: .16s; font-family: var(--body); }
+    .whats-inside .nav-item .nn { flex: 0 0 30px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 900; font-size: 15px; background: #efe3cf; color: var(--ink-muted); transition: .16s; }
+    .whats-inside .nav-item .nt { font-weight: 800; font-size: 17px; color: var(--ink-muted); transition: .16s; }
+    .whats-inside .nav-item:hover { border-color: var(--border-strong); }
+    .whats-inside .nav-item.active { background: var(--ink); border-color: var(--ink); }
+    .whats-inside .nav-item.active .nn { background: var(--action); color: var(--ink); }
+    .whats-inside .nav-item.active .nt { color: var(--ivory); }
+    /* stage with flanking arrows */
+    .whats-inside .wi-stage-row { display: flex; align-items: center; gap: 14px; }
+    .whats-inside .wi-arrow { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--border-strong); background: var(--ivory); cursor: pointer; display: grid; place-items: center; transition: .16s; }
+    .whats-inside .wi-arrow:hover { background: var(--ink); border-color: var(--ink); }
+    .whats-inside .wi-arrow:hover svg { stroke: var(--ivory); }
+    .whats-inside .wi-arrow svg { width: 24px; height: 24px; stroke: var(--ink); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .whats-inside .stage { flex: 1 1 auto; position: relative; background: var(--cream); border-radius: 36px; padding: 8px 52px; min-height: 540px; overflow: hidden; }
+    .whats-inside .stage::before { content: ""; position: absolute; width: 480px; height: 480px; border-radius: 46% 54% 52% 48%; right: 6%; top: 50%; transform: translateY(-50%); background: radial-gradient(circle at 42% 40%, rgba(169,187,124,.40), rgba(247,210,172,.22) 56%, transparent 74%); }
+    .whats-inside .panel { display: none; grid-template-columns: 1.1fr 0.9fr; gap: 30px; align-items: center; height: 100%; position: relative; z-index: 1; }
+    .whats-inside .panel.active { display: grid; animation: wiFade .34s ease; }
+    /* flipped panels (2 Train, 4 Care): phones on the right, text on the left */
+    .whats-inside .panel.flip { grid-template-columns: 0.9fr 1.1fr; }
+    .whats-inside .panel.flip .copy { order: 1; }
+    .whats-inside .panel.flip .phones { order: 2; }
+    .whats-inside .stage:has(.panel.flip.active)::before { right: auto; left: 6%; }
+    @keyframes wiFade { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+    .whats-inside .phones { position: relative; height: 620px; }
+    .whats-inside .ph { position: absolute; left: 50%; bottom: 0; border-radius: 40px; filter: drop-shadow(0 28px 46px rgba(29,58,50,.30)); }
+    .whats-inside .ph.front { width: 322px; z-index: 3; }
+    .whats-inside .ph.back { width: 258px; z-index: 1; }
+    .whats-inside .p-2 .front { transform: translateX(calc(-50% + 40px)) rotate(2.5deg); }
+    .whats-inside .p-2 .back { transform: translateX(calc(-50% - 76px)) rotate(-7deg); bottom: 56px; }
+    .whats-inside .p-3 .front { width: 326px; transform: translateX(-50%) rotate(2deg); }
+    .whats-inside .p-3 .back.l { transform: translateX(calc(-50% - 92px)) rotate(-8deg); bottom: 60px; width: 264px; }
+    .whats-inside .p-3 .back.r { transform: translateX(calc(-50% + 86px)) rotate(8deg); bottom: 40px; width: 264px; z-index: 2; }
+    .whats-inside .copy { max-width: 400px; }
+    .whats-inside .copy h3 { font-family: var(--display); font-weight: 600; font-size: clamp(24px,2.5vw,32px); line-height: 1.07; letter-spacing: -0.018em; }
+    .whats-inside .copy .lede { color: var(--ink-muted); font-size: 16px; font-weight: 600; line-height: 1.5; margin: 13px 0 18px; }
+    .whats-inside .copy ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .whats-inside .copy li { display: flex; gap: 11px; align-items: flex-start; font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.34; }
+    .whats-inside .copy .chk { flex: 0 0 25px; width: 25px; height: 25px; border-radius: 50%; background: var(--accent-strong); display: grid; place-items: center; box-shadow: 0 3px 7px rgba(93,122,78,.3); margin-top: 1px; }
+    .whats-inside .copy .chk svg { width: 13px; height: 13px; stroke: var(--ivory); stroke-width: 3.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 900px) {
+      .whats-inside .wi-nav { overflow-x: auto; justify-content: flex-start; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+      .whats-inside .wi-arrow { display: none; }
+      .whats-inside .stage { padding: 18px 20px; }
+      .whats-inside .panel.active { grid-template-columns: 1fr; }
+      .whats-inside .phones { height: 560px; order: -1; }
+      .whats-inside .ph.front { width: 272px; }
+      .whats-inside .ph.back { width: 218px; }
+      .whats-inside .copy { max-width: 560px; margin: 0 auto; text-align: center; }
+      .whats-inside .copy li { text-align: left; }
     }
   </style>
 </head>
@@ -375,21 +454,24 @@
           <span class="eyebrow reveal d1"><span class="dot" aria-hidden="true"></span> Coming soon to iOS</span>
           <h1 class="reveal d2">Good dogs aren't&nbsp;born. <em>They're&nbsp;coached.</em></h1>
           <p class="lede reveal d3">
-            Laeli is an AI dog training coach for every life stage — puppy, newly-adopted adult, rescue, and senior.
-            Daily, expert-backed, force-free guidance built around how your dog actually lives. Not a generic chatbot.
+            Laeli is an AI dog training coach for every life stage — puppy, adopted adult, rescue, senior. Daily, expert-backed, force-free guidance built around how your dog actually lives.
           </p>
-          <div class="cta-row reveal d4">
-            <!-- Official-style App Store badge. Wire href to the real App Store URL at launch. QR code can go here later. -->
-            <a class="appstore" href="#get" aria-label="Download Laeli on the App Store (coming soon)">
-              <svg class="apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.13-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.12zM14.6 4.7c.72-.87 1.2-2.08 1.07-3.28-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.08 3.18 1.15.09 2.32-.58 3.03-1.45z"/></svg>
-              <span class="as-text"><span class="as-small">Download on the</span><span class="as-big">App Store</span></span>
-              <span class="as-flag">Soon</span>
-            </a>
-            <a class="btn btn-ghost" href="#how">See how it works</a>
+          <p class="reveal d3" style="font-size:19px;line-height:1.55;font-weight:700;color:var(--ink);margin:0 0 6px;max-width:560px;">
+            🐾 <strong>Join the waitlist</strong> — we'll tell you the moment we launch. Download in the <strong>first 24 hours</strong> and get <strong style="color:var(--care);">1 month of Pro, free</strong> — no card, no auto-charge; it just expires on its own.
+          </p>
+          <div class="cta-row reveal d4" style="flex-direction:column;align-items:stretch;gap:12px;max-width:480px;">
+            <form class="waitlist-form" novalidate style="display:flex;flex-wrap:wrap;gap:10px;width:100%;">
+              <input type="email" required autocomplete="email" placeholder="you@email.com" aria-label="Your email"
+                style="flex:1 1 210px;min-width:0;padding:14px 18px;border-radius:999px;border:1px solid var(--border-strong);background:var(--ivory);font-size:16px;color:var(--ink);outline:none;">
+              <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+              <button type="submit" class="btn" style="background:var(--care);color:#fff8ec;border:none;font-weight:800;white-space:nowrap;">Join the waitlist</button>
+            </form>
+            <div class="waitlist-status" role="status" aria-live="polite" style="display:none;border-radius:14px;padding:11px 16px;font-size:14px;font-weight:700;"></div>
+            <a class="btn btn-ghost" href="#how" style="align-self:flex-start;">See how it works</a>
           </div>
           <div class="store-note reveal d5">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            Launching soon · TestFlight available now
+            Free forever for everyone · no spam, just one email when we launch
           </div>
           <div class="stages reveal d6">
             <span class="chip"><span>🐶</span> Puppies</span>
@@ -440,6 +522,123 @@
   </header>
 
   <main>
+    <section class="whats-inside">
+      <div class="wrap">
+        <div class="wi-head">
+          <h2>What's inside Laeli?</h2>
+          <p>One calm home for the whole journey. Pick a part and take a look inside.</p>
+        </div>
+        <div class="switcher">
+          <div class="wi-nav">
+            <button class="nav-item active" data-i="0"><span class="nn">1</span><span class="nt">Coach</span></button>
+            <button class="nav-item" data-i="1"><span class="nn">2</span><span class="nt">Train</span></button>
+            <button class="nav-item" data-i="2"><span class="nn">3</span><span class="nt">Today</span></button>
+            <button class="nav-item" data-i="3"><span class="nn">4</span><span class="nt">Care</span></button>
+            <button class="nav-item" data-i="4"><span class="nn">5</span><span class="nt">Journal</span></button>
+          </div>
+          <div class="wi-stage-row">
+            <button class="wi-arrow" id="wi-prev" aria-label="Previous feature"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <div class="stage">
+            <div class="panel active">
+              <div class="phones p-2">
+                <img class="ph back" src="assets/app/coach-plan.webp" alt="Laeli chat suggesting a plan step" loading="lazy">
+                <img class="ph front" src="assets/app/coach-chat.webp" alt="Laeli AI coach answering a question" loading="lazy">
+              </div>
+              <div class="copy">
+                <h3>A coach that actually knows your dog</h3>
+                <p class="lede">Ask anything, day or night — a calm, specific answer shaped by your dog's age, breed and history. Then turn it into a plan in one tap.</p>
+                <ul>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Biting, potty, leash, a 2am "is this normal?"</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Force-free, grounded in 50+ trainers &amp; vet-behavior orgs</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Knows when to send you to the vet — never improvised</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel flip">
+              <div class="phones p-3">
+                <img class="ph back l" src="assets/app/train-road.webp" alt="A course day-road in Laeli" loading="lazy">
+                <img class="ph back r" src="assets/app/train-course.webp" alt="A Laeli course overview" loading="lazy">
+                <img class="ph front" src="assets/app/train-library.webp" alt="The Laeli course library" loading="lazy">
+              </div>
+              <div class="copy">
+                <h3>Real courses for every life stage</h3>
+                <p class="lede">22 source-backed programs for puppies, adopted adults, rescues and seniors — honest day-by-day, never "fixed in a weekend."</p>
+                <ul>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>A clear path — one calm step at a time</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Breed-specific, built around your dog</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Practice at your pace — advance when you're ready</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="phones p-2">
+                <img class="ph back" src="assets/app/today-progress.webp" alt="Laeli's honest progress dashboard" loading="lazy">
+                <img class="ph front" src="assets/app/today-home.webp" alt="Laeli's Today home with the daily step" loading="lazy">
+              </div>
+              <div class="copy">
+                <h3>One clear thing to do today</h3>
+                <p class="lede">Open Laeli and there's your dog's day — the next small step, ready to go. Progress you can trust, with no made-up scores.</p>
+                <ul>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Real progress — just what you and your dog actually did</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>"See your story" — the whole journey in their own numbers</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Gentle momentum — streaks and small wins, never guilt</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel flip">
+              <div class="phones p-2">
+                <img class="ph back" src="assets/app/care-list.webp" alt="A list of health reminders in Laeli" loading="lazy">
+                <img class="ph front" src="assets/app/care.webp" alt="Laeli's Care health tracker" loading="lazy">
+              </div>
+              <div class="copy">
+                <h3>Their health, never slipping</h3>
+                <p class="lede">Meds, vaccines, vet visits and weight — the whole medical routine in one place, with gentle reminders so nothing slips your mind.</p>
+                <ul>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Weight tracking, with the trend over time</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Dental &amp; grooming routines too</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>A separate record for every dog in the house</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="phones p-2">
+                <img class="ph back" src="assets/app/journal-cal.webp" alt="Laeli's month calendar of events" loading="lazy">
+                <img class="ph front" src="assets/app/journal.webp" alt="Laeli's journal day view" loading="lazy">
+              </div>
+              <div class="copy">
+                <h3>Every moment, kept</h3>
+                <p class="lede">A calendar of your dog's whole life — log milestones, outings and everyday wins in seconds, and Laeli spots the patterns.</p>
+                <ul>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Big days &amp; small moments — first "stay", beach days, gotcha day</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Spot patterns over time — and the coaching adapts</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>A separate journal per dog</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+            <button class="wi-arrow" id="wi-next" aria-label="Next feature"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var items = [].slice.call(document.querySelectorAll('.whats-inside .nav-item'));
+          var panels = [].slice.call(document.querySelectorAll('.whats-inside .panel'));
+          if (!items.length) return;
+          var cur = 0;
+          function go(i) {
+            cur = (i + panels.length) % panels.length;
+            items.forEach(function (x, k) { x.classList.toggle('active', k === cur); });
+            panels.forEach(function (x, k) { x.classList.toggle('active', k === cur); });
+          }
+          items.forEach(function (it) { it.addEventListener('click', function () { go(+it.dataset.i); }); });
+          var p = document.getElementById('wi-prev'), n = document.getElementById('wi-next');
+          if (p) p.addEventListener('click', function () { go(cur - 1); });
+          if (n) n.addEventListener('click', function () { go(cur + 1); });
+        })();
+      </script>
+    </section>
+
     <section class="block" id="how">
       <div class="wrap">
         <div class="section-head reveal d1">
@@ -459,7 +658,7 @@
             <div class="ico fill"><img src="assets/chat-trust-mark.webp" alt=""></div>
             <div class="card-body">
               <h3>A real AI coach</h3>
-              <p>Not a generic chatbot. Laeli is real AI trained on force-free, expert-backed methods — and it actually knows your dog's age, breed, and history.</p>
+              <p>Not a generic chatbot. Laeli is real AI grounded in force-free, expert-backed methods — and it actually knows your dog's age, breed, and history.</p>
             </div>
           </div>
           <div class="card reveal d4">
@@ -494,7 +693,7 @@
       </div>
     </section>
 
-    <section class="block">
+    <section class="block cream-section">
       <div class="wrap">
         <div class="split">
           <div class="scene-card reveal d1">
@@ -531,13 +730,15 @@
       <div class="wrap">
         <img class="mascot-final reveal d1" src="laeli-symbol.png" alt="Laeli mascot" style="object-fit:contain;box-shadow:none;border-radius:0;">
         <h2 class="reveal d2">Be first to train with Laeli.</h2>
-        <p class="reveal d3">We're putting the finishing touches on the iOS app. Want in early? Reach out and we'll get you a TestFlight invite.</p>
-        <div class="cta-row reveal d4" style="justify-content:center;">
-          <!-- Inert placeholder — wire href to the real App Store URL at launch (replace span with <a href="..."> and remove .is-inert). -->
-          <span class="appstore final-badge is-inert" role="img" aria-label="Coming soon to the App Store">
-            <span class="as-text"><span class="as-small">Request early access</span><span class="as-big">App Store · Soon</span></span>
-          </span>
-        </div>
+        <p class="reveal d3">Join the waitlist — we'll tell you the moment we launch. Download in the first 24 hours and get <strong>1 month of Pro, free</strong> — no card, no auto-charge; it just expires on its own.</p>
+        <form class="reveal d4 waitlist-form" novalidate style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:480px;margin:0 auto;">
+          <input type="email" name="email" required autocomplete="email" placeholder="you@email.com" aria-label="Your email"
+            style="flex:1 1 240px;min-width:0;padding:14px 18px;border-radius:999px;border:1px solid var(--border-strong);background:var(--ivory);font-size:16px;color:var(--ink);outline:none;">
+          <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+          <button type="submit" class="btn" style="background:var(--care);color:#fff8ec;border:none;font-weight:800;">Join the waitlist</button>
+        </form>
+        <div class="waitlist-status" role="status" aria-live="polite" style="display:none;margin:14px auto 0;max-width:480px;border-radius:16px;padding:13px 18px;font-size:15px;font-weight:700;"></div>
+        <p class="reveal d5" style="margin-top:14px;margin-bottom:0;font-size:13px;color:var(--ink-muted);">Coming soon to the App Store · no spam, just one email when we go live.</p>
       </div>
     </section>
 
@@ -547,10 +748,56 @@
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="/contact">Contact</a>
-          <span class="copyright">© 2026 Laeli</span>
+          <span class="copyright">© 2026 Envol Inc</span>
         </nav>
       </footer>
     </div>
   </main>
+  <script>
+    (function () {
+      // Source attribution: read ?ref= (or ?utm_source=) once, remember it for
+      // the visit, and send it with the signup so each waitlist join is tagged
+      // with the channel that drove it (e.g. laeli.app/?ref=ig).
+      var REF = (function () {
+        try {
+          var p = new URLSearchParams(location.search);
+          var r = p.get('ref') || p.get('utm_source') || '';
+          if (r) { try { sessionStorage.setItem('laeli_ref', r); } catch (e) {} }
+          else { try { r = sessionStorage.getItem('laeli_ref') || ''; } catch (e) {} }
+          return (r || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 32);
+        } catch (e) { return ''; }
+      })();
+      function bind(form) {
+        var emailEl = form.querySelector('input[type="email"]');
+        var btn = form.querySelector('button[type="submit"]');
+        var botcheck = form.querySelector('input[name="botcheck"]');
+        var status = form.parentElement.querySelector('.waitlist-status');
+        function show(msg, ok) {
+          if (!status) return;
+          status.innerHTML = msg;
+          status.style.display = 'block';
+          status.style.background = ok ? '#d9efdf' : '#ffe3da';
+          status.style.color = ok ? '#245c3c' : '#8a3422';
+          status.style.border = '1px solid ' + (ok ? '#aed8be' : '#eab1a0');
+        }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var email = (emailEl.value || '').trim();
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { show('Please enter a valid email address.', false); return; }
+          btn.disabled = true; var label = btn.textContent; btn.textContent = 'Joining…';
+          fetch('/api/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, botcheck: botcheck ? botcheck.value : '', ref: REF })
+          }).then(function (r) { return r.json(); }).then(function (d) {
+            if (d && d.success) { show("🐾 You're on the list! Look for our confirmation email — <strong style='color:#c0392b'>if it landed in spam or Promotions, mark it as safe so you'll get the launch-day reminder.</strong>", true); form.reset(); }
+            else { show((d && d.message) || 'Something went wrong. Please try again.', false); }
+          }).catch(function () { show('Network error. Please try again.', false); })
+            .finally(function () { btn.disabled = false; btn.textContent = label; });
+        });
+      }
+      document.querySelectorAll('.waitlist-form').forEach(bind);
+    })();
+  </script>
 </body>
 </html>
