@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="Laeli — AI dog training coach">
   <meta name="twitter:description" content="Daily, expert-backed training guidance for every life stage. Coming soon to iOS.">
   <meta name="twitter:image" content="https://laeli.app/og-image.png">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='20' fill='%23c66a52'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,sans-serif' font-weight='800' font-size='38' fill='%23fff8ec'>L</text></svg>">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=20260611"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=20260611">
 
   <link rel="apple-touch-icon" href="/symbol-180.png">
   <script type="application/ld+json">
@@ -37,7 +37,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito:wght@500;600;700;800;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -325,6 +325,45 @@
     .honesty h2 { color: var(--ivory); max-width: 16em; position: relative; font-size: clamp(22px, 2.2vw, 28px); }
     .honesty p:not(.kicker) { color: rgba(255,248,236,0.85); font-size: 18px; font-weight: 600; max-width: 38em; margin: 20px 0 0; position: relative; }
 
+    /* ---------- Real-dog polaroid wall (wide screens only) ---------- */
+    /* Photos live in the side gutters outside the 1120px content column and
+       vanish entirely when the gutters get too narrow to hold them.
+       Curated 2026-06-10: 7 photos down the page (hero L → features R,L →
+       how R → real-life L), closing on a two-dog DIAGONAL (why L →
+       final R) — warm palette only, never crowding one screenful, so the
+       wall reads loved, not busy. */
+    .rd-pol {
+      position: absolute; z-index: 1;
+      width: var(--rd-w, 330px);
+      background: #fffdf8; padding: 13px 13px 58px; border-radius: 5px;
+      box-shadow: 0 14px 32px rgba(29, 58, 50, 0.18), 0 3px 8px rgba(29, 58, 50, 0.08);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .rd-pol:hover { transform: rotate(0deg) translateY(-5px); }
+    .rd-pol img { width: 100%; aspect-ratio: 0.92; object-fit: cover; display: block; border-radius: 2px; }
+    .rd-pol .rd-cap {
+      position: absolute; left: 8px; right: 8px; bottom: 12px;
+      font-family: 'Caveat', cursive; font-weight: 600; font-size: 26px;
+      line-height: 1.1; color: #4a4338; text-align: center; white-space: nowrap; overflow: hidden;
+    }
+    /* Anchor to the 1120px content column, never the screen edge: each photo
+       hugs the column and may overlap panel corners by exactly --rd-kiss. */
+    :root { --rd-w: 330px; --rd-kiss: 26px; }
+    @media (max-width: 1879px) { :root { --rd-w: 240px; } }
+    .rd-pol.rd-left  { left:  max(14px, calc(50vw - 560px - var(--rd-w) + var(--rd-kiss))); }
+    .rd-pol.rd-left.rd-out { left: max(14px, calc(50vw - 560px - var(--rd-w) - 12px)); }
+    .rd-pol.rd-right { right: max(14px, calc(50vw - 560px - var(--rd-w) + var(--rd-kiss))); }
+    .rd-r1 { transform: rotate(-5.5deg); }
+    .rd-r2 { transform: rotate(4deg); }
+    .rd-r3 { transform: rotate(-3.5deg); }
+    .rd-r4 { transform: rotate(6deg); }
+    .rd-r5 { transform: rotate(-6.5deg); }
+    .rd-r6 { transform: rotate(3deg); }
+    .hero, .whats-inside, #how, .cream-section, #why, .final { position: relative; }
+    /* Below ~1580px the left/right clamp would push the kiss past the
+       designed 26px and risk touching column text — hide instead. */
+    @media (max-width: 1579px) { .rd-pol { display: none; } }
+
     /* final CTA */
     .final { text-align: center; padding: 0 0 40px; }
     .final .mascot-final { width: 104px; height: 104px; border-radius: 30px; box-shadow: var(--shadow-plush); margin-bottom: 22px; }
@@ -435,8 +474,8 @@
   <nav class="reveal d1">
     <div class="nav-inner">
       <a class="brand" href="/">
-        <img class="brand-mark" src="laeli-symbol.png" alt="Laeli" width="40" height="40" style="background:none;border-radius:0;box-shadow:none;object-fit:contain;">
-        <img class="brand-wordmark" src="laeli-wordmark.png" alt="Laeli">
+        <img class="brand-mark" src="laeli-symbol.png?v=20260610" alt="Laeli" width="40" height="40" style="background:none;border-radius:0;box-shadow:none;object-fit:contain;">
+        <img class="brand-wordmark" src="laeli-wordmark.png?v=20260610" alt="Laeli">
       </a>
       <div class="nav-links">
         <a class="hide-sm" href="/how-it-works">How it works</a>
@@ -448,6 +487,10 @@
   </nav>
 
   <header class="hero">
+    <figure class="rd-pol rd-left rd-out rd-r1" style="top:60px;margin-left:-3px" aria-hidden="true">
+      <img src="assets/real-dogs/gsd-lesson.webp" alt="" loading="lazy">
+      <figcaption class="rd-cap">Big brother's lesson</figcaption>
+    </figure>
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
@@ -490,9 +533,9 @@
               <div class="notch" aria-hidden="true"></div>
               <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
               <div class="app-head">
-                <img class="app-ava" src="laeli-symbol.png" alt="" style="object-fit:contain;box-shadow:none;border-radius:0;">
+                <img class="app-ava" src="laeli-symbol.png?v=20260610" alt="" style="object-fit:contain;box-shadow:none;border-radius:0;">
                 <div>
-                  <div class="app-title"><img src="laeli-wordmark.png" alt="Laeli" style="height:20px;width:auto;display:block;"></div>
+                  <div class="app-title"><img src="laeli-wordmark.png?v=20260610" alt="Laeli" style="height:20px;width:auto;display:block;"></div>
                   <div class="app-sub">YOUR COACH · ONLINE</div>
                 </div>
               </div>
@@ -513,7 +556,7 @@
           </div>
           <span class="pill-top" aria-hidden="true"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span> Today's plan, done</span>
           <div class="chat-card" aria-hidden="true">
-            <div class="who"><img src="laeli-symbol.png" alt="" style="object-fit:contain;border-radius:0;"><img src="laeli-wordmark.png" alt="Laeli" style="height:14px;width:auto;"> <span class="on">· coach</span></div>
+            <div class="who"><img src="laeli-symbol.png?v=20260610" alt="" style="object-fit:contain;border-radius:0;"><img src="laeli-wordmark.png?v=20260610" alt="Laeli" style="height:14px;width:auto;"> <span class="on">· coach</span></div>
             <p><b>Great progress with Milo!</b> Two of three done — the redirect drill is next 🐾</p>
           </div>
         </div>
@@ -523,6 +566,14 @@
 
   <main>
     <section class="whats-inside">
+      <figure class="rd-pol rd-left rd-r5" style="top:520px;margin-left:-5px" aria-hidden="true">
+        <img src="assets/real-dogs/puppy-crate.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Day one — 9 weeks old</figcaption>
+      </figure>
+      <figure class="rd-pol rd-right rd-r4" style="top:180px" aria-hidden="true">
+        <img src="assets/real-dogs/jrt-sit.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Sit — nailed it!</figcaption>
+      </figure>
       <div class="wrap">
         <div class="wi-head">
           <h2>What's inside Laeli?</h2>
@@ -541,24 +592,24 @@
             <div class="stage">
             <div class="panel active">
               <div class="phones p-2">
-                <img class="ph back" src="assets/app/coach-plan.webp" alt="Laeli chat suggesting a plan step" loading="lazy">
-                <img class="ph front" src="assets/app/coach-chat.webp" alt="Laeli AI coach answering a question" loading="lazy">
+                <img class="ph back" src="assets/app/coach-plan.webp?v=20260610" alt="Laeli chat suggesting a plan step" loading="lazy">
+                <img class="ph front" src="assets/app/coach-chat.webp?v=20260610" alt="Laeli AI coach answering a question" loading="lazy">
               </div>
               <div class="copy">
                 <h3>A coach that actually knows your dog</h3>
                 <p class="lede">Ask anything, day or night — a calm, specific answer shaped by your dog's age, breed and history. Then turn it into a plan in one tap.</p>
                 <ul>
                   <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Biting, potty, leash, a 2am "is this normal?"</li>
-                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Force-free, grounded in 50+ trainers &amp; vet-behavior orgs</li>
+                  <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Force-free, grounded in the world's leading trainers &amp; vet-behavior orgs</li>
                   <li><span class="chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Knows when to send you to the vet — never improvised</li>
                 </ul>
               </div>
             </div>
             <div class="panel flip">
               <div class="phones p-3">
-                <img class="ph back l" src="assets/app/train-road.webp" alt="A course day-road in Laeli" loading="lazy">
-                <img class="ph back r" src="assets/app/train-course.webp" alt="A Laeli course overview" loading="lazy">
-                <img class="ph front" src="assets/app/train-library.webp" alt="The Laeli course library" loading="lazy">
+                <img class="ph back l" src="assets/app/train-road.webp?v=20260610" alt="A course day-road in Laeli" loading="lazy">
+                <img class="ph back r" src="assets/app/train-course.webp?v=20260610" alt="A Laeli course overview" loading="lazy">
+                <img class="ph front" src="assets/app/train-library.webp?v=20260610" alt="The Laeli course library" loading="lazy">
               </div>
               <div class="copy">
                 <h3>Real courses for every life stage</h3>
@@ -572,8 +623,8 @@
             </div>
             <div class="panel">
               <div class="phones p-2">
-                <img class="ph back" src="assets/app/today-progress.webp" alt="Laeli's honest progress dashboard" loading="lazy">
-                <img class="ph front" src="assets/app/today-home.webp" alt="Laeli's Today home with the daily step" loading="lazy">
+                <img class="ph back" src="assets/app/today-progress.webp?v=20260610" alt="Laeli's honest progress dashboard" loading="lazy">
+                <img class="ph front" src="assets/app/today-home.webp?v=20260610" alt="Laeli's Today home with the daily step" loading="lazy">
               </div>
               <div class="copy">
                 <h3>One clear thing to do today</h3>
@@ -587,8 +638,8 @@
             </div>
             <div class="panel flip">
               <div class="phones p-2">
-                <img class="ph back" src="assets/app/care-list.webp" alt="A list of health reminders in Laeli" loading="lazy">
-                <img class="ph front" src="assets/app/care.webp" alt="Laeli's Care health tracker" loading="lazy">
+                <img class="ph back" src="assets/app/care-list.webp?v=20260610" alt="A list of health reminders in Laeli" loading="lazy">
+                <img class="ph front" src="assets/app/care.webp?v=20260610" alt="Laeli's Care health tracker" loading="lazy">
               </div>
               <div class="copy">
                 <h3>Their health, never slipping</h3>
@@ -602,8 +653,8 @@
             </div>
             <div class="panel">
               <div class="phones p-2">
-                <img class="ph back" src="assets/app/journal-cal.webp" alt="Laeli's month calendar of events" loading="lazy">
-                <img class="ph front" src="assets/app/journal.webp" alt="Laeli's journal day view" loading="lazy">
+                <img class="ph back" src="assets/app/journal-cal.webp?v=20260610" alt="Laeli's month calendar of events" loading="lazy">
+                <img class="ph front" src="assets/app/journal.webp?v=20260610" alt="Laeli's journal day view" loading="lazy">
               </div>
               <div class="copy">
                 <h3>Every moment, kept</h3>
@@ -640,6 +691,10 @@
     </section>
 
     <section class="block" id="how">
+      <figure class="rd-pol rd-right rd-r4" style="top:320px;margin-right:-14px" aria-hidden="true">
+        <img src="assets/real-dogs/meadow-stay.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">After our first "stay"</figcaption>
+      </figure>
       <div class="wrap">
         <div class="section-head reveal d1">
           <p class="kicker">How it works</p>
@@ -648,42 +703,42 @@
         </div>
         <div class="cards">
           <div class="card reveal d2">
-            <div class="ico blue"><img src="assets/profile-care.webp" alt=""></div>
+            <div class="ico blue"><img src="assets/profile-care.webp?v=20260610" alt=""></div>
             <div class="card-body">
               <h3>Ask anything, anytime</h3>
               <p>Biting, potty accidents, leash pulling, a 2am "is this normal?" — get a calm, specific answer instead of a forum rabbit hole.</p>
             </div>
           </div>
           <div class="card reveal d3">
-            <div class="ico fill"><img src="assets/chat-trust-mark.webp" alt=""></div>
+            <div class="ico fill"><img src="assets/chat-trust-mark.webp?v=20260610" alt=""></div>
             <div class="card-body">
               <h3>A real AI coach</h3>
               <p>Not a generic chatbot. Laeli is real AI grounded in force-free, expert-backed methods — and it actually knows your dog's age, breed, and history.</p>
             </div>
           </div>
           <div class="card reveal d4">
-            <div class="ico fill"><img src="assets/daily-door-scene.png" alt=""></div>
+            <div class="ico fill"><img src="assets/daily-door-scene.png?v=20260610" alt=""></div>
             <div class="card-body">
               <h3>A real daily plan</h3>
               <p>Short, doable training tasks every day — honest day-by-day programs, never "fix it in a weekend" promises.</p>
             </div>
           </div>
           <div class="card reveal d5">
-            <div class="ico coral"><img src="assets/journal-clue.webp" alt=""></div>
+            <div class="ico coral"><img src="assets/journal-clue.webp?v=20260610" alt=""></div>
             <div class="card-body">
               <h3>A journal that learns</h3>
               <p>Log wins and setbacks in seconds. Laeli spots patterns — like an evening biting cluster — and adapts the coaching.</p>
             </div>
           </div>
           <div class="card reveal d6">
-            <div class="ico peach"><img src="assets/care-grooming.png" alt=""></div>
+            <div class="ico peach"><img src="assets/care-grooming.png?v=20260610" alt=""></div>
             <div class="card-body">
               <h3>Care that never slips</h3>
               <p>Vaccines, meds, vet visits, grooming, feeding — gentle reminders keep the whole routine on track, so nothing important slips your mind.</p>
             </div>
           </div>
           <div class="card reveal d7">
-            <div class="ico teal"><img src="assets/coach-trust-mark.webp" alt=""></div>
+            <div class="ico teal"><img src="assets/coach-trust-mark.webp?v=20260610" alt=""></div>
             <div class="card-body">
               <h3>Safe by design</h3>
               <p>Medical, aggression, and severe-anxiety cases are routed to your vet or a certified behaviorist — never improvised.</p>
@@ -694,10 +749,14 @@
     </section>
 
     <section class="block cream-section">
+      <figure class="rd-pol rd-left rd-r3" style="top:150px;margin-left:-13px" aria-hidden="true">
+        <img src="assets/real-dogs/walk-leash.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Day 12 — loose leash!</figcaption>
+      </figure>
       <div class="wrap">
         <div class="split">
           <div class="scene-card reveal d1">
-            <img src="assets/scene-owner-walk.png" alt="A claymation owner walking her dog on a leash through a park">
+            <img src="assets/scene-owner-walk.png?v=20260610" alt="A claymation owner walking her dog on a leash through a park">
           </div>
           <div class="reveal d2">
             <p class="kicker">Built for real life</p>
@@ -713,6 +772,10 @@
     </section>
 
     <section class="block" id="why">
+      <figure class="rd-pol rd-right rd-r2" style="top:90px;margin-right:-5px" aria-hidden="true">
+        <img src="assets/real-dogs/recall-run.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Recall practice!</figcaption>
+      </figure>
       <div class="wrap">
         <div class="honesty reveal d1">
           <p class="kicker">Why Laeli</p>
@@ -727,8 +790,12 @@
     </section>
 
     <section class="final" id="get">
+      <figure class="rd-pol rd-left rd-r5" style="top:160px" aria-hidden="true">
+        <img src="assets/real-dogs/couch-rest.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Decompression, day 3</figcaption>
+      </figure>
       <div class="wrap">
-        <img class="mascot-final reveal d1" src="laeli-symbol.png" alt="Laeli mascot" style="object-fit:contain;box-shadow:none;border-radius:0;">
+        <img class="mascot-final reveal d1" src="laeli-symbol.png?v=20260610" alt="Laeli mascot" style="object-fit:contain;box-shadow:none;border-radius:0;">
         <h2 class="reveal d2">Be first to train with Laeli.</h2>
         <p class="reveal d3">Join the waitlist — we'll tell you the moment we launch. Download in the first 24 hours and get <strong>1 month of Pro, free</strong> — no card, no auto-charge; it just expires on its own.</p>
         <form class="reveal d4 waitlist-form" novalidate style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:480px;margin:0 auto;">
@@ -762,6 +829,12 @@
         try {
           var p = new URLSearchParams(location.search);
           var r = p.get('ref') || p.get('utm_source') || '';
+          if (!r) {
+            // Campaign paths serve this page directly (laeli.app/r/ig — no
+            // redirect, Meta treats redirect links as a spam signal).
+            var m = location.pathname.match(/^\/r\/([a-z0-9_-]{1,32})\/?$/i);
+            if (m) r = m[1];
+          }
           if (r) { try { sessionStorage.setItem('laeli_ref', r); } catch (e) {} }
           else { try { r = sessionStorage.getItem('laeli_ref') || ''; } catch (e) {} }
           return (r || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 32);
