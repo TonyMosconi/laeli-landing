@@ -91,7 +91,11 @@ async function handleContact(request, env) {
   // Honeypot: bots tick this hidden field — silently accept and drop.
   if (form.botcheck) return json({ success: true });
 
-  const name = String(form.name || "").trim();
+  // Cap + flatten the name: it flows into the Resend email SUBJECT and both
+  // bodies, so interior newlines/control chars must never survive (header-
+  // injection class), and an uncapped name bloats the subject. Mirrors the
+  // email-length cap below (2026-06-10 deep-dive, Lane 6 #6).
+  const name = String(form.name || "").replace(/[\r\n\t\u0000-\u001f]+/g, " ").trim().slice(0, 100);
   const email = String(form.email || "").trim();
   const message = String(form.message || "").trim();
 
@@ -346,17 +350,41 @@ async function handleWaitlist(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Canonical-host redirect: www + the bare pages.dev alias serve the exact
+    // same content, which Google Search Console flags as "duplicate without
+    // user-selected canonical" (2026-06-12 email). 301 GET/HEAD to the apex so
+    // Google consolidates everything onto laeli.app. Exact-match only — hashed
+    // preview deployments (<hash>.laeli-app.pages.dev) must keep serving so
+    // previews stay usable — and non-GET passes through so a form POST that
+    // somehow targets an alias host is never method-rewritten by the redirect.
+    if (
+      (url.hostname === "www.laeli.app" || url.hostname === "laeli-app.pages.dev") &&
+      (request.method === "GET" || request.method === "HEAD")
+    ) {
+      url.hostname = "laeli.app";
+      return Response.redirect(url.toString(), 301);
+    }
     if (url.pathname === "/api/contact") {
       return handleContact(request, env);
     }
     if (url.pathname === "/api/waitlist") {
       return handleWaitlist(request, env);
     }
-    // Clean campaign links: /r/<source> → home with ?ref=<source> so the link we
-    // SHARE stays tidy (laeli.app/r/ig) while attribution still flows through.
+    // Clean campaign links: /r/<source> serves the homepage DIRECTLY (HTTP 200,
+    // no redirect) — Meta's classifiers treat redirect links as a spam signal
+    // (the 2026-06-10 IG restriction), and the IG bio link is frozen until
+    // 2026-07-10 so the URL itself can't change. The page JS reads the source
+    // from the /r/<source> path for attribution.
     const refPath = url.pathname.match(/^\/r\/([a-z0-9_-]{1,32})\/?$/i);
     if (refPath) {
-      return Response.redirect(`${url.origin}/?ref=${refPath[1].toLowerCase()}`, 302);
+      return env.ASSETS.fetch(new Request(`${url.origin}/`, request));
+    }
+    // The homepage is served AT /r/<source>, so its relative asset URLs
+    // ("assets/app/x.webp", "laeli-symbol.png") resolve to /r/<asset>. Strip
+    // the /r prefix and serve the real file — otherwise Pages' fallback
+    // returns index.html as the "image" and every mockup renders broken.
+    if (url.pathname.startsWith("/r/")) {
+      return env.ASSETS.fetch(new Request(url.origin + url.pathname.slice(2), request));
     }
     // Everything else: serve the static site.
     return env.ASSETS.fetch(request);
