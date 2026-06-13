@@ -350,6 +350,18 @@
        hugs the column and may overlap panel corners by exactly --rd-kiss. */
     :root { --rd-w: 330px; --rd-kiss: 26px; }
     @media (max-width: 1879px) { :root { --rd-w: 240px; } }
+    /* 1380–1579px (MacBook-class screens): keep the hand-placed wall — the
+       exact same spots, sides, and tilts — the photos just slim to what the
+       gutter can hold (50vw - 548px ≈ 240px at 1580, so the width is
+       continuous across the breakpoint; the kiss stays 26px, which is still
+       2px clear of column text behind the wrap's 28px padding). */
+    @media (max-width: 1579px) {
+      :root { --rd-w: min(calc(50vw - 548px), 240px); }
+      .rd-pol { padding: 9px 9px clamp(34px, calc((50vw - 548px) * 0.2), 48px); }
+      .rd-pol .rd-cap { font-size: clamp(13px, calc((50vw - 548px) * 0.082), 20px); bottom: 9px; }
+      /* The hero "out" photo sits fully outside the column — keep it out. */
+      .rd-pol.rd-out { width: min(calc(50vw - 574px), 226px); }
+    }
     .rd-pol.rd-left  { left:  max(14px, calc(50vw - 560px - var(--rd-w) + var(--rd-kiss))); }
     .rd-pol.rd-left.rd-out { left: max(14px, calc(50vw - 560px - var(--rd-w) - 12px)); }
     .rd-pol.rd-right { right: max(14px, calc(50vw - 560px - var(--rd-w) + var(--rd-kiss))); }
@@ -360,9 +372,31 @@
     .rd-r5 { transform: rotate(-6.5deg); }
     .rd-r6 { transform: rotate(3deg); }
     .hero, .whats-inside, #how, .cream-section, #why, .final { position: relative; }
-    /* Below ~1580px the left/right clamp would push the kiss past the
-       designed 26px and risk touching column text — hide instead. */
-    @media (max-width: 1579px) { .rd-pol { display: none; } }
+    /* Below ~1380px even slimmed photos can't fit the gutter — only there do
+       the gutter copies hide and re-enter as in-flow shelves (below). */
+    @media (max-width: 1379px) { .rd-pol { display: none; } }
+
+    /* ---------- In-flow polaroid shelves (under 1380px only) ---------- */
+    /* Phones and tablets have no side gutters at all — there the same seven
+       photos lay out as small hand-stacked shelves between sections. Real
+       computer screens (≥1380px) always get the hand-placed side wall. */
+    .rd-strip { display: none; }
+    @media (max-width: 1379px) {
+      .rd-strip {
+        display: flex; flex-wrap: wrap; justify-content: center;
+        align-items: flex-start; row-gap: 12px;
+        padding: 42px 14px 26px; position: relative; z-index: 1;
+      }
+      .rd-strip .rd-pol {
+        display: block; position: static; flex: 0 0 auto;
+        width: clamp(118px, 27vw, 250px);
+        padding: 8px 8px clamp(36px, 7vw, 50px);
+      }
+      .rd-strip .rd-pol + .rd-pol { margin-left: clamp(-26px, -5vw, -12px); }
+      .rd-strip .rd-pol:nth-child(2) { margin-top: 20px; }
+      .rd-strip .rd-pol:nth-child(3) { margin-top: 4px; }
+      .rd-strip .rd-cap { font-size: clamp(13px, 2.6vw, 20px); bottom: clamp(8px, 1.6vw, 13px); left: 6px; right: 6px; }
+    }
 
     /* final CTA */
     .final { text-align: center; padding: 0 0 40px; }
@@ -565,6 +599,20 @@
   </header>
 
   <main>
+    <div class="rd-strip" aria-hidden="true">
+      <figure class="rd-pol rd-r1">
+        <img src="assets/real-dogs/gsd-lesson.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Big brother's lesson</figcaption>
+      </figure>
+      <figure class="rd-pol rd-r2">
+        <img src="assets/real-dogs/jrt-sit.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Sit — nailed it!</figcaption>
+      </figure>
+      <figure class="rd-pol rd-r3">
+        <img src="assets/real-dogs/puppy-crate.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Day one — 9 weeks old</figcaption>
+      </figure>
+    </div>
     <section class="whats-inside">
       <figure class="rd-pol rd-left rd-r5" style="top:520px;margin-left:-5px" aria-hidden="true">
         <img src="assets/real-dogs/puppy-crate.webp" alt="" loading="lazy">
@@ -748,6 +796,17 @@
       </div>
     </section>
 
+    <div class="rd-strip" aria-hidden="true">
+      <figure class="rd-pol rd-r4">
+        <img src="assets/real-dogs/meadow-stay.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">After our first "stay"</figcaption>
+      </figure>
+      <figure class="rd-pol rd-r3">
+        <img src="assets/real-dogs/walk-leash.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Day 12 — loose leash!</figcaption>
+      </figure>
+    </div>
+
     <section class="block cream-section">
       <figure class="rd-pol rd-left rd-r3" style="top:150px;margin-left:-13px" aria-hidden="true">
         <img src="assets/real-dogs/walk-leash.webp" alt="" loading="lazy">
@@ -788,6 +847,17 @@
         </div>
       </div>
     </section>
+
+    <div class="rd-strip" aria-hidden="true">
+      <figure class="rd-pol rd-r2">
+        <img src="assets/real-dogs/recall-run.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Recall practice!</figcaption>
+      </figure>
+      <figure class="rd-pol rd-r5">
+        <img src="assets/real-dogs/couch-rest.webp" alt="" loading="lazy">
+        <figcaption class="rd-cap">Decompression, day 3</figcaption>
+      </figure>
+    </div>
 
     <section class="final" id="get">
       <figure class="rd-pol rd-left rd-r5" style="top:160px" aria-hidden="true">
@@ -872,5 +942,6 @@
       document.querySelectorAll('.waitlist-form').forEach(bind);
     })();
   </script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "08271a2f631b407abc0fd1db3921ada0"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
