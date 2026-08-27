@@ -15,6 +15,9 @@ This is the public hosting bundle (no app source). It mirrors
 | `/terms` | `terms.html` — Terms of Service |
 | `/legal` | `legal.html` — legal hub |
 | `/email-verify` | `email-verify.html` — email-confirmation page (deep-links `laeli://auth-callback`) |
+| `/auth-callback` | `auth-callback.html` — safe web fallback for Universal/App Links; preserves one-time auth parameters for the app |
+| `/.well-known/apple-app-site-association` | iOS association for Team `6BFGL3XFZD`, bundle `app.laeli`, scoped to `/auth-callback` |
+| `/.well-known/assetlinks.json` | Android association for Play-signed `app.laeli`, scoped in the app manifest to `/auth-callback` |
 | `/contact` | `contact.html` — contact form (posts to the `/api/contact` function) |
 
 Clean URLs (`/privacy` → `privacy.html`) are served automatically by

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#5179be">
+  <title>Continue in Laeli</title>
+  <style>
+    :root { color-scheme: light; font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { align-items: center; background: #9cc0ec; color: #1d3a32; display: flex; justify-content: center; margin: 0; min-height: 100vh; padding: 24px; }
+    main { background: #fff8ec; border: 1px solid rgba(255,255,255,.8); border-radius: 28px; box-shadow: 0 24px 52px rgba(40,46,70,.18); max-width: 480px; padding: 40px 32px; text-align: center; width: 100%; }
+    img { border-radius: 20px; height: 72px; width: 72px; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: 32px; line-height: 1.1; margin: 22px 0 12px; }
+    p { color: #395049; font-size: 17px; line-height: 1.55; margin: 0 0 18px; }
+    .note { color: #576a60; font-size: 14px; }
+    a.button { background: #ee9b72; border-radius: 999px; color: #1d3a32; display: inline-block; font-weight: 800; margin: 6px 0 20px; padding: 14px 26px; text-decoration: none; }
+    a.help { color: #3f63a6; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="/mascot.webp" alt="Laeli mascot">
+    <h1>Continue in Laeli</h1>
+    <p>Open this link on the phone where Laeli is installed to finish securely.</p>
+    <a class="button" id="open-laeli" href="laeli://auth-callback">Open Laeli</a>
+    <p class="note">This page has not used your one-time link. If you opened the email on a computer, return to the same email on your phone and tap it there.</p>
+    <a class="help" href="mailto:support@laeli.app">Need help? Contact support</a>
+  </main>
+  <script>
+    const callback = `laeli://auth-callback${window.location.search}${window.location.hash}`;
+    document.getElementById("open-laeli").setAttribute("href", callback);
+  </script>
+</body>
+</html>

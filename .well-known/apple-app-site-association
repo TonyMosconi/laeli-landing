@@ -1,0 +1,21 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "6BFGL3XFZD.app.laeli"
+        ],
+        "components": [
+          {
+            "/": "/auth-callback",
+            "comment": "Open Laeli email verification and password recovery links in the app."
+          },
+          {
+            "/": "/auth-callback/*",
+            "comment": "Open nested Laeli auth callback paths in the app."
+          }
+        ]
+      }
+    ]
+  }
+}

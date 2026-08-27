@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.laeli",
+      "sha256_cert_fingerprints": [
+        "D6:72:6D:A6:57:C9:21:68:8C:9A:57:93:64:BD:C7:DB:BC:BC:43:E1:D7:13:7E:1B:F4:AB:B7:AE:EC:50:56:73"
+      ]
+    }
+  }
+]

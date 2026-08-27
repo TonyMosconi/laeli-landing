@@ -1,0 +1,9 @@
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff
+
+/.well-known/assetlinks.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+  X-Content-Type-Options: nosniff
